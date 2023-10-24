@@ -4,36 +4,61 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float currentHealth;
-    public float maxHealth = 100.0f;
+    public Player player;
+    public Enemy enemy;
     
     // Start is called before the first frame update
     void Start()
     {
-        // Set the current health to be the max health
-        currentHealth = maxHealth;
+        // Set both the player and enemy's current health to be the max health
+        player.currentHealth = player.maxHealth;
+        enemy.currentHealth = enemy.maxHealth;
+        
     }
 
-    public void TakeDamage(float damage)
+    public void DamageToPlayer(float damageAmount)
     {
-        currentHealth -= damage;
+        player.currentHealth -= damageAmount;
 
-        if (currentHealth <= 0.0f)
+        if (player.currentHealth <= 0.0f)
         {
             Debug.Log("Game Object has died.");
             // Play death animation
         }
     }
 
-    public void Heal(float amount)
+    public void HealPlayer(float amount)
     {
-        currentHealth += amount;
+        player.currentHealth += amount;
 
         // Check whether the current health exceeds the max health
-        if (currentHealth > maxHealth)
+        if (player.currentHealth > player.maxHealth)
         {
             // Ensure current health does not exceed max health
-            currentHealth = maxHealth;
+            player.currentHealth = player.maxHealth;
+        }
+    }
+    
+    public void DamageToEnemy(float damageAmount)
+    {
+        enemy.currentHealth -= damageAmount;
+
+        if (enemy.currentHealth <= 0.0f)
+        {
+            Debug.Log("Game Object has died.");
+            // Play death animation
+        }
+    }
+    
+    public void HealEnemy(float amount)
+    {
+        enemy.currentHealth += amount;
+
+        // Check whether the current health exceeds the max health
+        if (enemy.currentHealth > enemy.maxHealth)
+        {
+            // Ensure current health does not exceed max health
+            enemy.currentHealth = enemy.maxHealth;
         }
     }
 }

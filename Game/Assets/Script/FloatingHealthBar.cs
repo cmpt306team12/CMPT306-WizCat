@@ -1,22 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FillStatusBar : MonoBehaviour
+public class FloatingHealthBar : MonoBehaviour
 {
-    public Player playerHealth;
+    public Enemy enemyHealth;
+    [SerializeField] Slider slider;
     public Image fillImage;
-    private Slider slider;
-    private Text healthText;
-    
-    void Awake()
+
+    private void Awake()
     {
-        // When the game is loading, it will search for the slider component
-        // (the health bar), and make a reference to it
         slider = GetComponent<Slider>();
-        healthText = GetComponentInChildren<Text>();
-        healthText.text = playerHealth + " / " + playerHealth.maxHealth;
     }
 
     // Update is called once per frame
@@ -34,15 +30,12 @@ public class FillStatusBar : MonoBehaviour
             fillImage.enabled = true;
         }
         
-        AdjustHealthBar();
+        UpdateHealthBar();
     }
-
-    void AdjustHealthBar()
+    
+    public void UpdateHealthBar()
     {
-        float fillValue = (playerHealth.currentHealth / playerHealth.maxHealth);
+        float fillValue = (enemyHealth.currentHealth / enemyHealth.maxHealth);
         slider.value = fillValue;
-        
-        // Update the healthText to display the current health
-        healthText.text = playerHealth.currentHealth + " / " + playerHealth.maxHealth;
     }
 }
