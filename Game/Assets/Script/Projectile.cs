@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
+    public Rigidbody2D rb; //projectiles rigidbody
+
+    public float baseSpeed = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +19,13 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /** Fire()
+     * Applies the impulse to fire the projectile, depends on the projectiles stats.
+     * */
+    public void Fire()
+    {
+        rb.velocity = transform.right * baseSpeed;
     }
 }
