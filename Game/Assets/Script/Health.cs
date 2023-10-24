@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float currentHealth;
+    public float maxHealth = 100.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -14,18 +14,18 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0.0f)
         {
             Debug.Log("Game Object has died.");
             // Play death animation
         }
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         currentHealth += amount;
 
