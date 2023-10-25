@@ -272,6 +272,7 @@ MonoBehaviour:
   trail: {fileID: 7028506562717831734}
   baseSpeed: 8
   baseLifetime: 3
+  bounces: 1
 --- !u!212 &4016052111863780523
 SpriteRenderer:
   m_ObjectHideFlags: 0
