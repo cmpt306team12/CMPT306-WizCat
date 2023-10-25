@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
 
     public float baseSpeed = 2.0f;
     public float baseLifetime = 3.0f;
+    public int bounces = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
-    private void Despawn()
+    public void Despawn()
     {
         Instantiate(deathEffect,transform.position, transform.rotation);
         trail.transform.parent = null;
@@ -49,5 +50,21 @@ public class Projectile : MonoBehaviour
     public void Fire()
     {
         rb.velocity = transform.right * baseSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            collision.gameObject.GetComponent<Projectile>().Despawn();
+            Despawn();
+        } else if (collision.CompareTag("Wall") || collision.CompareTag("Obstacle"))
+        {
+            if (bounces == 0)
+            {
+                Despawn();
+            }
+            bounces--;
+        }
     }
 }
