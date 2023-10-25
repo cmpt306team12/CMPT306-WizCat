@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public float movementSpeed = 5;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
         dir.Normalize();
 
-        GetComponent<Rigidbody2D>().velocity = movementSpeed * dir;
+        float speed = player.GetComponent<Player>().getSpeed();
+
+        GetComponent<Rigidbody2D>().velocity = speed * dir;
     }
 }
