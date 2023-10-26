@@ -5,15 +5,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    private Rigidbody2D rb;
+    private float dashTime;
+    public float startDashTime;
+    private Vector2 dashDirection = Vector2.zero;
+    public float dashImpulseForce = 40f;
+    public float dashDrag = 1.0f; 
+    // public GameObject dashEffect;
+
+
     public float movementSpeed = 5;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        dashTime = startDashTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 dir = Vector2.zero;
@@ -37,8 +45,37 @@ public class PlayerMovement : MonoBehaviour
             dir.y = -1;
         }
 
-        dir.Normalize();
+        // dir.Normalize();
+        // GetComponent<Rigidbody2D>().velocity = movementSpeed * dir;
 
-        GetComponent<Rigidbody2D>().velocity = movementSpeed * dir;
+        // Dash on spacebar down
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0)
+        {
+            dashDirection = dir.normalized;
+            dashTime = startDashTime;
+            rb.velocity = Vector2.zero; 
+            rb.AddForce(dashDirection * dashImpulseForce, ForceMode2D.Impulse);
+            // Instantiate(dashEffect, transform.position, Quaternion.identity);
+
+        }
+
+        if (dashTime > 0)
+        {
+            dashTime -= Time.deltaTime;
+        }
+        else
+        {
+            rb.velocity = rb.velocity * (1 - dashDrag * Time.deltaTime);
+            if (dir == Vector2.zero)
+            {
+                rb.velocity = Vector2.zero;
+            }
+
+            // If not dashing use walk speed
+            if (dashTime <= 0 && dir != Vector2.zero){
+                dir.Normalize();
+                rb.velocity = movementSpeed * dir;
+            }
+        }
     }
 }
