@@ -22,8 +22,10 @@ public class Health : MonoBehaviour
 
         if (player.currentHealth <= 0.0f)
         {
-            Debug.Log("Game Object has died.");
+            Debug.Log("Player has died.");
+            
             // Play death animation
+            Destroy(gameObject);
         }
     }
 
