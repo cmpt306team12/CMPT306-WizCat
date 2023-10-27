@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
-            gameObject.transform.localScale = new Vector2(-3, 3);
+            gameObject.transform.localScale = new Vector2(-1, 1);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
-            gameObject.transform.localScale = new Vector2(3, 3);
+            gameObject.transform.localScale = new Vector2(1, 1);
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -41,5 +42,7 @@ public class PlayerMovement : MonoBehaviour
         float speed = player.GetComponent<Player>().getSpeed();
 
         GetComponent<Rigidbody2D>().velocity = speed * dir;
-    }
+    } 
+
+
 }
