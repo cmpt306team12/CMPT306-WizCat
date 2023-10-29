@@ -2935,6 +2935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86157a6e26c4dd9449202a79e18a5f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 306937861}
 --- !u!4 &1156827752
 Transform:
   m_ObjectHideFlags: 0
@@ -3042,6 +3043,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10145298200545765, guid: 413081fc53a78a043b38591243616398,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635369, guid: 413081fc53a78a043b38591243616398,
         type: 3}
       propertyPath: m_Name
