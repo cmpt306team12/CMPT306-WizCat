@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Wand : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ProjectileProperties projectileProperties;
+    public GameObject projectile;
 
-    // Update is called once per frame
-    void Update()
+    // Shoots the wand
+    public void Shoot()
     {
-        
+        GameObject newBullet = Instantiate(projectile, transform.GetChild(0).transform.position, transform.GetChild(0).transform.rotation);
+        newBullet.GetComponent<Projectile>().Fire(projectileProperties);
+
     }
 }

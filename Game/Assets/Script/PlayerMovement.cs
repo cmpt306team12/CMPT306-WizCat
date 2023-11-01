@@ -20,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
-            gameObject.transform.localScale = new Vector2(-3, 3);
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
-            gameObject.transform.localScale = new Vector2(3, 3);
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (Input.GetKey(KeyCode.W))
