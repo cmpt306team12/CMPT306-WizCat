@@ -298,9 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a370d590f0f0b4c84872be95a05cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileProperties: {fileID: 0}
+  projProp: {fileID: 0}
   rb: {fileID: 4953878500727424012}
   deathEffect: {fileID: 6027418090614748530, guid: 223d8295ab974074d90c1f3ec92520ff,
+    type: 3}
+  explosion: {fileID: 5865554320385163003, guid: f352cfeca2974d64691d288b7ccb236d,
     type: 3}
   trail: {fileID: 7028506562717831734}
 --- !u!212 &4016052111863780523

@@ -11,10 +11,12 @@ public class ProjectileProperties : MonoBehaviour
     private static int baseBounces = 0;
     private static float baseDamage = 5.0f;
     private static float baseScale = 1.0f;
+    private static float baseExplosionScale = 2.0f;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
     [SerializeField] float damageMod = 3.0f;
     [SerializeField] float scaleMod = 1.25f;
+    [SerializeField] float explosionScaleFactor = 1.2f;
 
 
     // Projectile stats 
@@ -24,6 +26,7 @@ public class ProjectileProperties : MonoBehaviour
     private float damage;
     private bool explosive;
     private float scale;
+    private float explosionScale;
 
     private void Start()
     {
@@ -55,12 +58,14 @@ public class ProjectileProperties : MonoBehaviour
                     this.lifetime = baseLifetime + (perks[i] * lifetimeMod);
                     break;
 
-                case 3: // Explosive
-                    this.explosive = perks[i] > 0;
+                case 3: // Damage up/down
+                    this.damage = baseDamage + (perks[i] * damageMod);
                     break;
 
-                case 4: // Damage up/down
-                    this.damage = baseDamage + (perks[i] * damageMod);
+                case 4: // Explosive
+                    this.explosive = perks[i] > 0;
+                    Debug.Log("Explosive: " + explosive + " " + perks[i]);
+                    this.explosionScale = baseExplosionScale * (Mathf.Pow(explosionScaleFactor, perks[i]));
                     break;
 
                 case 5: // Size up/down
@@ -81,4 +86,5 @@ public class ProjectileProperties : MonoBehaviour
     public int getBounces() { return bounces; }
     public bool isExplosive() {  return explosive; }
     public float getScale() {  return scale; }
+    public float getExplosionScale() { return explosionScale; }
 }

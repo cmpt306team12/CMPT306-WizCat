@@ -1125,6 +1125,7 @@ MonoBehaviour:
   lifetimeMod: 0.5
   damageMod: 3
   scaleMod: 1.25
+  explosionScaleFactor: 1.2
 --- !u!114 &306937869
 MonoBehaviour:
   m_ObjectHideFlags: 0
