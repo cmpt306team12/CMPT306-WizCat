@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
         trail.transform.parent = null;
         trail.GetComponent<TrailRenderer>().autodestruct = true;
         Destroy(gameObject);
+        Destroy(trail);
     }
 
     /** Fire()

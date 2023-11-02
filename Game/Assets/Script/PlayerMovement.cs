@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject player;
 
     private Rigidbody2D rb;
     private float dashTime;
@@ -15,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float movementSpeed = 5;
+    public Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
-            gameObject.transform.localScale = new Vector2(-3, 3);
+            animator.Play("CatWizSideIdleL");
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
-            gameObject.transform.localScale = new Vector2(3, 3);
+            animator.Play("CatWizSideIdleR");
         }
 
         if (Input.GetKey(KeyCode.W))

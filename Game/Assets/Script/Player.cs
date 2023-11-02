@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float currentHealth = 100.0f;
     public float maxHealth = 100.0f;
-    
+
+    public float currentHealth = 100.0f;
+
+    public float movementSpeed = 5.0f;
+
+    public float damage;
+    public float fireRate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +23,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public float getSpeed()
+    {
+        return movementSpeed;
     }
 }

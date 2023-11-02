@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wand : MonoBehaviour
-{
+{ 
+    [SerializeField] private GameObject projectile; 
+
+    public GameObject wand;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,15 @@ public class Wand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            wand.GetComponent<WizWandAnimationControl>().Shoot();
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            bullet.GetComponent<Projectile>().Fire();
+
+        }
+
+
     }
 }
