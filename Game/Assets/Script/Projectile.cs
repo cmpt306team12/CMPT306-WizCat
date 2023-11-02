@@ -68,6 +68,7 @@ public class Projectile : MonoBehaviour
         ApplyScale(projProp.getScale()); // Give projectile proper scale
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
         rb.velocity = transform.right * projProp.getSpeed(); // Give projectile speed
+        gameObject.GetComponent<SpriteRenderer>().color = projProp.getSpriteColor();
     }
 
     private void ApplyScale(float scale)

@@ -12,6 +12,7 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseDamage = 5.0f;
     private static float baseScale = 1.0f;
     private static float baseExplosionScale = 2.0f;
+    private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
     [SerializeField] float damageMod = 3.0f;
@@ -27,6 +28,7 @@ public class ProjectileProperties : MonoBehaviour
     private bool explosive;
     private float scale;
     private float explosionScale;
+    private Color myColor = baseSpriteColor;
 
     private void Start()
     {
@@ -60,6 +62,7 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 3: // Damage up/down
                     this.damage = baseDamage + (perks[i] * damageMod);
+                    this.myColor = new Color(1, Mathf.Max(0.0f, 1.0f - (perks[i] * 0.25f)), Mathf.Max(0.0f, 1.0f - (perks[i] * 0.25f)));
                     break;
 
                 case 4: // Explosive
@@ -87,4 +90,5 @@ public class ProjectileProperties : MonoBehaviour
     public bool isExplosive() {  return explosive; }
     public float getScale() {  return scale; }
     public float getExplosionScale() { return explosionScale; }
+    public Color getSpriteColor() { return myColor; }
 }
