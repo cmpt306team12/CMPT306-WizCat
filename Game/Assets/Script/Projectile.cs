@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SubsystemsImplementation;
 using UnityEngine.UIElements;
@@ -14,6 +15,7 @@ public class Projectile : MonoBehaviour
     public GameObject deathEffect; // Effect on projectile death
     public GameObject explosion; // Explosion created if projectile is explosive
     public GameObject trail; //Trail child object
+    public GameObject baseProjectile;
 
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
@@ -53,8 +55,11 @@ public class Projectile : MonoBehaviour
         {
             Explode();
         }
-        trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
-        trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
+        if (!trail.IsDestroyed())
+        {
+            trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
+            trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
+        }
         Destroy(gameObject); // destroy projectile
     }
 
@@ -85,25 +90,59 @@ public class Projectile : MonoBehaviour
 
     }
 
+    private void Burst(Collider2D collision)
+    {
+        float dupOffset = 0.15f * projProp.getBurstNumber();
+        int angle = 180 / (projProp.getBurstNumber() + 1);
+        Vector2 pt = collision.ClosestPoint(transform.position);
+        Debug.Log("Point:x:" + pt.x);
+        Debug.Log("Point:y:" + pt.y);
+        Vector2 direction = (pt - new Vector2(transform.position.x, transform.position.y)).normalized;
+        direction = Quaternion.Euler(0, 0, +90) * direction;
+        for (int i = 0; i < projProp.getBurstNumber(); i++)
+        {
+            direction = Quaternion.Euler(0, 0, angle) * direction;
+            Debug.DrawRay(pt, direction * 1f, Color.red, 1f);
+            GameObject dup = Instantiate(baseProjectile, pt + (direction *  dupOffset), transform.rotation);
+            dup.transform.right = direction;
+            dup.GetComponent<Projectile>().Fire(gameObject.GetComponent<ProjectileProperties>());
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if ((collision.CompareTag("Projectile") || collision.CompareTag("Enemy")) && !despawning)
+        if ((collision.CompareTag("Projectile")) && !despawning)
         {
-            Despawn("Hit Proj/Enemy");
-        } else if (collision.CompareTag("Wall") || collision.CompareTag("Obstacle"))
+            Despawn("Hit Projectile");
+        } else if (collision.CompareTag("Enemy") && !despawning)
+        {
+            if (projProp.isBursting())
+            {
+                Burst(collision);
+
+            }
+            Despawn("Hit Enemy");
+        }
+        else if (collision.CompareTag("Wall") || collision.CompareTag("Obstacle"))
         {
             this.bouncesLeft = this.bouncesLeft - 1;
             if (this.bouncesLeft < 0)
             {
+                if (projProp.isBursting())
+                {
+                    Burst(collision);
+                }
                 Despawn("Hit Wall/Obs");
-            } else if (projProp.isExplosive())
-            {
-                // Bounced and is explosive: Create explosion
-                Explode();
             }
-            
+            else
+            {
+                if (projProp.isExplosive())
+                {
+                    // Bounced and is explosive: Create explosion
+                    Explode();
+                }
+            }
             
         }
     }

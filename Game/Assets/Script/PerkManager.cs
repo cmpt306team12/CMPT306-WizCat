@@ -16,8 +16,10 @@ public class Perks : MonoBehaviour
          * 2: Lifetime (+/-)
          * 3: Damage (+/-)
          * 4; Explosive
+         * 5: Size(+/-)
+         * 6: Burst
          * */
-        perks = new int[6];
+        perks = new int[7];
     }
 
     // Update is called once per frame
@@ -62,6 +64,9 @@ public class Perks : MonoBehaviour
             case 9: //size-
                 index = 5;
                 change = -1;
+                break;
+            case 10: //Burst
+                index = 6;
                 break;
             default:
                 break;

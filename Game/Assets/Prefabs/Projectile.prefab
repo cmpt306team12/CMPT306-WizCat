@@ -66,7 +66,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.092
+  m_Radius: 0.09
 --- !u!1 &7028506562717831734
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 461469348716196684}
   - component: {fileID: 4016052111863780523}
   - component: {fileID: 2303428665376455176}
+  - component: {fileID: 7691920023249570075}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -305,6 +306,7 @@ MonoBehaviour:
   explosion: {fileID: 5865554320385163003, guid: f352cfeca2974d64691d288b7ccb236d,
     type: 3}
   trail: {fileID: 7028506562717831734}
+  baseProjectile: {fileID: 7158703295197564382}
 --- !u!212 &4016052111863780523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -378,6 +380,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7691920023249570075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158703295197564382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8596be2d8b8581345a5a4d6af99cc9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedFactor: 1.5
+  lifetimeMod: 0.5
+  damageMod: 3
+  scaleMod: 1.25
+  explosionScaleFactor: 1.2
 --- !u!1 &8173250960886752953
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +438,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8173250960886752953}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: bd9203741c1b97c4ba7cfd315c6aaba9, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -444,4 +463,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.092
+  m_Radius: 0.09

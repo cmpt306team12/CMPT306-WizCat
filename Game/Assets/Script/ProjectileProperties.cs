@@ -12,6 +12,7 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseDamage = 5.0f;
     private static float baseScale = 1.0f;
     private static float baseExplosionScale = 2.0f;
+    private static int baseBurstNumber = 3;
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
@@ -29,6 +30,8 @@ public class ProjectileProperties : MonoBehaviour
     private float scale;
     private float explosionScale;
     private Color myColor = baseSpriteColor;
+    private bool bursting;
+    private int burstNumber;
 
     private void Start()
     {
@@ -39,6 +42,8 @@ public class ProjectileProperties : MonoBehaviour
         damage = baseDamage;
         explosive = false;
         scale = baseScale;
+        bursting = false;
+        burstNumber = baseBurstNumber;
     }
 
     public void ApplyPerks(int[] perks)
@@ -75,6 +80,11 @@ public class ProjectileProperties : MonoBehaviour
                     this.scale = baseScale * (Mathf.Pow(scaleMod, perks[i]));
                     break;
 
+                case 6: // Burst shot
+                    this.bursting = perks[i] > 0;
+                    this.burstNumber = baseBurstNumber + (perks[i] - 1);
+                    break;
+
                 default:
                     Debug.LogError("Applying undefined PerkID: " + i);
 
@@ -91,4 +101,6 @@ public class ProjectileProperties : MonoBehaviour
     public float getScale() {  return scale; }
     public float getExplosionScale() { return explosionScale; }
     public Color getSpriteColor() { return myColor; }
+    public bool isBursting() {  return bursting; }
+    public int getBurstNumber() {  return burstNumber; }
 }
