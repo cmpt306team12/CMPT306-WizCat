@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Wand : MonoBehaviour
 { 
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject projectile; 
+
     public GameObject wand;
-
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -22,7 +21,7 @@ public class Wand : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+            wand.GetComponent<WizWandAnimationControl>().Shoot();
             GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
             bullet.GetComponent<Projectile>().Fire();
 

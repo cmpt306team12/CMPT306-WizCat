@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
 
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,12 +21,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
-            gameObject.transform.localScale = new Vector2(-1, 1);
+            animator.Play("CatWizSideIdleL");
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
-            gameObject.transform.localScale = new Vector2(1, 1);
+            animator.Play("CatWizSideIdleR");
         }
 
         if (Input.GetKey(KeyCode.W))
