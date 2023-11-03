@@ -115,7 +115,7 @@ public class Projectile : MonoBehaviour
         if ((collision.CompareTag("Projectile")) && !despawning)
         {
             Despawn("Hit Projectile");
-        } else if (collision.CompareTag("Enemy") && !despawning)
+        } else if ( (collision.CompareTag("Enemy") || collision.CompareTag("Player")) && !despawning)
         {
             if (projProp.isBursting())
             {
@@ -123,6 +123,7 @@ public class Projectile : MonoBehaviour
 
             }
             Despawn("Hit Enemy");
+            collision.gameObject.GetComponent<Health>().ApplyDamage(projProp.getDamage());
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("Obstacle"))
         {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FillStatusBar : MonoBehaviour
 {
-    public Player playerHealth;
+    public Health playerHealth;
     public Image fillImage;
     private Slider slider;
     private Text healthText;

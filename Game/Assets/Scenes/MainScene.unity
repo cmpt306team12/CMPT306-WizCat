@@ -332,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2519341287187454305, guid: d979d137121773344929d84e52f28a11,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4008623740741027606, guid: d979d137121773344929d84e52f28a11,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -725,7 +730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 306937861}
-  rb: {fileID: 306937864}
   startDashTime: 0.1
   dashImpulseForce: 40
   dashDrag: 1

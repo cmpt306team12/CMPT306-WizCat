@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FloatingHealthBar : MonoBehaviour
 {
-    public Enemy enemyHealth;
+    public Health enemyHealth;
     [SerializeField] Slider slider;
     public Image fillImage;
 

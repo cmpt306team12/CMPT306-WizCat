@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float maxHealth = 100.0f;
-
-    public float currentHealth = 100.0f;
-
     public float movementSpeed = 5.0f;
 
     public float damage;

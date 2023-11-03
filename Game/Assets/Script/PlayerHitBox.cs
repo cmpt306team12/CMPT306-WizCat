@@ -11,10 +11,11 @@ public class PlayerHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Script may be redundant now
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("The Player took " + damageAmount + " damage.");
-            modifyPlayerHealth.DamageToPlayer(damageAmount);
+            //modifyPlayerHealth.DamageToPlayer(damageAmount);
         }
     }
     

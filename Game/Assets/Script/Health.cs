@@ -4,63 +4,24 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public Player player;
-    public Enemy enemy;
-    
+    public float maxHealth = 100.0f;
+    public float currentHealth;
     // Start is called before the first frame update
     void Start()
     {
-        // Set both the player and enemy's current health to be the max health
-        player.currentHealth = player.maxHealth;
-        enemy.currentHealth = enemy.maxHealth;
-        
+        currentHealth = maxHealth;
     }
 
-    public void DamageToPlayer(float damageAmount)
+    public void ApplyDamage(float damageAmount)
     {
-        player.currentHealth -= damageAmount;
+        currentHealth -= damageAmount;
 
-        if (player.currentHealth <= 0.0f)
+        if (currentHealth <= 0.0f)
         {
-            Debug.Log("Player has died.");
+            Debug.Log(gameObject.tag + " has died.");
             
             // Play death animation
             Destroy(gameObject);
-        }
-    }
-
-    public void HealPlayer(float amount)
-    {
-        player.currentHealth += amount;
-
-        // Check whether the current health exceeds the max health
-        if (player.currentHealth > player.maxHealth)
-        {
-            // Ensure current health does not exceed max health
-            player.currentHealth = player.maxHealth;
-        }
-    }
-    
-    public void DamageToEnemy(float damageAmount)
-    {
-        enemy.currentHealth -= damageAmount;
-
-        if (enemy.currentHealth <= 0.0f)
-        {
-            Debug.Log("Game Object has died.");
-            // Play death animation
-        }
-    }
-    
-    public void HealEnemy(float amount)
-    {
-        enemy.currentHealth += amount;
-
-        // Check whether the current health exceeds the max health
-        if (enemy.currentHealth > enemy.maxHealth)
-        {
-            // Ensure current health does not exceed max health
-            enemy.currentHealth = enemy.maxHealth;
         }
     }
 }
