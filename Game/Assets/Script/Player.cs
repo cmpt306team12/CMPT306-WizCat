@@ -22,7 +22,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            gameObject.GetComponentInChildren<Wand>().Shoot();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Perk"))
+        {
+            int id = collision.gameObject.GetComponent<Perk>().GetPerkID();
+            collision.gameObject.GetComponent<Perk>().Despawn();
+            gameObject.GetComponent<Perks>().AddPerk(id);
+        }
     }
 
     public float getSpeed()

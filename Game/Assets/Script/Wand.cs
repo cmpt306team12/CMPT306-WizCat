@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class Wand : MonoBehaviour
 { 
     [SerializeField] private GameObject projectile; 
+    public ProjectileProperties projectileProperties;
+
 
     public GameObject wand;
     [SerializeField] private Projectile projectilePrefab;
@@ -19,8 +21,8 @@ public class Wand : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // Shoots the wand
+    public void Shoot()
     {
 
         if (Input.GetMouseButtonDown(0))
@@ -45,6 +47,6 @@ public class Wand : MonoBehaviour
             projectilePrefab,
             firingDirection + startingPosition,
             Quaternion.Euler(0,0,firingAngle + randomOffsetAngle));
-        projectile.Fire();
+        projectile.Fire(projectileProperties);
     }
 }
