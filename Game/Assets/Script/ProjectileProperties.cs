@@ -10,7 +10,7 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseLifetime = 3.0f;
     private static int baseBounces = 0;
     private static float baseDamage = 5.0f;
-    private static float baseScale = 1.0f;
+    private static float baseScale = 0.4f;
     private static float baseExplosionScale = 2.0f;
     private static int baseBurstNumber = 3;
     private static Color baseSpriteColor = Color.white;
