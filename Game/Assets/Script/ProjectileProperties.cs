@@ -72,7 +72,6 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 4: // Explosive
                     this.explosive = perks[i] > 0;
-                    Debug.Log("Explosive: " + explosive + " " + perks[i]);
                     this.explosionScale = baseExplosionScale * (Mathf.Pow(explosionScaleFactor, perks[i]));
                     break;
 
