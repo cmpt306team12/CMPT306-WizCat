@@ -6,8 +6,6 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    public float currentHealth = 100.0f;
-    public float maxHealth = 100.0f;
     
     [SerializeField] private Wand wand;
 

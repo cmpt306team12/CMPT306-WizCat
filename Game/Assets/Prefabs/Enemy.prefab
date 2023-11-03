@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5337546215074640240}
   - component: {fileID: 685193108639620093}
   - component: {fileID: 638277186222906181}
+  - component: {fileID: 8853120044719107812}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -177,8 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69711e9badd988d45a1cde0410565df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
   wand: {fileID: 0}
   firingCooldown: 1
   moveSpeed: 0.05
@@ -226,6 +225,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &8853120044719107812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519341287187454305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680996879d664ef4da908f75ebe2420b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkManager: {fileID: 685193108639620093}
+  NumberOfBounce: 0
+  NumberOfSpeed: 0
+  NumberOfLifetime: 0
+  NumberOfDamage: 0
+  NumberOfExplosive: 0
+  NumberOfSize: 0
+  NumberOfBurst: 0
 --- !u!1 &7565318259582220684
 GameObject:
   m_ObjectHideFlags: 0

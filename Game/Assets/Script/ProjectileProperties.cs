@@ -22,29 +22,16 @@ public class ProjectileProperties : MonoBehaviour
 
 
     // Projectile stats 
-    private int bounces;
-    private float speed;
-    private float lifetime;
-    private float damage;
-    private bool explosive;
-    private float scale;
-    private float explosionScale;
+    private int bounces = baseBounces;
+    private float speed = baseSpeed;
+    private float lifetime = baseLifetime;
+    private float damage = baseDamage;
+    private bool explosive = false;
+    private float scale = baseScale;
+    private float explosionScale = baseExplosionScale;
     private Color myColor = baseSpriteColor;
-    private bool bursting;
-    private int burstNumber;
-
-    private void Start()
-    {
-        // Set all stats to base values
-        bounces = 0;
-        speed = baseSpeed;
-        lifetime = baseLifetime;
-        damage = baseDamage;
-        explosive = false;
-        scale = baseScale;
-        bursting = false;
-        burstNumber = baseBurstNumber;
-    }
+    private bool bursting = false;
+    private int burstNumber = baseBurstNumber;
 
     public void ApplyPerks(int[] perks)
     {

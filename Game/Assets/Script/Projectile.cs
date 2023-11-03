@@ -79,6 +79,8 @@ public class Projectile : MonoBehaviour
     private void ApplyScale(float scale)
     {
         // Debug.Log("Scale: " + scale);
+        float offset = (scale * 0.2f); // Offset so your projectiles dont hit yourself when scaled up
+        transform.position = transform.position + transform.right * offset;
         gameObject.transform.localScale = new Vector3(scale, scale, scale); // Scale projectile
     }
 
@@ -95,8 +97,6 @@ public class Projectile : MonoBehaviour
         float dupOffset = 0.15f * projProp.getBurstNumber();
         int angle = 180 / (projProp.getBurstNumber() + 1);
         Vector2 pt = collision.ClosestPoint(transform.position);
-        Debug.Log("Point:x:" + pt.x);
-        Debug.Log("Point:y:" + pt.y);
         Vector2 direction = (pt - new Vector2(transform.position.x, transform.position.y)).normalized;
         direction = Quaternion.Euler(0, 0, +90) * direction;
         for (int i = 0; i < projProp.getBurstNumber(); i++)

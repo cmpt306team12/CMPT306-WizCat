@@ -6,27 +6,17 @@ using UnityEngine;
 public class Perks : MonoBehaviour
 {
     public ProjectileProperties projectileProperties;
-    int[] perks;
-    // Start is called before the first frame update
-    void Start()
-    {
-        /* Perk mods array:
-         * 0: Bounces
-         * 1: Speed (+/-)
-         * 2: Lifetime (+/-)
-         * 3: Damage (+/-)
-         * 4; Explosive
-         * 5: Size(+/-)
-         * 6: Burst
-         * */
-        perks = new int[7];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    /* Perk mods array:
+    * 0: Bounces
+    * 1: Speed (+/-)
+    * 2: Lifetime (+/-)
+    * 3: Damage (+/-)
+    * 4; Explosive
+    * 5: Size(+/-)
+    * 6: Burst
+    * */
+    int[] perks = new int[7];
 
     public void AddPerk(int i)
     {
