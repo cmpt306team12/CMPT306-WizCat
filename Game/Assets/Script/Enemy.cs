@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator FireProjectile()
     {
         _canFire = false;
-        wand.FireProjectile(GameManager.instance.GetPlayer().transform.position ,transform.position);
+        gameObject.GetComponentInChildren<Wand>().Shoot();
         yield return new WaitForSeconds(firingCooldown);
         _canFire = true;
     }

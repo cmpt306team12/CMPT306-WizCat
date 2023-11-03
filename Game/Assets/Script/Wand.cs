@@ -8,12 +8,7 @@ public class Wand : MonoBehaviour
 { 
     [SerializeField] private GameObject projectile; 
     public ProjectileProperties projectileProperties;
-
-
     public GameObject wand;
-    [SerializeField] private Projectile projectilePrefab;
-    
-    private static readonly Vector3 AimingOffset = new Vector3(0, 0.475f, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -24,29 +19,13 @@ public class Wand : MonoBehaviour
     // Shoots the wand
     public void Shoot()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        if (gameObject.CompareTag("Player"))
         {
             wand.GetComponent<WizWandAnimationControl>().Shoot();
-            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-            bullet.GetComponent<Projectile>().Fire();
-
         }
-
-
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+        bullet.GetComponent<Projectile>().Fire(projectileProperties);
     }
 
-    public void FireProjectile(Vector3 targetPosition, Vector3 startingPosition)
-    {
-        Vector3 offsetTargetPosition = targetPosition + AimingOffset;
-        Vector3 firingDirection = (offsetTargetPosition - startingPosition).normalized;
-        float firingAngle = Mathf.Atan2(firingDirection.y, firingDirection.x) * Mathf.Rad2Deg;
-        float randomOffsetAngle = Random.Range(-5f, 5f);
-        
-        Projectile projectile = Instantiate(
-            projectilePrefab,
-            firingDirection + startingPosition,
-            Quaternion.Euler(0,0,firingAngle + randomOffsetAngle));
-        projectile.Fire(projectileProperties);
-    }
+    
 }
