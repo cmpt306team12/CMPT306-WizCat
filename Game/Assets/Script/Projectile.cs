@@ -114,7 +114,11 @@ public class Projectile : MonoBehaviour
         
         if ((collision.CompareTag("Projectile")) && !despawning)
         {
-            Despawn("Hit Projectile");
+            if (collision.gameObject.GetComponentInParent<Projectile>().projProp.getScale() >= this.projProp.getScale())
+            {
+                Despawn("Hit Projectile");
+            }
+            
         } else if ( (collision.CompareTag("Enemy") || collision.CompareTag("Player")) && !despawning)
         {
             if (projProp.isBursting())
