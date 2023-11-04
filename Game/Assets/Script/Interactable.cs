@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,6 +33,7 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
+            collision.gameObject.GetComponent<InteractionNotification>().NotifyPlayer();
             Debug.Log("Player now in range");
         }
     }
@@ -41,6 +43,7 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
+            collision.gameObject.GetComponent<InteractionNotification>().DenotifyPlayer();
             Debug.Log("Player no longer in range");
         }
     }
