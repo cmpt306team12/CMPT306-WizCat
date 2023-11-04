@@ -26,4 +26,10 @@ public class CoinCounter : MonoBehaviour
         coinCount += amount;
         coinText.text = "Coins: " + coinCount.ToString();
     }
+
+    public void DecreaseCoins(int amount)
+    {
+        coinCount -= amount;
+        coinText.text = "Coins: " + coinCount.ToString();
+    }
 }
