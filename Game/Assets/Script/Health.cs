@@ -18,10 +18,22 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0.0f)
         {
+            currentHealth = 0.0f;
             Debug.Log(gameObject.tag + " has died.");
             
             // Play death animation
             Destroy(gameObject);
+        }
+    }
+
+    public void ApplyHealing(float healAmount)
+    {
+        currentHealth += healAmount;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+            Debug.Log(gameObject.tag + " max health.");
         }
     }
 }

@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
 
     private Vector3 _moveDir = Vector3.zero;
 
+    public GameObject player;
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +29,24 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(_moveDir * moveSpeed);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 scale = transform.localScale;
+        if (player.transform.position.x > transform.position.x)
+        {
+            animator.Play("EnemySideIdleR");
+        }
+        else
+        {
+            animator.Play("EnemySideIdleL");
+        }
+        transform.localScale = scale; 
+
+
         if (_canChangeDirection)
         {
             StartCoroutine(ChangeDirection());
@@ -39,6 +55,7 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(FireProjectile());
         }
+
     }
 
     private IEnumerator ChangeDirection()
