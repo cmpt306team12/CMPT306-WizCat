@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 997859687114990811}
   - component: {fileID: 4020485958941007969}
   - component: {fileID: 6513082813964301540}
+  - component: {fileID: 3210272547050145842}
+  - component: {fileID: 8473190641044830740}
   m_Layer: 20
   m_Name: DestructableStoneCube
   m_TagString: Obstacle
@@ -76,7 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300130, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  m_Sprite: {fileID: 7808762701270056203, guid: 91d7deb4270ef75469630cd7e70a0dcc,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,6 +162,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3210272547050145842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016787144776811733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798e7bef3e3d0114f98c1f12b656918d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damaged: {fileID: 3082489565318702715, guid: cee96ed036eeefe4193a309010d28556, type: 3}
+  veryDamaged: {fileID: -7172338554895109222, guid: 074d1f5fdfdd0c24a9eda5704c24ff36,
+    type: 3}
+--- !u!114 &8473190641044830740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016787144776811733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 400
+  currentHealth: 400
 --- !u!1 &6178718110871443804
 GameObject:
   m_ObjectHideFlags: 0

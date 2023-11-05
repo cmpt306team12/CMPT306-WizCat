@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1024956759570389104}
   - component: {fileID: 4965166727333113436}
   - component: {fileID: 4377179268892185893}
+  - component: {fileID: 1908655498324009711}
+  - component: {fileID: 8350970290162070929}
   m_Layer: 20
   m_Name: DestructablePot
   m_TagString: Obstacle
@@ -76,7 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300092, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  m_Sprite: {fileID: 2446250020321391878, guid: cdb2dea4d5900c74d985f12e9cce5119,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,6 +168,36 @@ PolygonCollider2D:
       - {x: 0.19948578, y: 0.05891943}
       - {x: 0.326334, y: 0.15957463}
   m_UseDelaunayMesh: 0
+--- !u!114 &1908655498324009711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129253483335118367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 25
+  currentHealth: 25
+--- !u!114 &8350970290162070929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129253483335118367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798e7bef3e3d0114f98c1f12b656918d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damaged: {fileID: -5413276974417546643, guid: 711ba295797c43948ae41e6ad39917e3,
+    type: 3}
+  veryDamaged: {fileID: -939237414378162371, guid: abe3c2892d1fcac429a5f19f534d13f0,
+    type: 3}
 --- !u!1 &7682813933277245456
 GameObject:
   m_ObjectHideFlags: 0

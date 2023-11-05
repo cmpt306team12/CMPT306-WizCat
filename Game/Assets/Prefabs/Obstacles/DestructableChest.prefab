@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1226357070177136062}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.091, y: 0.002, z: 0.004}
+  m_LocalPosition: {x: 0.088, y: 0.04, z: 0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 9043666404905888413}
   - component: {fileID: 1708559883407844113}
   - component: {fileID: -4978369440590273280}
+  - component: {fileID: 4154120500149476718}
+  - component: {fileID: 8213498940701791155}
   m_Layer: 20
   m_Name: DestructableChest
   m_TagString: Obstacle
@@ -160,7 +162,8 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  m_Sprite: {fileID: 3088820586126658192, guid: 432ad048d85aa0c4bad4a3ed32c58e0b,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -203,10 +206,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0020719469, y: 0.28104734}
+  m_Offset: {x: 0.0020719469, y: 0.29557574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.032258067}
     oldSize: {x: 1, y: 0.96875}
     newSize: {x: 1, y: 0.96875}
     adaptiveTilingThreshold: 0.5
@@ -214,7 +217,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93784136, y: 0.5620947}
+  m_Size: {x: 0.93784136, y: 0.5330379}
   m_EdgeRadius: 0
 --- !u!114 &-4978369440590273280
 MonoBehaviour:
@@ -230,3 +233,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &4154120500149476718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301881059096778819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 250
+  currentHealth: 250
+--- !u!114 &8213498940701791155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301881059096778819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798e7bef3e3d0114f98c1f12b656918d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damaged: {fileID: 3462862470919822890, guid: 604f0de3161f39046a08fad9fb559a4a, type: 3}
+  veryDamaged: {fileID: 8807377356420672940, guid: 4f0240ce579e5a041976560096ea42a0,
+    type: 3}
