@@ -5,11 +5,13 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100.0f;
-    public float currentHealth;
+    public float currentHealth; 
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        //hurtSFX = GetComponent<AudioSource>();
     }
 
     public void ApplyDamage(float damageAmount)

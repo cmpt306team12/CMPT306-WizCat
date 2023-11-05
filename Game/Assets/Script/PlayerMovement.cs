@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
 
+    public AudioSource catSFX;
+    public AudioClip dashSFX;
+
     private Rigidbody2D rb;
     private float dashTime;
     public float startDashTime;
@@ -52,8 +55,9 @@ public class PlayerMovement : MonoBehaviour
         // GetComponent<Rigidbody2D>().velocity = movementSpeed * dir;
 
         // Dash on spacebar down
-        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
+            catSFX.PlayOneShot(dashSFX);
             dashDirection = dir.normalized;
             dashTime = startDashTime;
             rb.velocity = Vector2.zero; 
@@ -80,5 +84,9 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = movementSpeed * dir;
             }
         }
-    }
+    } 
+
+    
+
+
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private AudioSource mAudioSrc;
-
     public float movementSpeed = 5.0f;
 
     public float damage;
@@ -14,7 +12,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mAudioSrc = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -22,7 +20,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            mAudioSrc.Play();
             gameObject.GetComponentInChildren<Wand>().Shoot();
         }
     }

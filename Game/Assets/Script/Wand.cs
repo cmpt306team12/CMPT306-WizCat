@@ -5,7 +5,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Wand : MonoBehaviour
-{ 
+{
+    private AudioSource shootSFX;
     [SerializeField] private GameObject projectile; 
     public ProjectileProperties projectileProperties;
     public GameObject wand;
@@ -13,7 +14,7 @@ public class Wand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        shootSFX = GetComponent<AudioSource>();
     }
 
     // Shoots the wand
@@ -21,8 +22,11 @@ public class Wand : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
-            wand.GetComponent<WizWandAnimationControl>().Shoot();
+            //wand.GetComponent<WizWandAnimationControl>().Shoot();
+
+
         }
+        shootSFX.Play();
         GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
         bullet.GetComponent<Projectile>().Fire(projectileProperties);
     }
