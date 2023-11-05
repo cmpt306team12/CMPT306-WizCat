@@ -138,6 +138,10 @@ public class Projectile : MonoBehaviour
                 {
                     Burst(collision);
                 }
+                if (collision.CompareTag("Obstacle"))
+                {
+                    collision.gameObject.GetComponent<Health>().ApplyDamage(projProp.getDamage());
+                }
                 Despawn("Hit Wall/Obs");
             }
             else
