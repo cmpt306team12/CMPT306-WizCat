@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private bool _canFire = true;
     private bool _canChangeDirection = true;
 
+    //private AudioSource shootSFX;
+
     private Vector3 _moveDir = Vector3.zero;
 
     public GameObject player;
@@ -23,7 +25,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //shootSFX = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -69,6 +71,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator FireProjectile()
     {
         _canFire = false;
+        //shootSFX.Play();
         gameObject.GetComponentInChildren<Wand>().Shoot();
         yield return new WaitForSeconds(firingCooldown);
         _canFire = true;
