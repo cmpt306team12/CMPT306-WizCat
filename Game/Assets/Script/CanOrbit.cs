@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour
+public class CanOrbit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,7 +11,7 @@ public class InteractableObject : MonoBehaviour
             PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
             if (playerMovement != null)
             {
-                playerMovement.canDash = true;
+                OrbitProjectiles.canOrbit = true;
             }
         }
     }
