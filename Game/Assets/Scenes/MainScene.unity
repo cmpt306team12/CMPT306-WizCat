@@ -2525,6 +2525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitRadius: 2.5
   orbitSpeed: 6
+  catSFX: {fileID: 1863122812}
+  orbitSFX: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
+  noOrbitSFX: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
 --- !u!4 &337529292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 7277dd75e907b27448ec1de08238d0bb,

@@ -20,13 +20,13 @@
 //     private void Update()
 //     {
 //         if (canOrbit){
-//             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) )
+//             if (Input.GetKeyDown(KeyCode.LeftCtrl) || Input.GetKeyDown(KeyCode.RightCtrl) )
 //             {
 //                 isOrbiting = true;
 //                 currentOrbitTime = 0.0f;
 //             }
 
-//             if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+//             if (Input.GetKeyUp(KeyCode.LeftCtrl) || Input.GetKeyUp(KeyCode.RightCtrl))
 //             {
 //                 isOrbiting = false;
 //             }
@@ -77,7 +77,11 @@ public class OrbitProjectiles : MonoBehaviour
     private float orbitDuration = 3.0f;
     private float currentOrbitTime = 0.0f;
     private float cooldownDuration = 2.0f; // 2-second cooldown between presses
-    private float lastShiftPressTime = 0.0f;
+    private float lastCtrlPressTime = 0.0f;
+
+    public AudioSource catSFX;
+    public AudioClip orbitSFX;
+    public AudioClip noOrbitSFX;
 
     private void Start()
     {
@@ -88,14 +92,20 @@ public class OrbitProjectiles : MonoBehaviour
     {
         if (canOrbit)
         {
-            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && (Time.time - lastShiftPressTime >= cooldownDuration))
+            if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime >= cooldownDuration))
             {
                 isOrbiting = true;
                 currentOrbitTime = 0.0f;
-                lastShiftPressTime = Time.time; // Record the time of the last shift press
+                lastCtrlPressTime = Time.time;
+                catSFX.PlayOneShot(orbitSFX);
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+            else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime < cooldownDuration))
+            {
+                catSFX.PlayOneShot(noOrbitSFX);
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftControl))
             {
                 isOrbiting = false;
             }
