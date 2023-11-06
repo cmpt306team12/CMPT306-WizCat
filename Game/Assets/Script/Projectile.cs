@@ -86,9 +86,12 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
+        Vector3 offset = new Vector3(50, 50, 0);
         float explosion_scale = projProp.getExplosionScale();
-        GameObject expl = Instantiate(explosion, transform.position, transform.rotation); // create explosion
+        GameObject expl = Instantiate(explosion, transform.position + offset, transform.rotation); // create explosion offscreen
         expl.transform.localScale = new Vector3(explosion_scale, explosion_scale, explosion_scale); // scale explosion
+        expl.GetComponent<Explosion>().SetDamage(projProp.getExplosionDamage()); // Set explosion damage
+        expl.transform.position = transform.position; // move explosion back
 
     }
 
