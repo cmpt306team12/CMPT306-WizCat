@@ -40,10 +40,10 @@ public class OrbitProjectiles : MonoBehaviour
                 catSFX.PlayOneShot(noOrbitSFX);
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                isOrbiting = false;
-            }
+            // if (Input.GetKeyUp(KeyCode.LeftControl))
+            // {
+            //     isOrbiting = false;
+            // }
 
             if (isOrbiting)
             {
