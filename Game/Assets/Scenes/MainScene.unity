@@ -3526,8 +3526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72977a258d023e64d9bc39ce9b0ccbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 306937863}
-  offset: {x: 0, y: 0, z: -1}
+  player: {fileID: 306937863}
+  cameraSize: 5
+  smoothing: 5
 --- !u!1001 &523140433
 PrefabInstance:
   m_ObjectHideFlags: 0
