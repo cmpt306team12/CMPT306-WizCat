@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanOrbit : MonoBehaviour
+public class CanBite : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            OrbitProjectiles.canOrbit = true;
+            Bite.canBite = true;
         }
     }
 }

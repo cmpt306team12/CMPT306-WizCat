@@ -1,68 +1,3 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class OrbitProjectiles : MonoBehaviour
-// {
-//     public float orbitRadius = 2.5f; 
-//     public float orbitSpeed = 6f;    
-//     private bool isOrbiting = false;
-//     private Rigidbody2D characterRigidbody;
-//     public static bool canOrbit = false;
-//     private float orbitDuration = 3.0f;
-//     private float currentOrbitTime = 0.0f;
-
-//     private void Start()
-//     {
-//         characterRigidbody = GetComponent<Rigidbody2D>();
-//     }
-
-//     private void Update()
-//     {
-//         if (canOrbit){
-//             if (Input.GetKeyDown(KeyCode.LeftCtrl) || Input.GetKeyDown(KeyCode.RightCtrl) )
-//             {
-//                 isOrbiting = true;
-//                 currentOrbitTime = 0.0f;
-//             }
-
-//             if (Input.GetKeyUp(KeyCode.LeftCtrl) || Input.GetKeyUp(KeyCode.RightCtrl))
-//             {
-//                 isOrbiting = false;
-//             }
-
-//             if (isOrbiting)
-//             {
-//              if (currentOrbitTime < orbitDuration)
-//                 {
-//                     Vector2 orbitCenter = characterRigidbody.position;
-//                     GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
-
-//                     foreach (var projectile in projectiles)
-//                     {
-//                         float distanceToProjectile = Vector2.Distance(orbitCenter, projectile.transform.position);
-
-//                         if (distanceToProjectile <= orbitRadius)
-//                         {
-//                             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-
-//                             if (rb != null)
-//                             {
-//                                 Vector2 directionToCenter = (orbitCenter - rb.position).normalized;
-//                                 Vector2 orbitalDirection = new Vector2(-directionToCenter.y, directionToCenter.x); // perpendicular direction 
-//                                 rb.velocity = orbitalDirection * orbitSpeed; // force for circular motion 
-//                             }
-//                         }
-//                     }
-//                 else
-//                 {
-//                     isOrbiting = false; // Stop orbiting if the maximum duration is reached
-//                 }   
-//             }
-//         }
-//     }
-// }
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,7 +11,7 @@ public class OrbitProjectiles : MonoBehaviour
     public static bool canOrbit = false;
     private float orbitDuration = 3.0f;
     private float currentOrbitTime = 0.0f;
-    private float cooldownDuration = 2.0f; // 2-second cooldown between presses
+    private float cooldownDuration = 2.0f; 
     private float lastCtrlPressTime = 0.0f;
 
     public AudioSource catSFX;
