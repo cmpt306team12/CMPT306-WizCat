@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashImpulseForce = 40f;
     public float dashDrag = 1.0f; 
     // public GameObject dashEffect;
-
+    public bool canDash = false;
 
     public float movementSpeed = 5;
     public Animator animator;
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         // dir.Normalize();
         // GetComponent<Rigidbody2D>().velocity = movementSpeed * dir;
 
+
         // Dash on spacebar down
         if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
@@ -65,28 +66,35 @@ public class PlayerMovement : MonoBehaviour
             // Instantiate(dashEffect, transform.position, Quaternion.identity);
 
         }
+        if (canDash==true){
+            if (dashTime > 0)
+                    {
+                        dashTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        rb.velocity = rb.velocity * (1 - dashDrag * Time.deltaTime);
+                        if (dir == Vector2.zero)
+                        {
+                            rb.velocity = Vector2.zero;
+                        }
 
-        if (dashTime > 0)
-        {
-            dashTime -= Time.deltaTime;
+                        // If not dashing use walk speed
+                        if (dashTime <= 0 && dir != Vector2.zero){
+                            dir.Normalize();
+                            rb.velocity = movementSpeed * dir;
+                        }
+                    }
+
         }
-        else
-        {
-            rb.velocity = rb.velocity * (1 - dashDrag * Time.deltaTime);
-            if (dir == Vector2.zero)
-            {
-                rb.velocity = Vector2.zero;
-            }
 
-            // If not dashing use walk speed
-            if (dashTime <= 0 && dir != Vector2.zero){
-                dir.Normalize();
-                rb.velocity = movementSpeed * dir;
-            }
+        // Can't dash
+        else {
+            dir.Normalize();
+            rb.velocity = movementSpeed * dir;
         }
-    } 
-
+    
     
 
-
+    }
 }
