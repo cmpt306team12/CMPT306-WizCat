@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100.0f;
     public float currentHealth; 
+    public int EnemyScore = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,14 @@ public class Health : MonoBehaviour
             currentHealth = 0.0f;
             Debug.Log(gameObject.tag + " has died.");
             
+            if (gameObject.CompareTag("Enemy"))
+            {
+                GameManager.instance.IncreaseScore(EnemyScore);
+            }
+
             // Play death animation
+
+
             Destroy(gameObject);
         }
     }
