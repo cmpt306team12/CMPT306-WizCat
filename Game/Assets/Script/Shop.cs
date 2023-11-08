@@ -14,7 +14,8 @@ public class Shop : MonoBehaviour
 
     public int price = 1;
 
-    private CoinCounter counter;
+    // private CoinCounter counter;
+    private GameManager gameManager;
 
     public GameObject priceText;
     public GameObject perkImage;
@@ -24,7 +25,8 @@ public class Shop : MonoBehaviour
     private void Start()
     {
         // set the perk
-        counter = GameManager.instance.GetComponent<CoinCounter>();
+        // counter = GameManager.instance.GetComponent<CoinCounter>();
+        gameManager = GameManager.instance;
         selectRandomPerk();
 
         // set perk price text
@@ -108,9 +110,11 @@ public class Shop : MonoBehaviour
     public void InstantiatePerk()
     {
         if (selectedPerk != null) { 
-            if (counter.coinCount >= price)
+            // if (counter.coinCount >= price)
+            if (gameManager.coinCount >= price)
             {
-                counter.DecreaseCoins(price);
+                // counter.DecreaseCoins(price);
+                gameManager.DecreaseCoins(price);
                 Vector2 offset = new Vector2(0, -1);
                 Vector2 coords = (Vector2)transform.position + offset;
                 Instantiate(selectedPerk, coords, transform.rotation);
