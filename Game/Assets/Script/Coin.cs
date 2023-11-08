@@ -5,12 +5,14 @@ using UnityEngine;
 public class Coin : MonoBehaviour { 
 
     public int value;
-    private CoinCounter counter;
-
+    // private CoinCounter counter;
+    private GameManager gameManager;
+    
     // Start is called before the first frame update
     void Start()
     {
-        counter = GameManager.instance.GetComponent<CoinCounter>();
+        // counter = GameManager.instance.GetComponent<CoinCounter>();
+        gameManager = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -24,7 +26,8 @@ public class Coin : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            counter.IncreaseCoins(value);
+            // counter.IncreaseCoins(value);
+            gameManager.IncreaseCoins(value);
 
         }
     }

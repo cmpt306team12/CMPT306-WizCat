@@ -6,8 +6,11 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    
     public TMP_Text scoreText;
-    private int scoreCount = 0;
+    public int scoreCount = 0;
+    public TMP_Text coinText;
+    public int coinCount = 0;
 
     [SerializeField] private GameObject player;
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        coinText.text = "Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
     }
 
@@ -39,6 +43,18 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int amount){
         scoreCount += amount;
         scoreText.text = "Score: " + scoreCount.ToString();
+    }
+
+    public void IncreaseCoins(int amount)
+    {
+        coinCount += amount;
+        coinText.text = "Coins: " + coinCount.ToString();
+    }
+
+    public void DecreaseCoins(int amount)
+    {
+        coinCount -= amount;
+        coinText.text = "Coins: " + coinCount.ToString();
     }
 
 }
