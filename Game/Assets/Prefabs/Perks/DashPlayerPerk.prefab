@@ -76,8 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -105541197
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3373343756279930316, guid: 5382b18b2d66d58419b0d5e826f7e3c7,
-    type: 3}
+  m_Sprite: {fileID: 55321602204672239, guid: 9c9344eeab600ad4f8d695492c142e02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b64e7d9e77bd3842a69a027adad2271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perkID: 7
+  perkID: 11
 --- !u!114 &7032594728383395635
 MonoBehaviour:
   m_ObjectHideFlags: 0

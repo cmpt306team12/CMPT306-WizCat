@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 856494610141306798}
   - component: {fileID: 787419736417703394}
   - component: {fileID: 4133066637924210432}
-  - component: {fileID: 746510444682743800}
   - component: {fileID: 3854597230362846285}
+  - component: {fileID: 5191737250211179604}
   m_Layer: 0
   m_Name: OrbitPlayerPerk
   m_TagString: Perk
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -105541197
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3373343756279930316, guid: 5382b18b2d66d58419b0d5e826f7e3c7,
+  m_Sprite: {fileID: 1019102872867219543, guid: dfcba4fcd1cc9f446815ac5b6f08cb00,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,19 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b64e7d9e77bd3842a69a027adad2271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perkID: 7
---- !u!114 &746510444682743800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248169646391386133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66dfdac66ad75c24eb22a3ad16598fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  perkID: 11
 --- !u!114 &3854597230362846285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +113,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37fcea123b04f24c95524d075dfbcdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &5191737250211179604
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248169646391386133}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.16}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: -0.071428575}
+    oldSize: {x: 0.28, y: 0.28}
+    newSize: {x: 0.28, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.28, y: 0.28000003}
+  m_EdgeRadius: 0

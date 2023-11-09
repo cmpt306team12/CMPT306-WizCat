@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6928235664445990757}
   - component: {fileID: 7001288700054449449}
   - component: {fileID: 2344345294878623524}
-  - component: {fileID: 6416122174729196018}
   - component: {fileID: 5953603521298378699}
   m_Layer: 0
   m_Name: SpeedUpPerk
@@ -133,18 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.28000003}
   m_EdgeRadius: 0
---- !u!114 &6416122174729196018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545011607710849246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371155794815ae1419c9d1b8d7c0df24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5953603521298378699
 MonoBehaviour:
   m_ObjectHideFlags: 0
