@@ -71,6 +71,9 @@ public class ProjectileProperties : MonoBehaviour
                     this.burstNumber = baseBurstNumber + (perks[i] - 1);
                     break;
 
+                case 7: // non-modify
+                    break;
+
                 default:
                     Debug.LogError("Applying undefined PerkID: " + i);
 
