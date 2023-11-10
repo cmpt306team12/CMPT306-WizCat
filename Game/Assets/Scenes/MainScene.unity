@@ -6638,7 +6638,7 @@ GameObject:
   - component: {fileID: 1251146765}
   m_Layer: 1
   m_Name: Props
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35150,7 +35150,7 @@ GameObject:
   - component: {fileID: 1861971045}
   m_Layer: 0
   m_Name: TileMap-Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38305,7 +38305,7 @@ PrefabInstance:
     - target: {fileID: 5695009383981927097, guid: 784b2c52b646059458cbc85dd482286f,
         type: 3}
       propertyPath: PerkNames
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6239546733209938475, guid: 784b2c52b646059458cbc85dd482286f,
         type: 3}
