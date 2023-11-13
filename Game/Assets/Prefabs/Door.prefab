@@ -111,3 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneBuildIndex: 1
+  sceneInfo: {fileID: 11400000, guid: ef70715d430889042bae5528e805c864, type: 2}
