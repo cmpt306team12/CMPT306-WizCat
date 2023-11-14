@@ -9,4 +9,5 @@ public class StaticData : MonoBehaviour
     public static int score = 0;
     public static float maxHealth = 1000;
     public static float currentHealth = 1000;
+    public static int[] perks = new int[8];
 }

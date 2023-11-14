@@ -11,8 +11,13 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // maxHealth = StaticData.maxHealth;
-        currentHealth = StaticData.currentHealth;
+        if (gameObject.CompareTag("Player")) {
+            // maxHealth = StaticData.maxHealth;
+            currentHealth = StaticData.currentHealth;
+        }
+
+        else { currentHealth = maxHealth; }
+        
         //hurtSFX = GetComponent<AudioSource>();
     }
 

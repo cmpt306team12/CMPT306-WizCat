@@ -10,6 +10,7 @@ public class ChangeScene : MonoBehaviour
     private GameManager gameManager;
     private GameObject player;
     private Health health;
+    private Perks perkManager;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class ChangeScene : MonoBehaviour
         gameManager = GameManager.instance;
         player = gameManager.GetPlayer();
         health = player.GetComponent<Health>();
+        perkManager = player.GetComponent<Perks>();
     }
 
     public void sceneChange()
@@ -26,6 +28,7 @@ public class ChangeScene : MonoBehaviour
         StaticData.score = gameManager.scoreCount;
         StaticData.currentHealth = health.currentHealth;
         StaticData.maxHealth = health.maxHealth;
+        StaticData.perks = perkManager.GetPerks();
         print("Switching scene to " + sceneBuildIndex);
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
     }
