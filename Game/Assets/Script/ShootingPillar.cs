@@ -9,6 +9,7 @@ public class ShootingPillar : MonoBehaviour
     [SerializeField] float shootingDelay = 3.0f;
     public float fireTime;
     private Animator animator;
+    public AudioClip shootSoundEffect;
     private void Start()
     {
         fireTime = Time.time;
@@ -23,6 +24,8 @@ public class ShootingPillar : MonoBehaviour
             // shoot at player
             Debug.Log("Should fire");
             pillar.GetComponentInChildren<Wand>().Shoot();
+            // make shooting sound effect
+            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
             fireTime = Time.time + shootingDelay;
             animator.SetTrigger("FireTime");
         }
