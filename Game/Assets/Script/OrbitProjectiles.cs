@@ -17,9 +17,14 @@ public class OrbitProjectiles : MonoBehaviour
     public AudioClip orbitSFX;
     public AudioClip noOrbitSFX;
 
+    public GameObject orbitCirclePrefab;
+    private GameObject orbitCircle;
+
     private void Start()
     {
         characterRigidbody = GetComponent<Rigidbody2D>();
+        orbitCircle = Instantiate(orbitCirclePrefab, transform.position, Quaternion.identity);
+        orbitCircle.SetActive(false);
     }
 
     private void Update()
@@ -33,6 +38,9 @@ public class OrbitProjectiles : MonoBehaviour
                 lastCtrlPressTime = Time.time;
                 gameObject.GetComponent<RandomSound>().PLayClipAt(orbitSFX, transform.position);
                 //catSFX.PlayOneShot(orbitSFX);
+
+                orbitCircle.SetActive(true);
+                orbitCircle.transform.position = characterRigidbody.position;
             }
 
             else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime < cooldownDuration))
@@ -69,12 +77,13 @@ public class OrbitProjectiles : MonoBehaviour
                             }
                         }
                     }
-
+                    orbitCircle.transform.position = characterRigidbody.position;
                     currentOrbitTime += Time.deltaTime;
                 }
                 else
                 {
                     isOrbiting = false;
+                    orbitCircle.SetActive(false);
                 }
             }
         }
