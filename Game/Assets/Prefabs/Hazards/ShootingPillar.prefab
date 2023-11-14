@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 5332766896269179831}
   - component: {fileID: 4812411082962438887}
   - component: {fileID: 4412796274482166087}
+  - component: {fileID: 1709092822912625989}
   m_Layer: 20
   m_Name: FireZone
   m_TagString: Untagged
@@ -239,6 +240,7 @@ MonoBehaviour:
   pillar: {fileID: 7549013836493946175}
   shootingDelay: 3
   fireTime: 0
+  shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!114 &4412796274482166087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +259,22 @@ MonoBehaviour:
   explosionDamageMod: 5
   scaleMod: 1.25
   explosionScaleFactor: 1.2
+--- !u!114 &1709092822912625989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019817698517280389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.6
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 30
 --- !u!1001 &7826422607080214691
 PrefabInstance:
   m_ObjectHideFlags: 0
