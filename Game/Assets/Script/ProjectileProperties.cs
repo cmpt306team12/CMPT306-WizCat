@@ -14,6 +14,7 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseExplosionScale = 2.0f;
     private static float baseExplosionDamage = 5.0f;
     private static int baseBurstNumber = 3;
+    private static int baseSplits = 0;
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
@@ -21,6 +22,7 @@ public class ProjectileProperties : MonoBehaviour
     [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
+
 
 
     // Projectile stats 
@@ -35,7 +37,8 @@ public class ProjectileProperties : MonoBehaviour
     private Color myColor = baseSpriteColor;
     private bool bursting = false;
     private int burstNumber = baseBurstNumber;
-
+    private int splits = baseSplits;
+    
     public void ApplyPerks(int[] perks)
     {
         for (int i = 0; i < perks.Length; i++)
@@ -75,7 +78,11 @@ public class ProjectileProperties : MonoBehaviour
                     this.burstNumber = baseBurstNumber + (perks[i] - 1);
                     break;
 
-                case 7: // non-modify
+                case 7: // Non-modify
+                    break;
+
+                case 8: // Splits Perk: +1 shot per split perk
+                    this.splits = baseSplits + perks[i];
                     break;
 
                 default:
@@ -98,4 +105,5 @@ public class ProjectileProperties : MonoBehaviour
     public int getBurstNumber() {  return burstNumber; }
 
     public float getExplosionDamage() {  return explosionDamage; }
+    public int getSplits() { return splits; }
 }

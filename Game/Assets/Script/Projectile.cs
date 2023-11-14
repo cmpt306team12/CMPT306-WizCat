@@ -37,14 +37,44 @@ public class Projectile : MonoBehaviour
         yield return null;
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SplitCoroutine()
     {
-        // Rotate sprite to face direction of travel
-        Vector2 rotation = rb.velocity.normalized;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        float splitInterval = 0.5f;
+        float remainingLifetime = projProp.getLifetime(); 
+        while (remainingLifetime > 0)
+        {
+            yield return new WaitForSeconds(Mathf.Min(splitInterval, remainingLifetime));
+            Split();
+            remainingLifetime -= splitInterval;
+        }
     }
+
+
+    private void Split()
+    {
+        int splits = projProp.getSplits();
+        if (splits > 0)
+        {
+            float angleIncrement = 360f / splits;
+            float separationDistance = 0.5f;
+
+            for (int i = 0; i < splits; i++)
+            {
+                Quaternion rotation = Quaternion.Euler(0f, 0f, i * angleIncrement);
+                Vector2 direction = rotation * transform.right;
+                Vector3 spawnPosition = transform.position + (Vector3)(direction * separationDistance); 
+
+                // Instantiate a new projectile
+                GameObject dup = Instantiate(baseProjectile, spawnPosition, transform.rotation);
+                dup.transform.right = direction;
+                dup.GetComponent<Projectile>().Fire(gameObject.GetComponent<ProjectileProperties>());
+            }
+        }
+    }
+
+
+
+
 
     public void Despawn(string from)
     {
@@ -67,18 +97,51 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject); // destroy projectile
     }
 
+
     /** Fire()
      * Applies the impulse to fire the projectile, depends on the projectiles stats.
      * */
     public void Fire(ProjectileProperties prop)
     {
         this.projProp = prop;
+        if (projProp.getSplits() > 0)
+        {
+            StartCoroutine(SplitCoroutine());
+        }
         StartCoroutine(DespawnCoroutine(projProp.getLifetime())); // Start despawn coroutine
         ApplyScale(projProp.getScale()); // Give projectile proper scale
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
         rb.velocity = transform.right * projProp.getSpeed(); // Give projectile speed
         gameObject.GetComponent<SpriteRenderer>().color = projProp.getSpriteColor();
+
+
+        // StartCoroutine(SplitCoroutine());
+        // // Fire more projectiles with spread angle
+        // if (projProp.getShots() > 0)
+        // {
+        //     int maxSplits = 4;// no more than 4 shots or else bullets collide with themselves
+        //     int numberOfProjectiles = Mathf.Min(projProp.getShots() + 1, maxSplits);
+        //     float spreadAngle = 35f; 
+        //     float separationDistance = 0.5f;
+        //     for (int i = 0; i < numberOfProjectiles; i++)
+        //     {
+        //         float rotationAngle = (i - numberOfProjectiles / 2) * spreadAngle;
+        //         Vector3 direction = Quaternion.Euler(0, 0, rotationAngle) * transform.right;
+        //         Vector3 spawnPosition = transform.position + direction * separationDistance;
+
+        //         // Instantiate a new projectile at the calculated position
+        //         GameObject newProjectile = Instantiate(baseProjectile, spawnPosition, Quaternion.Euler(0, 0, rotationAngle));
+        //         Projectile newProjectileScript = newProjectile.GetComponent<Projectile>();
+        //         newProjectileScript.projProp = prop;
+        //         newProjectileScript.StartCoroutine(newProjectileScript.DespawnCoroutine(newProjectileScript.projProp.getLifetime())); 
+        //         newProjectileScript.ApplyScale(newProjectileScript.projProp.getScale()); 
+        //         newProjectileScript.bouncesLeft = newProjectileScript.projProp.getBounces(); 
+        //         newProjectileScript.rb.velocity = direction * newProjectileScript.projProp.getSpeed(); 
+        //         newProjectileScript.gameObject.GetComponent<SpriteRenderer>().color = newProjectileScript.projProp.getSpriteColor();
+        //     }
+        // }
     }
+
 
     private void ApplyScale(float scale)
     {

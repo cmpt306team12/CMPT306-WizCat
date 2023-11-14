@@ -16,8 +16,9 @@ public class Perks : MonoBehaviour
     * 5: Size(+/-)
     * 6: Burst
     * 7: Non-modify
+    * 8: Split
     * */
-    int[] perks = new int[8];
+    int[] perks = new int[9];
 
     public void AddPerk(int i)
     {
@@ -56,11 +57,14 @@ public class Perks : MonoBehaviour
                 index = 5;
                 change = -1;
                 break;
-            case 10: //Burst
+            case 10: //burst
                 index = 6;
                 break;
             case 11: //empty perk
                 index = 7;
+                break;
+            case 14: //splits+
+                index = 8;
                 break;
             default:
                 break;
