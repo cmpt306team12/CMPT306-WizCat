@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     
-    [SerializeField] private Wand wand;
+    private Wand _wand;
 
     [SerializeField] private float firingCooldown;
     [SerializeField] private float moveSpeed;
@@ -19,12 +19,14 @@ public class Enemy : MonoBehaviour
 
     private Vector3 _moveDir = Vector3.zero;
 
-    public GameObject player;
+    private GameObject _player;
     public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        _player = GameManager.instance.GetPlayer();
+        _wand = gameObject.GetComponentInChildren<Wand>();
         //shootSFX = GetComponent<AudioSource>();
     }
 
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 scale = transform.localScale;
-        if (player.transform.position.x > transform.position.x)
+        if (_player.transform.position.x > transform.position.x)
         {
             animator.Play("EnemySideIdleR");
         }
@@ -72,7 +74,7 @@ public class Enemy : MonoBehaviour
     {
         _canFire = false;
         //shootSFX.Play();
-        gameObject.GetComponentInChildren<Wand>().Shoot();
+        _wand.Shoot();
         yield return new WaitForSeconds(firingCooldown);
         _canFire = true;
     }

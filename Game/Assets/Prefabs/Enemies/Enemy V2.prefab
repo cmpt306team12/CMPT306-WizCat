@@ -756,6 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  EnemyScore: 50
 --- !u!114 &3494578783190692090
 MonoBehaviour:
   m_ObjectHideFlags: 0
