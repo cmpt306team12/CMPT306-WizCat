@@ -240,7 +240,7 @@ MonoBehaviour:
   pillar: {fileID: 7549013836493946175}
   shootingDelay: 3
   fireTime: 0
-  shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+  shootSoundEffect: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
 --- !u!114 &4412796274482166087
 MonoBehaviour:
   m_ObjectHideFlags: 0
