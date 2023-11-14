@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b64e7d9e77bd3842a69a027adad2271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perkID: 10
+  perkID: 14
