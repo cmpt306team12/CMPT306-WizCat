@@ -15,7 +15,6 @@ public class Bite : MonoBehaviour
     public float cooldown = 5.0f;
     public static bool canBite = false;
 
-    public AudioSource catSFX;
     public AudioClip biteSFX;
     public AudioClip noBiteSFX;
 
@@ -31,13 +30,13 @@ public class Bite : MonoBehaviour
                     isTeleporting = true;
                     lastTeleportTime = currentTime;
                     StartCoroutine(TeleportToNearestEnemies());
-                    catSFX.PlayOneShot(biteSFX);
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
                 }
                 else if (currentTime - lastCPressTime > cooldown)
                 {
                     lastTeleportTime = currentTime - cooldown;
                     lastCPressTime = currentTime;
-                    catSFX.PlayOneShot(noBiteSFX);
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(noBiteSFX, transform.position);
                 }
             }
         }

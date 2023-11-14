@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float damage;
     public float fireRate;
+    public AudioClip shootSoundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             gameObject.GetComponentInChildren<Wand>().Shoot();
+            // play player shoot sound effect
+            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
         }
     }
 

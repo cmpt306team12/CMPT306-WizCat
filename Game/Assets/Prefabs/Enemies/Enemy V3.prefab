@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 2166925464939296024}
   - component: {fileID: 6004168490075171113}
   - component: {fileID: 3107520457484488109}
+  - component: {fileID: 4095412788172632529}
   m_Layer: 0
   m_Name: Enemy V3
   m_TagString: Enemy
@@ -1072,11 +1073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69711e9badd988d45a1cde0410565df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wand: {fileID: 0}
   firingCooldown: 1
   moveSpeed: 0.05
-  player: {fileID: 0}
   animator: {fileID: 0}
+  shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!114 &4854984705565942217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1092,7 @@ MonoBehaviour:
   speedFactor: 1.5
   lifetimeMod: 0.5
   damageMod: 3
+  explosionDamageMod: 5
   scaleMod: 1.25
   explosionScaleFactor: 1.2
 --- !u!114 &1747817452143991993
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  EnemyScore: 50
 --- !u!114 &6004168490075171113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,3 +1164,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4095412788172632529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213613798515571913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.5
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 30

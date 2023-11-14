@@ -14,7 +14,6 @@ public class OrbitProjectiles : MonoBehaviour
     private float cooldownDuration = 2.0f; 
     private float lastCtrlPressTime = 0.0f;
 
-    public AudioSource catSFX;
     public AudioClip orbitSFX;
     public AudioClip noOrbitSFX;
 
@@ -32,12 +31,14 @@ public class OrbitProjectiles : MonoBehaviour
                 isOrbiting = true;
                 currentOrbitTime = 0.0f;
                 lastCtrlPressTime = Time.time;
-                catSFX.PlayOneShot(orbitSFX);
+                gameObject.GetComponent<RandomSound>().PLayClipAt(orbitSFX, transform.position);
+                //catSFX.PlayOneShot(orbitSFX);
             }
 
             else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime < cooldownDuration))
             {
-                catSFX.PlayOneShot(noOrbitSFX);
+                gameObject.GetComponent<RandomSound>().PLayClipAt(noOrbitSFX, transform.position);
+                //catSFX.PlayOneShot(noOrbitSFX);
             }
 
             // if (Input.GetKeyUp(KeyCode.LeftControl))

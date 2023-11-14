@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 2376660017137091084}
   - component: {fileID: 1535728603580679314}
   - component: {fileID: 4859131964655313989}
+  - component: {fileID: 8636456468210416903}
   m_Layer: 0
   m_Name: Enemy V4
   m_TagString: Enemy
@@ -216,11 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69711e9badd988d45a1cde0410565df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wand: {fileID: 0}
   firingCooldown: 1
   moveSpeed: 0.05
-  player: {fileID: 0}
   animator: {fileID: 0}
+  shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!114 &1548861184239452085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   speedFactor: 1.5
   lifetimeMod: 0.5
   damageMod: 3
+  explosionDamageMod: 5
   scaleMod: 1.25
   explosionScaleFactor: 1.2
 --- !u!114 &8254485327145418823
@@ -265,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  EnemyScore: 50
 --- !u!114 &1535728603580679314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +308,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8636456468210416903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380552651598439704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.5
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 30
 --- !u!1 &1494514119262154449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,7 +1106,7 @@ RectTransform:
   m_GameObject: {fileID: 7801099729767201211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1030587626182617454}

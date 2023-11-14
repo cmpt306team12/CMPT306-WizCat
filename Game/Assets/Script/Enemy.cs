@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject _player;
     public Animator animator;
+    public AudioClip shootSoundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +75,7 @@ public class Enemy : MonoBehaviour
     {
         _canFire = false;
         //shootSFX.Play();
+        gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
         _wand.Shoot();
         yield return new WaitForSeconds(firingCooldown);
         _canFire = true;

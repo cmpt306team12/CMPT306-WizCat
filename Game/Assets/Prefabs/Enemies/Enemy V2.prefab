@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 1056260586504368338}
   - component: {fileID: 3494578783190692090}
   - component: {fileID: 2984611339117665772}
+  - component: {fileID: -4126102364362000341}
   m_Layer: 0
   m_Name: Enemy V2
   m_TagString: Enemy
@@ -710,6 +711,7 @@ MonoBehaviour:
   firingCooldown: 1
   moveSpeed: 0.05
   animator: {fileID: 0}
+  shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!114 &6385739926674896529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +727,7 @@ MonoBehaviour:
   speedFactor: 1.5
   lifetimeMod: 0.5
   damageMod: 3
+  explosionDamageMod: 5
   scaleMod: 1.25
   explosionScaleFactor: 1.2
 --- !u!114 &121916055353164802
@@ -796,6 +799,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4126102364362000341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994419496266902433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.5
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 30
 --- !u!1 &7525884057591614102
 GameObject:
   m_ObjectHideFlags: 0
