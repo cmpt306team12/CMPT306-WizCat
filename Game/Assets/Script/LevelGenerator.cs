@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     private int _width = 64;
     private int _height = 40;
+    private Vector3 _enemyOffset = new Vector3(0.5f, 1.0f, 0.0f);
 
     // TODO: Remove when level changing is handled automatically by the game manager
     private void Update()
@@ -425,7 +426,7 @@ public class LevelGenerator : MonoBehaviour
     {
         foreach (Vector3Int location in locations)
         {
-            Instantiate(enemyPrefab, location, Quaternion.identity, enemies);
+            Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
         }
     }
 }
