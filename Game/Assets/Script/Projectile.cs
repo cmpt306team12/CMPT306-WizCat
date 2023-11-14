@@ -15,7 +15,8 @@ public class Projectile : MonoBehaviour
     public GameObject deathEffect; // Effect on projectile death
     public GameObject explosion; // Explosion created if projectile is explosive
     public GameObject trail; //Trail child object
-    public GameObject baseProjectile;
+    public GameObject baseProjectile; // Base projectile for burst shots
+    public AudioClip destroySound;
 
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
@@ -60,6 +61,8 @@ public class Projectile : MonoBehaviour
             trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
             trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
         }
+        // play despawn sound
+        gameObject.GetComponent<RandomSound>().PLayClipAt(destroySound, transform.position);
         Destroy(gameObject); // destroy projectile
     }
 
