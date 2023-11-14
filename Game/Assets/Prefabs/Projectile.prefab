@@ -309,6 +309,7 @@ MonoBehaviour:
   trail: {fileID: 7028506562717831734}
   baseProjectile: {fileID: 7158703295197564382}
   destroySound: {fileID: 8300000, guid: 3387f19865df34cb5ad51eded56ee628, type: 3}
+  bounceSound: {fileID: 8300000, guid: 6902a7db3efb045caa9f8fe9951fb644, type: 3}
 --- !u!212 &4016052111863780523
 SpriteRenderer:
   m_ObjectHideFlags: 0

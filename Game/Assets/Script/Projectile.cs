@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
     public GameObject trail; //Trail child object
     public GameObject baseProjectile; // Base projectile for burst shots
     public AudioClip destroySound;
+    public AudioClip bounceSound;
 
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
@@ -156,6 +157,10 @@ public class Projectile : MonoBehaviour
                 {
                     // Bounced and is explosive: Create explosion
                     Explode();
+                } else
+                {
+                    // bounced so play bounce sound effect
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(bounceSound, transform.position);
                 }
             }
             
