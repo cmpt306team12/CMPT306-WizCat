@@ -12,11 +12,12 @@ public class AssignedPerks : MonoBehaviour
     public int NumberOfExplosive = 0;
     public int NumberOfSize = 0;
     public int NumberOfBurst = 0;
+    public int NumberOfSplit = 0;
     private int[] perks;
     // Start is called before the first frame update
     private void Awake()
     {
-        perks = new int[7];
+        perks = new int[8];
         perks[0] = NumberOfBounce;
         perks[1] = NumberOfSpeed;
         perks[2] = NumberOfLifetime;
@@ -24,6 +25,7 @@ public class AssignedPerks : MonoBehaviour
         perks[4] = NumberOfExplosive;
         perks[5] = NumberOfSize;
         perks[6] = NumberOfBurst;
+        perks[7] = NumberOfSplit;
         projProp.ApplyPerks(perks);
     }
 }

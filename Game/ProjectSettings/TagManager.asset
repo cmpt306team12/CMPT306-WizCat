@@ -11,6 +11,7 @@ TagManager:
   - Explosion
   - Enemy
   - SplitTrigger
+  - Coin
   layers:
   - Default
   - TransparentFX
