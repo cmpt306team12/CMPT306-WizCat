@@ -85,4 +85,6 @@ public class Perks : MonoBehaviour
     {
         return perks;
     }
+
+    public void SetPerks(int[] perks) { this.perks = perks; }
 }

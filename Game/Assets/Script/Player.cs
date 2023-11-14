@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponent<Perks>().SetPerks(StaticData.perks);
+        gameObject.GetComponent<ProjectileProperties>().ApplyPerks(StaticData.perks);
+
     }
 
     // Update is called once per frame
