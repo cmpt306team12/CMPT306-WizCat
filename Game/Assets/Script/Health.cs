@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        // maxHealth = StaticData.maxHealth;
+        currentHealth = StaticData.currentHealth;
         //hurtSFX = GetComponent<AudioSource>();
     }
 

@@ -84,6 +84,15 @@ public class Shop : MonoBehaviour
                 case 10: // Burst shot
                     perktext.text = "Burst Shot";
                     break;
+                case 11: // Bite Powerup
+                    perktext.text = "Bite Powerup";
+                    break;
+                case 12: // Dash Powerup
+                    perktext.text = "Dash Powerup";
+                    break;
+                case 13: // Orbit Powerup
+                    perktext.text = "Orbit Powerup";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");
