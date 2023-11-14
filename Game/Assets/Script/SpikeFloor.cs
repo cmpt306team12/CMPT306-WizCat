@@ -9,6 +9,7 @@ public class SpikeFloor : MonoBehaviour
     [SerializeField] float spikeUpTime = 0.5f;
     private bool animating = false;
     public GameObject spikeHitbox;
+    public AudioClip spikeClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +44,13 @@ public class SpikeFloor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Spikes animating: " + animating);
             if (!animating)
             {
                 // disable trigger collider
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 animating = true;
                 StartCoroutine(Fire(delayTime));
+                gameObject.GetComponent<RandomSound>().PLayClipAt(spikeClip, gameObject.transform.position);
             }
         }
     }

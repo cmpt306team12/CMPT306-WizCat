@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 1327709359500904955}
   - component: {fileID: 3279536319681970368}
   - component: {fileID: 2469967615179689499}
+  - component: {fileID: 2974227065991258962}
   m_Layer: 0
   m_Name: SpikeFloor
   m_TagString: Untagged
@@ -165,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -8010061353283394761, guid: a446c4eba5b35114f9b7de3fd66b357c,
     type: 3}
@@ -261,3 +262,20 @@ MonoBehaviour:
   delayTime: 0.5
   spikeUpTime: 0.5
   spikeHitbox: {fileID: 1465039504655000151}
+  spikeClip: {fileID: 8300000, guid: 180f35aef2ea2654086bcbb52d58ec0b, type: 3}
+--- !u!114 &2974227065991258962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805604374825263101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.6
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 25

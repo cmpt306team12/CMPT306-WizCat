@@ -5,9 +5,10 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public float explosionDamage = 0.0f;
+    public AudioClip explosionClip;
     private void Start()
     {
-        gameObject.GetComponent<RandomSound>().PlayRandomizedSound();
+        gameObject.GetComponent<RandomSound>().PLayClipAt(explosionClip, transform.position);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
