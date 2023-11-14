@@ -15,7 +15,9 @@ public class Projectile : MonoBehaviour
     public GameObject deathEffect; // Effect on projectile death
     public GameObject explosion; // Explosion created if projectile is explosive
     public GameObject trail; //Trail child object
-    public GameObject baseProjectile;
+    public GameObject baseProjectile; // Base projectile for burst shots
+    public AudioClip destroySound;
+    public AudioClip bounceSound;
 
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
@@ -60,6 +62,8 @@ public class Projectile : MonoBehaviour
             trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
             trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
         }
+        // play despawn sound
+        gameObject.GetComponent<RandomSound>().PLayClipAt(destroySound, transform.position);
         Destroy(gameObject); // destroy projectile
     }
 
@@ -86,9 +90,12 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
+        Vector3 offset = new Vector3(50, 50, 0);
         float explosion_scale = projProp.getExplosionScale();
-        GameObject expl = Instantiate(explosion, transform.position, transform.rotation); // create explosion
+        GameObject expl = Instantiate(explosion, transform.position + offset, transform.rotation); // create explosion offscreen
         expl.transform.localScale = new Vector3(explosion_scale, explosion_scale, explosion_scale); // scale explosion
+        expl.GetComponent<Explosion>().SetDamage(projProp.getExplosionDamage()); // Set explosion damage
+        expl.transform.position = transform.position; // move explosion back
 
     }
 
@@ -138,6 +145,10 @@ public class Projectile : MonoBehaviour
                 {
                     Burst(collision);
                 }
+                if (collision.CompareTag("Obstacle"))
+                {
+                    collision.gameObject.GetComponent<Health>().ApplyDamage(projProp.getDamage());
+                }
                 Despawn("Hit Wall/Obs");
             }
             else
@@ -146,6 +157,10 @@ public class Projectile : MonoBehaviour
                 {
                     // Bounced and is explosive: Create explosion
                     Explode();
+                } else
+                {
+                    // bounced so play bounce sound effect
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(bounceSound, transform.position);
                 }
             }
             

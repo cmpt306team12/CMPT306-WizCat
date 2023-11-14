@@ -12,11 +12,13 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseDamage = 5.0f;
     private static float baseScale = 0.4f;
     private static float baseExplosionScale = 2.0f;
+    private static float baseExplosionDamage = 5.0f;
     private static int baseBurstNumber = 3;
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
     [SerializeField] float damageMod = 3.0f;
+    [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
 
@@ -29,6 +31,7 @@ public class ProjectileProperties : MonoBehaviour
     private bool explosive = false;
     private float scale = baseScale;
     private float explosionScale = baseExplosionScale;
+    private float explosionDamage = baseExplosionDamage;
     private Color myColor = baseSpriteColor;
     private bool bursting = false;
     private int burstNumber = baseBurstNumber;
@@ -60,6 +63,7 @@ public class ProjectileProperties : MonoBehaviour
                 case 4: // Explosive
                     this.explosive = perks[i] > 0;
                     this.explosionScale = baseExplosionScale * (Mathf.Pow(explosionScaleFactor, perks[i]));
+                    this.explosionDamage = baseExplosionDamage + (perks[i] * explosionDamageMod);
                     break;
 
                 case 5: // Size up/down
@@ -92,4 +96,6 @@ public class ProjectileProperties : MonoBehaviour
     public Color getSpriteColor() { return myColor; }
     public bool isBursting() {  return bursting; }
     public int getBurstNumber() {  return burstNumber; }
+
+    public float getExplosionDamage() {  return explosionDamage; }
 }

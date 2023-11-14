@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6320879174876350175}
   - component: {fileID: 4652870914121028019}
   - component: {fileID: 175458532290029984}
+  - component: {fileID: 1393773078747188098}
+  - component: {fileID: 4173340192872174299}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -155,4 +157,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 905f7f29139f8b448bf9d3f20edd33a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.3
+  lifetime: 0.4
+--- !u!114 &1393773078747188098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865554320385163003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bd8f97b057b9747809fa03e890985d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionDamage: 0
+  explosionClip: {fileID: 8300000, guid: f01c623f724825e44a923d1ae50256f2, type: 3}
+--- !u!114 &4173340192872174299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865554320385163003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.5
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 25

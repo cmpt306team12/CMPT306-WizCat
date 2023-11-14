@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 4016052111863780523}
   - component: {fileID: 2303428665376455176}
   - component: {fileID: 7691920023249570075}
+  - component: {fileID: 5537426872559915754}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -307,6 +308,8 @@ MonoBehaviour:
     type: 3}
   trail: {fileID: 7028506562717831734}
   baseProjectile: {fileID: 7158703295197564382}
+  destroySound: {fileID: 8300000, guid: 3387f19865df34cb5ad51eded56ee628, type: 3}
+  bounceSound: {fileID: 8300000, guid: 6902a7db3efb045caa9f8fe9951fb644, type: 3}
 --- !u!212 &4016052111863780523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -395,8 +398,25 @@ MonoBehaviour:
   speedFactor: 1.5
   lifetimeMod: 0.5
   damageMod: 3
+  explosionDamageMod: 5
   scaleMod: 1.25
   explosionScaleFactor: 1.2
+--- !u!114 &5537426872559915754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158703295197564382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637f3ced3f492c148b53da84a0d95eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVolume: 0.6
+  volumeModifier: 0.2
+  pitchModifier: 0.2
+  maxDistance: 25
 --- !u!1 &8173250960886752953
 GameObject:
   m_ObjectHideFlags: 0
