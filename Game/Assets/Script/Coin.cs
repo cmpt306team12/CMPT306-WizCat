@@ -7,12 +7,15 @@ public class Coin : MonoBehaviour {
     public int value;
     // private CoinCounter counter;
     private GameManager gameManager;
-    
+
+    public AudioSource coinSFX;
+
     // Start is called before the first frame update
     void Start()
     {
         // counter = GameManager.instance.GetComponent<CoinCounter>();
         gameManager = GameManager.instance;
+        coinSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class Coin : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            coinSFX.Play();
             Destroy(gameObject);
             // counter.IncreaseCoins(value);
             gameManager.IncreaseCoins(value);
