@@ -5,18 +5,23 @@ using UnityEngine.UI;
 
 public class FillStatusBar : MonoBehaviour
 {
-    public Health playerHealth;
     public Image fillImage;
+    private Health playerHealth;
     private Slider slider;
     private Text healthText;
-    
-    void Awake()
+
+    private void Start()
     {
         // When the game is loading, it will search for the slider component
         // (the health bar), and make a reference to it
+        playerHealth = GameManager.instance.GetPlayer().GetComponent<Health>();
         slider = GetComponent<Slider>();
         healthText = GetComponentInChildren<Text>();
         healthText.text = playerHealth + " / " + playerHealth.maxHealth;
+    }
+    void Awake()
+    {
+        
     }
 
     // Update is called once per frame
