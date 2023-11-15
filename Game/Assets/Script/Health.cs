@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public float currentHealth; 
     public int EnemyScore = 50;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +32,18 @@ public class Health : MonoBehaviour
             }
 
             // Play death animation
+            animator.SetBool("IsDead", true);
+
+            transform.gameObject.tag = "Untagged";
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<OrbitProjectiles>().enabled = false;
+            GetComponent<Bite>().enabled = false;
 
 
-            Destroy(gameObject);
+
+
+            this.enabled = false;
         }
     }
 

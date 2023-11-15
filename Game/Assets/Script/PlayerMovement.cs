@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float movementSpeed = 5;
     public Animator animator;
+    Vector2 movement;
 
     void Start()
     {
@@ -38,42 +39,33 @@ public class PlayerMovement : MonoBehaviour
         Vector2 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
-            if (faceUp == false)
-            {
-                animator.Play("CatWizSideIdleL");
-            }
-            else
-            {
-                animator.Play("CatWizBackSideIdleL");
-            }
+            
             dir.x = -1;
+            animator.SetBool("faceLeft", true);
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            if (faceUp == false)
-            {
-                animator.Play("CatWizSideIdleR");
-            }
-            else
-            {
-                animator.Play("CatWizBackSideIdleR");
-            }
+            
             dir.x = 1;
+            animator.SetBool("faceLeft", false);
 
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            faceUp = true;
             dir.y = 1;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            faceUp = false;
             dir.y = -1;
         }
-        
+
+        animator.SetFloat("Horizontal", dir.x);
+        animator.SetFloat("Vertical", dir.y);
+        animator.SetFloat("Speed", dir.sqrMagnitude);
+
+
         //---End of Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
 
         // Dash on spacebar down

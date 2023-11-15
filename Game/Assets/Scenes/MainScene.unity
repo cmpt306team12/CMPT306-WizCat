@@ -2411,7 +2411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 306937861}
-  playerWand: {fileID: 494863111}
   catSFX: {fileID: 1863122812}
   dashSFX: {fileID: 8300000, guid: 013de93b052268a4b9d512890e146199, type: 3}
   startDashTime: 0.1
@@ -2502,6 +2501,7 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 0
   EnemyScore: 50
+  animator: {fileID: 306937868}
 --- !u!114 &306937872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,7 +2547,7 @@ MonoBehaviour:
   delayBetweenEnemies: 0.5
   cooldown: 5
   catSFX: {fileID: 1863122812}
-  biteSFX: {fileID: 8300000, guid: 89c7aaceff24d444baec6efcd6e2c471, type: 3}
+  biteSFX: {fileID: 8300000, guid: 7c558b0a642dbac49a91fd6ca9c41b25, type: 3}
   noBiteSFX: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
 --- !u!4 &337529292 stripped
 Transform:
@@ -3178,12 +3178,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7277dd75e907b27448ec1de08238d0bb, type: 3}
---- !u!1 &494863111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9007810836606776189, guid: c03971df031da2549bfa74cfdc7e21da,
-    type: 3}
-  m_PrefabInstance: {fileID: 1024551325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &497159571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,
