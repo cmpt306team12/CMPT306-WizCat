@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4133066637924210432}
   - component: {fileID: 3854597230362846285}
   - component: {fileID: 5191737250211179604}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: OrbitPlayerPerk
   m_TagString: Perk
   m_Icon: {fileID: 0}

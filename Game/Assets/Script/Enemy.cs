@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private bool _canFire = true;
     private bool _canChangeDirection = true;
 
+    public LayerMask mask;
+
     //private AudioSource shootSFX;
 
     private Vector3 _moveDir = Vector3.zero;
@@ -76,7 +78,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator FireProjectile()
     {
         // cast a ray to see if you can see player
-        RaycastHit2D hit = Physics2D.Raycast(_wand.transform.position, (_player.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position), sightDistance);
+        RaycastHit2D hit = Physics2D.Raycast(_wand.transform.position, (_player.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position), sightDistance, ~mask);
         Debug.DrawRay(_wand.transform.position, (_player.gameObject.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position));
         if (hit && hit.transform.CompareTag("Player"))
         {

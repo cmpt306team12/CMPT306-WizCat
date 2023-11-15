@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2344345294878623524}
   - component: {fileID: 5953603521298378699}
   - component: {fileID: 7032594728383395635}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: DashPlayerPerk
   m_TagString: Perk
   m_Icon: {fileID: 0}

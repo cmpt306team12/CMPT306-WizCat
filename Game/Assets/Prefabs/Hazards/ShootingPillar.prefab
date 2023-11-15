@@ -244,7 +244,7 @@ MonoBehaviour:
   shootSoundEffect: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
   mask:
     serializedVersion: 2
-    m_Bits: 8388608
+    m_Bits: 12582912
 --- !u!114 &4412796274482166087
 MonoBehaviour:
   m_ObjectHideFlags: 0
