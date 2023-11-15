@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7001288700054449449}
   - component: {fileID: 2344345294878623524}
   - component: {fileID: 5953603521298378699}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: SlowDownPerk
   m_TagString: Perk
   m_Icon: {fileID: 0}

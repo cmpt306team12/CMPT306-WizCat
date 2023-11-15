@@ -1075,6 +1075,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingCooldown: 1
   moveSpeed: 0.05
+  mask:
+    serializedVersion: 2
+    m_Bits: 12582912
   animator: {fileID: 0}
   shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!114 &4854984705565942217
@@ -1123,6 +1126,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   EnemyScore: 50
+  dropsLoot: 0
 --- !u!114 &6004168490075171113
 MonoBehaviour:
   m_ObjectHideFlags: 0

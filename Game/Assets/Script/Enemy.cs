@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
@@ -11,9 +12,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float firingCooldown;
     [SerializeField] private float moveSpeed;
+    private float sightDistance = 25f;
 
     private bool _canFire = true;
     private bool _canChangeDirection = true;
+
+    public LayerMask mask;
 
     //private AudioSource shootSFX;
 
@@ -73,11 +77,17 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator FireProjectile()
     {
-        _canFire = false;
-        //shootSFX.Play();
-        gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
-        _wand.Shoot();
-        yield return new WaitForSeconds(firingCooldown);
-        _canFire = true;
+        // cast a ray to see if you can see player
+        RaycastHit2D hit = Physics2D.Raycast(_wand.transform.position, (_player.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position), sightDistance, ~mask);
+        Debug.DrawRay(_wand.transform.position, (_player.gameObject.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position));
+        if (hit && hit.transform.CompareTag("Player"))
+        {
+            _canFire = false;
+            //shootSFX.Play();
+            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
+            _wand.Shoot();
+            yield return new WaitForSeconds(firingCooldown);
+            _canFire = true;
+        }
     }
 }

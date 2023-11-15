@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2765138193750595259}
   - component: {fileID: 6021622047156403738}
   - component: {fileID: -2909459683975230144}
+  - component: {fileID: -8027615606780983412}
   m_Layer: 20
   m_Name: DestructableBarrel
   m_TagString: Obstacle
@@ -266,6 +267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  EnemyScore: 0
+  dropsLoot: 1
 --- !u!114 &-2909459683975230144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +284,40 @@ MonoBehaviour:
   damaged: {fileID: 5891070983577305991, guid: ba59fb024a137a040b9a8d16436ad33b, type: 3}
   veryDamaged: {fileID: -5916996877239400897, guid: e88fb3c05a3378346bb02331eb4e1314,
     type: 3}
+--- !u!114 &-8027615606780983412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607423524148623944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed98dd42ec22541b63c73e66158f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiersUsed: 3
+  tierNames:
+  - nothing
+  - common
+  - commonPerks
+  - rarePerks
+  weights:
+  - 65
+  - 33
+  - 2
+  - 0
+  tier1Drops:
+  - {fileID: 100000, guid: e97985069115aee48a0ecee9af654ffa, type: 3}
+  tier2Drops:
+  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
+  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
+  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
+  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: 795441f821c16234581a364ed10efff7, type: 3}
+  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
+  tier3Drops:
+  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
+  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
+  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
+  - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}

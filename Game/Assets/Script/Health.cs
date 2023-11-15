@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public float maxHealth = 100.0f;
     public float currentHealth; 
     public int EnemyScore = 50;
+    public bool dropsLoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        Debug.Log("Reduce health by: " + damageAmount);
 
         if (currentHealth <= 0.0f)
         {
@@ -36,7 +38,10 @@ public class Health : MonoBehaviour
             }
 
             // Play death animation
-
+            if (dropsLoot)
+            {
+                gameObject.GetComponent<DropOnDestroy>().Drop();
+            }
 
             Destroy(gameObject);
         }

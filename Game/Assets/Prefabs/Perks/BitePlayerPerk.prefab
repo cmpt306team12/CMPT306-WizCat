@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8415078160837776995}
   - component: {fileID: 3298185227256144241}
   - component: {fileID: 7494758540083531766}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: BitePlayerPerk
   m_TagString: Perk
   m_Icon: {fileID: 0}
