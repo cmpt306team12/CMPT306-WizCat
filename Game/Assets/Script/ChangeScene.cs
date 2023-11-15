@@ -11,6 +11,8 @@ public class ChangeScene : MonoBehaviour
     private GameObject player;
     private Health health;
     private Perks perkManager;
+    private PlayerMovement playerMovement;
+    private Bite bite;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class ChangeScene : MonoBehaviour
         player = gameManager.GetPlayer();
         health = player.GetComponent<Health>();
         perkManager = player.GetComponent<Perks>();
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     public void sceneChange()
@@ -29,6 +32,8 @@ public class ChangeScene : MonoBehaviour
         StaticData.currentHealth = health.currentHealth;
         StaticData.maxHealth = health.maxHealth;
         StaticData.perks = perkManager.GetPerks();
+        StaticData.canDash = playerMovement.canDash;
+
         print("Switching scene to " + sceneBuildIndex);
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
     }

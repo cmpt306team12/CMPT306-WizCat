@@ -112,6 +112,9 @@ public class Shop : MonoBehaviour
         {
             int randomIndex = Random.Range(0, perkPrefabs.Count);
             selectedPerk = perkPrefabs[randomIndex];
+            if (randomIndex == 10 && Bite.canBite) { selectRandomPerk(); }
+            if (randomIndex == 11 && StaticData.canDash) { selectRandomPerk(); }
+            if (randomIndex == 12 && OrbitProjectiles.canOrbit) { selectRandomPerk(); }
         }
         else { Debug.LogError("No perk prefabs"); }
     }
