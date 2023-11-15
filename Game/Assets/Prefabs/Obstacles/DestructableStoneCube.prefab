@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6513082813964301540}
   - component: {fileID: 3210272547050145842}
   - component: {fileID: 8473190641044830740}
+  - component: {fileID: -6899948030421197833}
   m_Layer: 20
   m_Name: DestructableStoneCube
   m_TagString: Obstacle
@@ -191,6 +192,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 400
   currentHealth: 400
+  EnemyScore: 0
+  dropsLoot: 1
+--- !u!114 &-6899948030421197833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016787144776811733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed98dd42ec22541b63c73e66158f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiersUsed: 2
+  tierNames:
+  - nothing
+  - common
+  - commonPerks
+  - rarePerks
+  weights:
+  - 85
+  - 15
+  - 0
+  - 0
+  tier1Drops:
+  - {fileID: 100000, guid: e97985069115aee48a0ecee9af654ffa, type: 3}
+  tier2Drops:
+  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
+  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
+  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
+  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: 795441f821c16234581a364ed10efff7, type: 3}
+  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
+  tier3Drops:
+  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
+  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
+  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
+  - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
 --- !u!1 &6178718110871443804
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,9 @@ public class ShootingPillar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Maybe fire");
         if (collision.gameObject.CompareTag("Player") && Time.time > fireTime)
         {
             // shoot at player
-            Debug.Log("Should fire");
             pillar.GetComponentInChildren<Wand>().Shoot();
             // make shooting sound effect
             gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);

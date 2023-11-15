@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   currentHealth: 250
+  EnemyScore: 0
+  dropsLoot: 0
 --- !u!114 &2297905643974105377
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 8934292075583598569}
   - component: {fileID: 9043666404905888413}
   - component: {fileID: 1708559883407844113}
-  - component: {fileID: -4978369440590273280}
-  - component: {fileID: 4154120500149476718}
+  - component: {fileID: 88103412406804309}
   - component: {fileID: 8213498940701791155}
+  - component: {fileID: 736090025016968183}
   m_Layer: 20
   m_Name: DestructableChest
   m_TagString: Obstacle
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0020719469, y: 0.29557574}
+  m_Offset: {x: 0.0042176247, y: 0.29557574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: -0.032258067}
@@ -217,9 +217,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93784136, y: 0.5330379}
+  m_Size: {x: 1.002202, y: 0.5330379}
   m_EdgeRadius: 0
---- !u!114 &-4978369440590273280
+--- !u!114 &88103412406804309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,22 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
---- !u!114 &4154120500149476718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6301881059096778819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 250
-  currentHealth: 250
+  maxHealth: 200
+  currentHealth: 200
+  EnemyScore: 0
+  dropsLoot: 1
 --- !u!114 &8213498940701791155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,3 +250,40 @@ MonoBehaviour:
   damaged: {fileID: 3462862470919822890, guid: 604f0de3161f39046a08fad9fb559a4a, type: 3}
   veryDamaged: {fileID: 8807377356420672940, guid: 4f0240ce579e5a041976560096ea42a0,
     type: 3}
+--- !u!114 &736090025016968183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301881059096778819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed98dd42ec22541b63c73e66158f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiersUsed: 4
+  tierNames:
+  - nothing
+  - common
+  - commonPerks
+  - rarePerks
+  weights:
+  - 0
+  - 90
+  - 8
+  - 2
+  tier1Drops:
+  - {fileID: 100000, guid: e97985069115aee48a0ecee9af654ffa, type: 3}
+  tier2Drops:
+  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
+  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
+  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
+  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: 795441f821c16234581a364ed10efff7, type: 3}
+  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
+  tier3Drops:
+  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
+  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
+  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
+  - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
