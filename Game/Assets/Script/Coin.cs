@@ -40,6 +40,7 @@ public class Coin : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            coinSFX.Play();
             Destroy(gameObject);
             // counter.IncreaseCoins(value);
             gameManager.IncreaseCoins(value);

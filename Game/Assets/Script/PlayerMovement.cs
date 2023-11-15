@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
         animator = GetComponent<Animator>();
+        // grab static data
+        canDash = StaticData.canDash;
     }
 
     void Update()

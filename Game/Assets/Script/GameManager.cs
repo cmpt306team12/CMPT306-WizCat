@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        coinCount = StaticData.coins;
+        scoreCount = StaticData.score;
         coinText.text = "Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
     }

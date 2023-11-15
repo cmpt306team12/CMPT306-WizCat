@@ -60,7 +60,13 @@ public class Perks : MonoBehaviour
             case 10: //burst
                 index = 6;
                 break;
-            case 11: //empty perk
+            case 11: //bite
+                index = 7;
+                break;
+            case 12: //dash
+                index = 7;
+                break;
+            case 13: //orbit
                 index = 7;
                 break;
             case 14: //splits+
@@ -83,4 +89,6 @@ public class Perks : MonoBehaviour
     {
         return perks;
     }
+
+    public void SetPerks(int[] perks) { this.perks = perks; }
 }

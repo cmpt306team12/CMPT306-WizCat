@@ -84,6 +84,15 @@ public class Shop : MonoBehaviour
                 case 10: // Burst shot
                     perktext.text = "Burst Shot";
                     break;
+                case 11: // Bite Powerup
+                    perktext.text = "Bite Powerup";
+                    break;
+                case 12: // Dash Powerup
+                    perktext.text = "Dash Powerup";
+                    break;
+                case 13: // Orbit Powerup
+                    perktext.text = "Orbit Powerup";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");
@@ -103,6 +112,9 @@ public class Shop : MonoBehaviour
         {
             int randomIndex = Random.Range(0, perkPrefabs.Count);
             selectedPerk = perkPrefabs[randomIndex];
+            if (randomIndex == 10 && Bite.canBite) { selectRandomPerk(); }
+            if (randomIndex == 11 && StaticData.canDash) { selectRandomPerk(); }
+            if (randomIndex == 12 && OrbitProjectiles.canOrbit) { selectRandomPerk(); }
         }
         else { Debug.LogError("No perk prefabs"); }
     }
