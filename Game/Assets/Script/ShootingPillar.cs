@@ -6,10 +6,12 @@ public class ShootingPillar : MonoBehaviour
 {
     public GameObject wand;
     public GameObject pillar;
+    public GameObject firepoint;
     [SerializeField] float shootingDelay = 3.0f;
     public float fireTime;
     private Animator animator;
     public AudioClip shootSoundEffect;
+    public LayerMask mask;
     private void Start()
     {
         fireTime = Time.time;
@@ -18,14 +20,23 @@ public class ShootingPillar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        // cast ray to see if can see player
+
+        
         if (collision.gameObject.CompareTag("Player") && Time.time > fireTime)
         {
-            // shoot at player
-            pillar.GetComponentInChildren<Wand>().Shoot();
-            // make shooting sound effect
-            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
-            fireTime = Time.time + shootingDelay;
-            animator.SetTrigger("FireTime");
+            // cast a ray to see if you can see player
+            RaycastHit2D hit = Physics2D.Raycast(firepoint.transform.position, (collision.gameObject.GetComponent<BoxCollider2D>().bounds.center - firepoint.transform.position), 10.0f, ~mask);
+            Debug.DrawRay(firepoint.transform.position, (collision.gameObject.GetComponent<BoxCollider2D>().bounds.center - firepoint.transform.position));
+            if (hit && hit.transform.CompareTag("Player"))
+            {
+                // shoot at player
+                pillar.GetComponentInChildren<Wand>().Shoot();
+                // make shooting sound effect
+                gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
+                fireTime = Time.time + shootingDelay;
+                animator.SetTrigger("FireTime");
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

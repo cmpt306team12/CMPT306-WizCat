@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 4812411082962438887}
   - component: {fileID: 4412796274482166087}
   - component: {fileID: 1709092822912625989}
-  m_Layer: 20
+  m_Layer: 23
   m_Name: FireZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,9 +238,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wand: {fileID: 2190830684699388136}
   pillar: {fileID: 7549013836493946175}
+  firepoint: {fileID: 7209679143343705406}
   shootingDelay: 3
   fireTime: 0
   shootSoundEffect: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 8388608
 --- !u!114 &4412796274482166087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +410,12 @@ GameObject:
 --- !u!4 &5399380289239070857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2770692478155450410, guid: c03971df031da2549bfa74cfdc7e21da,
+    type: 3}
+  m_PrefabInstance: {fileID: 7826422607080214691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7209679143343705406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 617245067682323869, guid: c03971df031da2549bfa74cfdc7e21da,
     type: 3}
   m_PrefabInstance: {fileID: 7826422607080214691}
   m_PrefabAsset: {fileID: 0}
