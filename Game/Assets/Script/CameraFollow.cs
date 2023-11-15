@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothing = 5.0f;
     public float maxCameraDistance = 5.0f; 
     public float verticalPadding = 0.5f; 
-
+    private Camera cam;
     private void Start()
     {
         cam = Camera.main;
