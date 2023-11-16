@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2374041760245860437}
   - component: {fileID: 3952535433123591621}
   - component: {fileID: 3507562656165528958}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
-  coinSFX: {fileID: 0}
+  attractionRange: 3
+  movementSpeed: 5
 --- !u!82 &3507562656165528958
 AudioSource:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5411615216145948193}
   - component: {fileID: 209343781757171990}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
