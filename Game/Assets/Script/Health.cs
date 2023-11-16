@@ -9,6 +9,9 @@ public class Health : MonoBehaviour
     public int EnemyScore = 50;
 
     public Animator animator;
+    public AudioSource audioSource;
+    public AudioClip hurtSFX1;
+    public AudioClip hurtSFX2;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,16 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
+        int chooseSound = Random.Range(1, 3); 
+        if (chooseSound == 1)
+        {
+            audioSource.PlayOneShot(hurtSFX1);
+        } 
+        else
+        {
+            audioSource.PlayOneShot(hurtSFX2);
+        }
+        
         animator.SetTrigger("IsHurt");
         currentHealth -= damageAmount;
 
@@ -36,6 +49,7 @@ public class Health : MonoBehaviour
             animator.SetBool("IsDead", true);
 
             transform.gameObject.tag = "Untagged";
+            transform.GetChild(0).gameObject.SetActive(false);
             GetComponent<Collider2D>().enabled = false;
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<OrbitProjectiles>().enabled = false;

@@ -2320,8 +2320,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1018896234}
   - {fileID: 2135563312}
+  - {fileID: 1018896234}
   - {fileID: 1594799532}
   - {fileID: 1863122809}
   m_Father: {fileID: 0}
@@ -2502,6 +2502,9 @@ MonoBehaviour:
   currentHealth: 0
   EnemyScore: 50
   animator: {fileID: 306937868}
+  audioSource: {fileID: 1863122812}
+  hurtSFX1: {fileID: 8300000, guid: 452eef5c5a6fb0944b34fa9233b2e6e2, type: 3}
+  hurtSFX2: {fileID: 8300000, guid: 2deaaeb570b6017428336e549ff41b59, type: 3}
 --- !u!114 &306937872
 MonoBehaviour:
   m_ObjectHideFlags: 0
