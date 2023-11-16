@@ -13,7 +13,7 @@ public class StaticData : MonoBehaviour
     public static float maxHealth = 1000;
     public static float currentHealth = 1000;
     // set in Player.cs
-    public static int[] perks = new int[8];
+    public static int[] perks = new int[9];
     // set in PlayerMovement.cs
     public static bool canDash = false;
 }

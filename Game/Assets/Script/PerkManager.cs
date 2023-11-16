@@ -80,7 +80,7 @@ public class Perks : MonoBehaviour
             perks[index] = perks[index] + change;
         } catch (Exception e)
         {
-            Debug.LogError(e.Message, this);
+            Debug.LogError("Perk index out of bounds", this);
         }
         projectileProperties.ApplyPerks(perks);
     }
@@ -90,5 +90,8 @@ public class Perks : MonoBehaviour
         return perks;
     }
 
-    public void SetPerks(int[] perks) { this.perks = perks; }
+    public void SetPerks(int[] perks) 
+    {
+        this.perks = perks;
+    }
 }

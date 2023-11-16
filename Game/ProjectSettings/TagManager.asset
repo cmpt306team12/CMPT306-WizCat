@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - SplitTrigger
   - Coin
+  - Potion
   layers:
   - Default
   - TransparentFX

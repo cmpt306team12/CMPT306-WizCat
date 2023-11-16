@@ -226,7 +226,13 @@ public class Projectile : MonoBehaviour
                     gameObject.GetComponent<RandomSound>().PLayClipAt(bounceSound, transform.position);
                 }
             }
-            
+        }
+        else if (collision.CompareTag("Untagged"))
+        {
+            // Collided with something that was untagged
+            // Causes weird sprite rotation for some reason, output a debug log with
+            // the collided objects name
+            Debug.Log("Collided with untagged object: " + collision.gameObject.name);
         }
     }
 }
