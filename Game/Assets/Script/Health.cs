@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
+        animator.SetTrigger("IsHurt");
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0.0f)
