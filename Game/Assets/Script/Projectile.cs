@@ -37,6 +37,18 @@ public class Projectile : MonoBehaviour
         yield return null;
     }
 
+    IEnumerator RotateProjectile()
+    {
+        while (true)
+        {
+            // Rotate sprite to face direction of travel
+            yield return new WaitForSeconds(0.08f);
+            Vector2 rotation = rb.velocity.normalized;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+    }
+
     private IEnumerator SplitCoroutine()
     {
         float splitInterval = 0.5f;
@@ -108,6 +120,7 @@ public class Projectile : MonoBehaviour
         {
             StartCoroutine(SplitCoroutine());
         }
+        StartCoroutine(RotateProjectile()); // Start coroutine to rotate projectile to correct direction
         StartCoroutine(DespawnCoroutine(projProp.getLifetime())); // Start despawn coroutine
         ApplyScale(projProp.getScale()); // Give projectile proper scale
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
@@ -177,6 +190,13 @@ public class Projectile : MonoBehaviour
             dup.transform.right = direction;
             dup.GetComponent<Projectile>().Fire(gameObject.GetComponent<ProjectileProperties>());
         }
+    }
+    void Update()
+    {
+        // Rotate sprite to face direction of travel
+        Vector2 rotation = rb.velocity.normalized;
+        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
