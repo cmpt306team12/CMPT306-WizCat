@@ -27,7 +27,6 @@ public class Health : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log("Reduce health by: " + damageAmount);
 
         if (currentHealth <= 0.0f)
         {
@@ -36,26 +35,36 @@ public class Health : MonoBehaviour
             
             if (gameObject.CompareTag("Enemy"))
             {
+                // Handle killing an enemy
                 GameManager.instance.IncreaseScore(EnemyScore);
-            }
-
-            // Play death animation
-            if (dropsLoot)
+                Destroy(gameObject);
+            }else if (gameObject.CompareTag("Obstacle"))
             {
-                gameObject.GetComponent<DropOnDestroy>().Drop();
+                // if Gameobject is an obstacle, drop loot if it does, then destroy
+                if (dropsLoot)
+                {
+                    gameObject.GetComponent<DropOnDestroy>().Drop();
+                }
+                Destroy(gameObject);
+            } else if (gameObject.CompareTag("Player"))
+            {
+                // Handle killing player
+
+                // Play death animation
+                animator.SetBool("IsDead", true);
+
+                transform.gameObject.tag = "Untagged";
+                GetComponent<Collider2D>().enabled = false;
+                GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<OrbitProjectiles>().enabled = false;
+                GetComponent<Bite>().enabled = false;
+
+                this.enabled = false;
+            } else
+            {
+                // Unhandled object with health of zero
+                Debug.Log("Gameobject has health zero: " + gameObject.name);
             }
-            animator.SetBool("IsDead", true);
-
-            transform.gameObject.tag = "Untagged";
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<PlayerMovement>().enabled = false;
-            GetComponent<OrbitProjectiles>().enabled = false;
-            GetComponent<Bite>().enabled = false;
-
-
-
-
-            this.enabled = false;
         }
     }
 

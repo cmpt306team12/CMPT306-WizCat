@@ -51,7 +51,6 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 1: // Speed up/down perks: +50% per speed perk
                     this.speed = baseSpeed * (Mathf.Pow(speedFactor, perks[i]));
-                    Debug.Log(this.speed);
                     break;
 
                 case 2: // Lifetime up/down perks

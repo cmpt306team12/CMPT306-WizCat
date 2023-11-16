@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2081636896192134500}
   - component: {fileID: 8954717134506192946}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760901989025846853}
   - component: {fileID: 3409817790434729626}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 2303428665376455176}
   - component: {fileID: 7691920023249570075}
   - component: {fileID: 5537426872559915754}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
