@@ -20,15 +20,12 @@ public class Wand : MonoBehaviour
     // Shoots the wand
     public void Shoot()
     {
-        if (gameObject.CompareTag("Player"))
-        {
-            //wand.GetComponent<WizWandAnimationControl>().Shoot();
-
-
-        }
+        
+        wand.GetComponent<WizWandAnimationControl>().Shoot();
         shootSFX.Play();
         GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
         bullet.GetComponent<Projectile>().Fire(projectileProperties);
+
     }
 
     
