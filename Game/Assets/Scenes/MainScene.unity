@@ -2278,9 +2278,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1738511143, guid: 8918e417652d69d479e08561d84e11f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2486,6 +2486,7 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 0
   EnemyScore: 50
+  animator: {fileID: 306937868}
 --- !u!114 &306937872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5322,6 +5323,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2770692478155450410, guid: c03971df031da2549bfa74cfdc7e21da,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770692478155450410, guid: c03971df031da2549bfa74cfdc7e21da,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07
       objectReference: {fileID: 0}
@@ -5375,6 +5381,21 @@ PrefabInstance:
       propertyPath: projectileProperties
       value: 
       objectReference: {fileID: 306937870}
+    - target: {fileID: 7116521004244481691, guid: c03971df031da2549bfa74cfdc7e21da,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116521004244481691, guid: c03971df031da2549bfa74cfdc7e21da,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116521004244481691, guid: c03971df031da2549bfa74cfdc7e21da,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1869315837
+      objectReference: {fileID: 0}
     - target: {fileID: 9007810836606776189, guid: c03971df031da2549bfa74cfdc7e21da,
         type: 3}
       propertyPath: m_Name
@@ -7741,8 +7762,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}

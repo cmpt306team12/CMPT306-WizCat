@@ -174,17 +174,17 @@ PrefabInstance:
     - target: {fileID: 3626916397498700004, guid: 265936a2bac7bbd438ace997e12f1f8f,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 265936a2bac7bbd438ace997e12f1f8f,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 265936a2bac7bbd438ace997e12f1f8f,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -44025399
+      value: -1869315837
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 265936a2bac7bbd438ace997e12f1f8f,
         type: 3}
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1331e8c6b40da34d908c82442c1d8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 8305447557192986119}
 --- !u!4 &9157954999124594734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 265936a2bac7bbd438ace997e12f1f8f,

@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     public int EnemyScore = 50;
     public bool dropsLoot = false;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +44,18 @@ public class Health : MonoBehaviour
             {
                 gameObject.GetComponent<DropOnDestroy>().Drop();
             }
+            animator.SetBool("IsDead", true);
 
-            Destroy(gameObject);
+            transform.gameObject.tag = "Untagged";
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<OrbitProjectiles>().enabled = false;
+            GetComponent<Bite>().enabled = false;
+
+
+
+
+            this.enabled = false;
         }
     }
 
