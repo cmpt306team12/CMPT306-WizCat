@@ -4571,6 +4571,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 156525673}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &823129434 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2984611339117665772, guid: dc6886eba0edca64d93bb7e23dd90901,
+    type: 3}
+  m_PrefabInstance: {fileID: 3627959904453707729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &823842127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35016,6 +35022,12 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!95 &1769718041 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3107520457484488109, guid: aa61564cf6b672748bf678b39b021d2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7812317828980412928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1772124560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 7277dd75e907b27448ec1de08238d0bb,
@@ -38741,6 +38753,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056260586504368338, guid: dc6886eba0edca64d93bb7e23dd90901,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 823129434}
     - target: {fileID: 2458405531435384409, guid: dc6886eba0edca64d93bb7e23dd90901,
         type: 3}
       propertyPath: m_Enabled
@@ -38801,6 +38818,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 306937861}
+    - target: {fileID: 4621405119273265966, guid: dc6886eba0edca64d93bb7e23dd90901,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 823129434}
     - target: {fileID: 6994419496266902433, guid: dc6886eba0edca64d93bb7e23dd90901,
         type: 3}
       propertyPath: m_Name
@@ -38838,6 +38860,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2166925464939296024, guid: aa61564cf6b672748bf678b39b021d2a,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1769718041}
     - target: {fileID: 2568888661509775534, guid: aa61564cf6b672748bf678b39b021d2a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -38903,6 +38930,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 306937861}
+    - target: {fileID: 6000141439593634549, guid: aa61564cf6b672748bf678b39b021d2a,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1769718041}
     - target: {fileID: 9213613798515571913, guid: aa61564cf6b672748bf678b39b021d2a,
         type: 3}
       propertyPath: m_Name

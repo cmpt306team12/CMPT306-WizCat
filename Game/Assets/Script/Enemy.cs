@@ -38,15 +38,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 scale = transform.localScale;
-        if (player.transform.position.x > transform.position.x)
-        {
-            animator.Play("EnemySideIdleR");
-        }
-        else
-        {
-            animator.Play("EnemySideIdleL");
-        }
-        transform.localScale = scale; 
+        
 
 
         if (_canChangeDirection)
@@ -56,7 +48,19 @@ public class Enemy : MonoBehaviour
         if (_canFire)
         {
             StartCoroutine(FireProjectile());
+        } 
+
+        if (player.transform.position.x > transform.position.x)
+        {
+            animator.SetBool("faceLeft", false);
         }
+        else
+        {
+            animator.SetBool("faceLeft", true);
+        }
+        transform.localScale = scale; 
+        animator.SetFloat("Horizontal", _moveDir.x);
+        animator.SetFloat("Vertical", _moveDir.y);
 
     }
 
