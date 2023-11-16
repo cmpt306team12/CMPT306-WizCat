@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 5208969233874870597, guid: 5d5e7bb909cb1794eb6b5dd1a09e4963,
     type: 3}
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &4153421120468186785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   currentHealth: 250
   EnemyScore: 0
   dropsLoot: 0
+  animator: {fileID: 0}
 --- !u!114 &2297905643974105377
 MonoBehaviour:
   m_ObjectHideFlags: 0

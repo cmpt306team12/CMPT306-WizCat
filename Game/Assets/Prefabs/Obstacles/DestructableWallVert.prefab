@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -44025399
-  m_SortingLayer: 2
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -3572807215380308920, guid: 371c70d1a1aad114d8820f6d7437d5ec,
     type: 3}
@@ -104,6 +104,7 @@ MonoBehaviour:
   currentHealth: 250
   EnemyScore: 0
   dropsLoot: 0
+  animator: {fileID: 0}
 --- !u!114 &6155924215813196263
 MonoBehaviour:
   m_ObjectHideFlags: 0
