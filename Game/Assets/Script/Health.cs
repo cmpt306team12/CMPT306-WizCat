@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public bool dropsLoot = false;
 
     public Animator animator;
+    public AudioSource audioSource;
+    public AudioClip hurtSFX1;
+    public AudioClip hurtSFX2;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,17 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
+        int chooseSound = Random.Range(1, 3); 
+        if (chooseSound == 1)
+        {
+            audioSource.PlayOneShot(hurtSFX1);
+        } 
+        else
+        {
+            audioSource.PlayOneShot(hurtSFX2);
+        }
+        
+        animator.SetTrigger("IsHurt");
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0.0f)

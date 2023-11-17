@@ -34130,6 +34130,12 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!95 &1769718041 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3107520457484488109, guid: aa61564cf6b672748bf678b39b021d2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7812317828980412928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1772124560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 7277dd75e907b27448ec1de08238d0bb,
