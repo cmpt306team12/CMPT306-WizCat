@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(FireProjectile());
         } 
 
-        if (player.transform.position.x > transform.position.x)
+        if (_player.transform.position.x > transform.position.x)
         {
             animator.SetBool("faceLeft", false);
         }

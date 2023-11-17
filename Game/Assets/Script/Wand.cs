@@ -20,7 +20,6 @@ public class Wand : MonoBehaviour
     {
         
         wand.GetComponent<WizWandAnimationControl>().Shoot();
-        shootSFX.Play();
         GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
         bullet.GetComponent<Projectile>().Fire(projectileProperties);
 

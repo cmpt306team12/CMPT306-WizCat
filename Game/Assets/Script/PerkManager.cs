@@ -78,7 +78,7 @@ public class Perks : MonoBehaviour
         try
         {
             perks[index] = perks[index] + change;
-        } catch (Exception e)
+        } catch (Exception)
         {
             Debug.LogError("Perk index out of bounds", this);
         }
