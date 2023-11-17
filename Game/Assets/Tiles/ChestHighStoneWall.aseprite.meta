@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-guid: a446c4eba5b35114f9b7de3fd66b357c
+guid: d82484eeb51d41941b731d6201078dfe
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: SpikeFloorAnimation_Clip
-    second: {fileID: 7400000, guid: c7d8d0b15b295134db203c010869ddff, type: 2}
+  externalObjects: {}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -100,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638357768661291864
+  platformSettingsDirtyTick: 638357867502262017
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -124,82 +119,29 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: SpikeFloorAnimation_Frame_0
+  - name: ChestHighStoneWall
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 40
-      y: 39
-      width: 28
-      height: 21
-    spriteID: 0c9f860ace42e294697c38385b3edbad
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 40, y: 39}
-  - name: SpikeFloorAnimation_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 76
-      y: 4
-      width: 28
-      height: 24
-    spriteID: f5f85eaa3f8ff2f48a7a44298467279d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 76, y: 4}
-  - name: SpikeFloorAnimation_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 40
-      y: 4
-      width: 28
-      height: 27
-    spriteID: eb0f60332e684404282c902ede6b7033
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
-  - name: SpikeFloorAnimation_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.5, y: 0.33333334}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 28
-      height: 31
-    spriteID: ca29b12b0f040ce489ab1dd642feebf1
+      width: 32
+      height: 48
+    spriteID: 109d3e89559b9364a91c422284741601
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: -15, y: 7}
+      - {x: -16, y: 6}
+      - {x: -16, y: -24}
+      - {x: 16, y: -24}
+      - {x: 16, y: 6}
+      - {x: 15, y: 7}
     indices: 
     edges: []
     tessellationDetail: 0
@@ -207,44 +149,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1604842584
-    name: SpikeFloorAnimation
+    guid: -1055535696
+    name: ChestHighStoneWall
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: SpikeFloorAnimation_Frame_0
+    - name: ChestHighStoneWall
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 1
-        width: 28
-        height: 21
-      spriteId: 0c9f860ace42e294697c38385b3edbad
-    - name: SpikeFloorAnimation_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 2
-        y: 1
-        width: 28
-        height: 24
-      spriteId: f5f85eaa3f8ff2f48a7a44298467279d
-    - name: SpikeFloorAnimation_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 2
-        y: 1
-        width: 28
-        height: 27
-      spriteId: eb0f60332e684404282c902ede6b7033
-    - name: SpikeFloorAnimation_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 2
-        y: 1
-        width: 28
-        height: 31
-      spriteId: ca29b12b0f040ce489ab1dd642feebf1
+        x: 0
+        y: 0
+        width: 32
+        height: 48
+      spriteId: 109d3e89559b9364a91c422284741601
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -286,4 +204,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 32, y: 48}
