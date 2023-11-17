@@ -787,7 +787,7 @@ CompositeCollider2D:
   m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
-  m_VertexDistance: 0.5
+  m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 5274840184888955261}
@@ -841,23 +841,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structures:
+  - {fileID: 11400000, guid: 110b5db58f59bb046a876c94d78c19a0, type: 2}
   - {fileID: 11400000, guid: 2c7af8e912aaa3147a02b958cfea192e, type: 2}
   - {fileID: 11400000, guid: e63b0b9925e195b43b62e7ffc52e122d, type: 2}
   - {fileID: 11400000, guid: 2537c65b5c1755b4ea327440766e83f3, type: 2}
-  - {fileID: 11400000, guid: 84e5d7a28cab6784ba4e21ddf712dee5, type: 2}
-  - {fileID: 11400000, guid: a85eacc8a4173c644aae69af8ad34872, type: 2}
-  - {fileID: 11400000, guid: 15bed1e3122c59c4a9e0ffe584f60337, type: 2}
-  - {fileID: 11400000, guid: e0a1c0e83a5cdd640901dc70aa5f0c0f, type: 2}
-  - {fileID: 11400000, guid: 2252805fdc10c9e48ac7cc631e63275e, type: 2}
-  - {fileID: 11400000, guid: 72db34f829569b4449b4e95d132a585e, type: 2}
-  - {fileID: 11400000, guid: 695784d39394ba347930a3348f386d13, type: 2}
-  - {fileID: 11400000, guid: dbd758665acb3a442950153acb533d47, type: 2}
-  - {fileID: 11400000, guid: f351d238caebb6f4d88f55fef9f708e5, type: 2}
-  - {fileID: 11400000, guid: 3609c7c3158a9134c8ca0d8c325f7dc2, type: 2}
-  - {fileID: 11400000, guid: 26af5b6b5c32b824994aae98bf4e2cca, type: 2}
+  - {fileID: 11400000, guid: 33e794beda747864381f4308e7312432, type: 2}
   - {fileID: 11400000, guid: 0b3cdc70889602b438f547043a5725f1, type: 2}
   - {fileID: 11400000, guid: a3953edea81578745b8f157db601e9f1, type: 2}
   - {fileID: 11400000, guid: 108b404688f2daa4b933c6aa55b00d8b, type: 2}
+  - {fileID: 11400000, guid: 3216ce2c2660d7e46bd225103dbdbc29, type: 2}
+  - {fileID: 11400000, guid: d7951b725ba179945abaf75a391373ee, type: 2}
+  - {fileID: 11400000, guid: d4f8bc7c7a43c874b9beec82394256ad, type: 2}
+  - {fileID: 11400000, guid: 84e5d7a28cab6784ba4e21ddf712dee5, type: 2}
+  - {fileID: 11400000, guid: a85eacc8a4173c644aae69af8ad34872, type: 2}
+  - {fileID: 11400000, guid: 6af4ff461f504dc4d92b40d38724ccd2, type: 2}
+  - {fileID: 11400000, guid: 3609c7c3158a9134c8ca0d8c325f7dc2, type: 2}
+  - {fileID: 11400000, guid: 15bed1e3122c59c4a9e0ffe584f60337, type: 2}
+  - {fileID: 11400000, guid: 26af5b6b5c32b824994aae98bf4e2cca, type: 2}
+  - {fileID: 11400000, guid: 1d947657ae582a84088b76df1a2c971d, type: 2}
+  - {fileID: 11400000, guid: 649b32ca6a0c88347897952b05057a77, type: 2}
+  - {fileID: 11400000, guid: c1093d6f6c0bc764b8fd99ca1613b98e, type: 2}
+  - {fileID: 11400000, guid: fdbdd7181af67cd469fc482dc32fbf79, type: 2}
+  - {fileID: 11400000, guid: aa7c75df464b2de45909e7b7e40cea54, type: 2}
+  - {fileID: 11400000, guid: 082c44673edbd8c4eb6b8c3fabdb5eaa, type: 2}
+  - {fileID: 11400000, guid: e0a1c0e83a5cdd640901dc70aa5f0c0f, type: 2}
+  - {fileID: 11400000, guid: f351d238caebb6f4d88f55fef9f708e5, type: 2}
+  - {fileID: 11400000, guid: b3ea439dc39e95744be076844c5ec972, type: 2}
+  - {fileID: 11400000, guid: 6eb98629de25e6443827c2c3696a842a, type: 2}
+  - {fileID: 11400000, guid: 5b65fd57981c2854a96ca185f7f2d5cf, type: 2}
+  - {fileID: 11400000, guid: 2252805fdc10c9e48ac7cc631e63275e, type: 2}
+  - {fileID: 11400000, guid: 72db34f829569b4449b4e95d132a585e, type: 2}
   walls: {fileID: 7382907338179376721}
   ground: {fileID: 1386107777402378509}
   props: {fileID: 8702862274674598847}

@@ -65,6 +65,10 @@ public class Health : MonoBehaviour
 
             if (gameObject.CompareTag("Enemy"))
             {
+                if (dropsLoot)
+                {
+                    gameObject.GetComponent<DropOnDestroy>().Drop();
+                }
                 // Handle killing an enemy
                 GameManager.instance.IncreaseScore(EnemyScore);
                 GameManager.instance.EnemyDefeated();
@@ -107,6 +111,7 @@ public class Health : MonoBehaviour
                 this.enabled = false;
 
                 StartCoroutine(PlayerDeath());
+                StaticData.Reset();
 
             }
             else

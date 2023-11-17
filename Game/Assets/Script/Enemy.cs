@@ -59,11 +59,11 @@ public class Enemy : MonoBehaviour
 
         if (_player.transform.position.x > transform.position.x)
         {
-            animator.SetBool("faceLeft", false);
+            //animator.SetBool("faceLeft", false);
         }
         else
         {
-            animator.SetBool("faceLeft", true);
+            //animator.SetBool("faceLeft", true);
         }
         transform.localScale = scale; 
         animator.SetFloat("Horizontal", _moveDir.x);

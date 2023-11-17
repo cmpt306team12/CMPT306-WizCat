@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 1400065234660262741}
   - component: {fileID: -4805899373323720148}
   - component: {fileID: 1880579983663682265}
+  - component: {fileID: 6986131273880907281}
   m_Layer: 0
   m_Name: Enemy V1
   m_TagString: Enemy
@@ -635,10 +636,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 15
+  currentHealth: 15
   EnemyScore: 50
-  dropsLoot: 0
+  dropsLoot: 1
   animator: {fileID: 1400065234660262741}
   hurtSFX1: {fileID: 0}
   hurtSFX2: {fileID: 0}
@@ -658,9 +659,9 @@ MonoBehaviour:
   NumberOfBounce: 0
   NumberOfSpeed: 0
   NumberOfLifetime: 0
-  NumberOfDamage: 5
+  NumberOfDamage: 0
   NumberOfExplosive: 0
-  NumberOfSize: 3
+  NumberOfSize: 0
   NumberOfBurst: 0
   NumberOfSplit: 0
 --- !u!95 &1400065234660262741
@@ -716,6 +717,43 @@ MonoBehaviour:
   volumeModifier: 0.2
   pitchModifier: 0.2
   maxDistance: 30
+--- !u!114 &6986131273880907281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992927280101620473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fed98dd42ec22541b63c73e66158f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiersUsed: 2
+  tierNames:
+  - nothing
+  - common
+  - commonPerks
+  - rarePerks
+  weights:
+  - 0
+  - 90
+  - 8
+  - 2
+  tier1Drops:
+  - {fileID: 100000, guid: e97985069115aee48a0ecee9af654ffa, type: 3}
+  tier2Drops:
+  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
+  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
+  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
+  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: 795441f821c16234581a364ed10efff7, type: 3}
+  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
+  tier3Drops:
+  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
+  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
+  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
+  - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
 --- !u!1 &3166187832591890669
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed = 5.0f;
 
-    public float damage;
     public float fireRate;
     public AudioClip shootSoundEffect;
 
@@ -40,9 +38,4 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    public float getSpeed()
-    {
-        return movementSpeed;
-    }
 }

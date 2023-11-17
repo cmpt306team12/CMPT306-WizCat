@@ -10,10 +10,23 @@ public class StaticData : MonoBehaviour
     public static int coins = 0;
     public static int score = 0;
     // set in Health.cs
-    public static float maxHealth = 1000;
-    public static float currentHealth = 1000;
+    public static float maxHealth = 100;
+    public static float currentHealth = 100;
     // set in Player.cs
     public static int[] perks = new int[9];
     // set in PlayerMovement.cs
     public static bool canDash = false;
+
+
+    static public void Reset()
+    {
+        coins = 0;
+        score = 0;
+        maxHealth = 100;
+        currentHealth = 100;
+        perks = new int[9];
+        canDash = false;
+        Bite.canBite = false;
+        OrbitProjectiles.canOrbit = false;
+    }
 }

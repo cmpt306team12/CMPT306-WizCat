@@ -458,7 +458,7 @@ MonoBehaviour:
   canDash: 0
   dashSoundEffect: {fileID: 8300000, guid: 013de93b052268a4b9d512890e146199, type: 3}
   faceUp: 0
-  movementSpeed: 5
+  movementSpeed: 6
   animator: {fileID: 0}
 --- !u!114 &8020280483396010773
 MonoBehaviour:
@@ -506,8 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fbe1d424716f0499387b0c58980565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  damage: 0
   fireRate: 0
   shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
 --- !u!95 &8378376417109672244
@@ -587,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
+  maxHealth: 100
+  currentHealth: 100
   EnemyScore: 50
   dropsLoot: 0
   animator: {fileID: 8378376417109672244}

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedfef3f88ce00744aca7172197825fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeDamage: 50
+  spikeDamage: 25
 --- !u!1 &5805604374825263101
 GameObject:
   m_ObjectHideFlags: 0

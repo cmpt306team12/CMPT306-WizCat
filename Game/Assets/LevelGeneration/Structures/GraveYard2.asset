@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1922d695465fe1c42af4036731aab136, type: 3}
-  m_Name: GraveYard2
+  m_Name: Graveyard2
   m_EditorClassIdentifier: 
-  structure: {fileID: 1227310625305268988, guid: 8c3f5c7696a178a4d8ee0313ad3c231b,
+  structure: {fileID: 212115103010688151, guid: ec822f7b829090f49b3939ed925b885a,
     type: 3}
-  width: 8
-  height: 8
+  width: 5
+  height: 4

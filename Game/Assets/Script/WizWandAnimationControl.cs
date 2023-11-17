@@ -21,6 +21,9 @@ public class WizWandAnimationControl : MonoBehaviour
 
     public void Shoot()
     {
-        animator.SetTrigger("Shoot");
+        if (animator != null)
+        {
+            animator.SetTrigger("Shoot");
+        }
     }
 }
