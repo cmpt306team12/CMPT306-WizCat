@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
             {
                 // Handle killing an enemy
                 GameManager.instance.IncreaseScore(EnemyScore);
+                GameManager.instance.EnemyDefeated();
                 Destroy(gameObject);
             }else if (gameObject.CompareTag("Obstacle"))
             {

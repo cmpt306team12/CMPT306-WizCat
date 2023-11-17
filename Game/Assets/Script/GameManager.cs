@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int coinCount = 0;
 
     [SerializeField] private GameObject player;
+
+    private LevelGenerator _levelGenerator;
     // Start is called before the first frame update
     
     private void Awake() {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         scoreCount = StaticData.score;
         coinText.text = "Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
+        _levelGenerator = (LevelGenerator) FindObjectOfType(typeof(LevelGenerator));
     }
 
     // Update is called once per frame
@@ -57,6 +60,11 @@ public class GameManager : MonoBehaviour
     {
         coinCount -= amount;
         coinText.text = "Coins: " + coinCount.ToString();
+    }
+
+    public void EnemyDefeated()
+    {
+        _levelGenerator.EnemyDefeated();
     }
 
 }
