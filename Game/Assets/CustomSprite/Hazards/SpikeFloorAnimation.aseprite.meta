@@ -100,7 +100,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638348973234815718
+  platformSettingsDirtyTick: 638357768661291864
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -126,8 +126,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SpikeFloorAnimation_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.04761905}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -146,8 +146,8 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 39}
   - name: SpikeFloorAnimation_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.041666668}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -166,8 +166,8 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 4}
   - name: SpikeFloorAnimation_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.037037037}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -186,8 +186,8 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 4}
   - name: SpikeFloorAnimation_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.032258064}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
