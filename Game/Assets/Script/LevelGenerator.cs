@@ -15,17 +15,27 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform enemies;
     [SerializeField] private BaseLevelTiles baseLevelTiles;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject doorPrefab;
+    
     private int _width = 64;
     private int _height = 40;
     private Vector3 _enemyOffset = new Vector3(0.5f, 1.0f, 0.0f);
+    private int _enemyCount;
 
-    // TODO: Remove when level changing is handled automatically by the game manager
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        GenerateLevel();
+    }
+
+    /// <summary>
+    /// Keeps track of the number of enemies defeated and opens the door once they all are
+    /// </summary>
+    public void EnemyDefeated()
+    {
+        _enemyCount -= 1;
+        if (_enemyCount <= 0)
         {
-            ClearLevel();
-            GenerateLevel();
+            OpenExit();
         }
     }
     
@@ -69,16 +79,18 @@ public class LevelGenerator : MonoBehaviour
         CreateOutsideWallTiles();
         SpawnStructures(partitionedAreas);
         SpawnInnerBorders(borders);
+        AddExit();
         // TODO: Rework enemy spawning when power budgeting system is implemented
         List<Vector3Int> enemyTiles = GenerateEnemyTiles(5);
+        _enemyCount = enemyTiles.Count;
         SpawnEnemies(enemyTiles);
     }
-    
+
     /// <summary>
     /// Partition the level into different rooms by randomly drawing lines through the level. Return a list of
     /// rectangles representing the rooms and borders between rooms.
     /// </summary>
-    (List<Rect>, List<Rect>) PartitionLevel()
+    private (List<Rect>, List<Rect>) PartitionLevel()
     {
         List<Rect> partitions = new List<Rect>();
         List<Rect> borders = new List<Rect>();
@@ -356,7 +368,7 @@ public class LevelGenerator : MonoBehaviour
     /// <summary>
     /// Generate a list of tiles from a given area defined by a rect
     /// </summary>
-    List<Vector3Int> GenerateTilesFromRect(Rect rect)
+    private List<Vector3Int> GenerateTilesFromRect(Rect rect)
     {
         List<Vector3Int> tiles = new List<Vector3Int>();
         for (int i = (int) rect.x; i < rect.x + rect.width; i++)
@@ -373,7 +385,7 @@ public class LevelGenerator : MonoBehaviour
     /// <summary>
     /// Generate a list of tile positions for the given numEnemies
     /// </summary>
-    List<Vector3Int> GenerateEnemyTiles(int numEnemies)
+    private List<Vector3Int> GenerateEnemyTiles(int numEnemies)
     {
         List<Vector3Int> possibleEnemyTiles = FindEmptyTiles();
         List<Vector3Int> enemyTiles = new List<Vector3Int>();
@@ -390,7 +402,7 @@ public class LevelGenerator : MonoBehaviour
     /// <summary>
     /// Finds all tiles in the level that are not occupied by props or wall tiles
     /// </summary>
-    List<Vector3Int> FindEmptyTiles()
+    private List<Vector3Int> FindEmptyTiles()
     {
         // Get tiles that are not occupied by walls
         HashSet<Vector3Int> tiles = new HashSet<Vector3Int>();
@@ -405,14 +417,25 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+
+        int i = 0;
         // Remove tiles that are occupied by props
         foreach (Transform prop in props.transform)
         {
-            Vector3 propPosition = prop.position;
-            Vector3Int propTileLocation = new Vector3Int((int) (propPosition.x - 0.5f), (int) propPosition.y, 0);
-            if (tiles.Contains(propTileLocation))
+            if (i >= 1)
             {
-                tiles.Remove(propTileLocation);
+                continue;
+            }
+
+            i += 2;
+            Vector3 propPosition = prop.position;
+            List<Vector3Int> invalidPositions = GenerateTilesFromRect(new Rect(propPosition.x - 1.5f, propPosition.y + 1.0f, 3,3));
+            foreach (Vector3Int invalidPosition in invalidPositions)
+            {
+                if (tiles.Contains(invalidPosition))
+                {
+                    tiles.Remove(invalidPosition);
+                }
             }
         }
         return tiles.ToList();
@@ -422,11 +445,36 @@ public class LevelGenerator : MonoBehaviour
     /// Spawns enemies on the given location tiles
     /// </summary>
     // TODO: Rework this method when power budgeting system is implemented
-    void SpawnEnemies(List<Vector3Int> locations)
+    private void SpawnEnemies(List<Vector3Int> locations)
     {
         foreach (Vector3Int location in locations)
         {
             Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+        }
+    }
+
+    /// <summary>
+    /// Creates the exit door for the level and blocks it off
+    /// </summary>
+    private void AddExit()
+    {
+        GameObject door = Instantiate(doorPrefab, new Vector3(_width / 2,_height + 2.5f, 0), Quaternion.identity);
+        ChangeScene changeScene = door.GetComponent<ChangeScene>();
+        changeScene.sceneBuildIndex = 2;
+        for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
+        {
+            walls.SetTile(new Vector3Int(x, _height, 0), baseLevelTiles.inLevelRoomBorder);
+        }
+    }
+
+    /// <summary>
+    /// Un-blocks the exit door of the level
+    /// </summary>
+    private void OpenExit()
+    {
+        for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
+        {
+            walls.SetTile(new Vector3Int(x, _height, 0), null);
         }
     }
 }
