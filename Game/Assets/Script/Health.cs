@@ -50,12 +50,15 @@ public class Health : MonoBehaviour
 
             transform.gameObject.tag = "Untagged";
             transform.GetChild(0).gameObject.SetActive(false);
-            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = false; 
+
+            // Disable Player Scripts
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<OrbitProjectiles>().enabled = false;
             GetComponent<Bite>().enabled = false;
 
-
+            // Disable Enemy Scripts
+            GetComponent<Enemy>().enabled = false;
 
 
             this.enabled = false;
