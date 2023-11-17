@@ -871,6 +871,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b65fd57981c2854a96ca185f7f2d5cf, type: 2}
   - {fileID: 11400000, guid: 2252805fdc10c9e48ac7cc631e63275e, type: 2}
   - {fileID: 11400000, guid: 72db34f829569b4449b4e95d132a585e, type: 2}
+  - {fileID: 11400000, guid: 4edf28a1b4457a4468546ff83fc0eb29, type: 2}
+  - {fileID: 11400000, guid: f64cf44dcb28c854ca903dd6b49c5958, type: 2}
   walls: {fileID: 7382907338179376721}
   ground: {fileID: 1386107777402378509}
   props: {fileID: 8702862274674598847}

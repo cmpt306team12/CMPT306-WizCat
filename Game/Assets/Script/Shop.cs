@@ -93,6 +93,9 @@ public class Shop : MonoBehaviour
                 case 13: // Orbit Powerup
                     perktext.text = "Orbit Powerup";
                     break;
+                case 14: // Split Perk
+                    perktext.text = "Projectile Split";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");
