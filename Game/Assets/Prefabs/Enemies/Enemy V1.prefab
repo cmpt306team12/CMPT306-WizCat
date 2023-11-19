@@ -641,8 +641,8 @@ MonoBehaviour:
   EnemyScore: 50
   dropsLoot: 1
   animator: {fileID: 1400065234660262741}
-  hurtSFX1: {fileID: 0}
-  hurtSFX2: {fileID: 0}
+  hurtSFX1: {fileID: 8300000, guid: 74f28d42470aa004abfc68c6f6211e31, type: 3}
+  hurtSFX2: {fileID: 8300000, guid: b0a257f627db3ef4f98fc860fb42b797, type: 3}
 --- !u!114 &8187959008510221659
 MonoBehaviour:
   m_ObjectHideFlags: 0
