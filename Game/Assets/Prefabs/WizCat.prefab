@@ -475,7 +475,7 @@ MonoBehaviour:
   orbitRadius: 2.5
   orbitSpeed: 6
   orbitSFX: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
-  noOrbitSFX: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
+  noOrbitSFX: {fileID: 8300000, guid: 89c7aaceff24d444baec6efcd6e2c471, type: 3}
   orbitCirclePrefab: {fileID: 3397497413207009194, guid: 6ed78c2de3257cd4eaf5a9571b3468f0,
     type: 3}
 --- !u!114 &2340855290674637746
@@ -492,8 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenEnemies: 0.5
   cooldown: 5
-  biteSFX: {fileID: 8300000, guid: 89c7aaceff24d444baec6efcd6e2c471, type: 3}
-  noBiteSFX: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
+  biteSFX: {fileID: 8300000, guid: 7c558b0a642dbac49a91fd6ca9c41b25, type: 3}
+  noBiteSFX: {fileID: 8300000, guid: 89c7aaceff24d444baec6efcd6e2c471, type: 3}
 --- !u!114 &475456157664746230
 MonoBehaviour:
   m_ObjectHideFlags: 0
