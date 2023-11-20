@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void EnemyDefeated()
     {
-        _levelGenerator.EnemyDefeated();
+        // _levelGenerator.EnemyDefeated();
     }
 
 }

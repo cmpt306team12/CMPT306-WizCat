@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bite : MonoBehaviour
 {
-
-
     private GameObject[] enemies;
     private Transform targetEnemy;
     private bool isTeleporting = false;
@@ -17,6 +16,15 @@ public class Bite : MonoBehaviour
 
     public AudioClip biteSFX;
     public AudioClip noBiteSFX;
+
+    public bool onCooldown = false;
+
+
+    void Start()
+    {
+        canBite = false;
+    }
+
 
     private void Update()
     {
@@ -31,14 +39,21 @@ public class Bite : MonoBehaviour
                     lastTeleportTime = currentTime;
                     StartCoroutine(TeleportToNearestEnemies());
                     gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
-                }
+                    onCooldown = true;                }
                 else if (currentTime - lastCPressTime > cooldown)
                 {
                     lastTeleportTime = currentTime - cooldown;
                     lastCPressTime = currentTime;
                     gameObject.GetComponent<RandomSound>().PLayClipAt(noBiteSFX, transform.position);
                 }
+                onCooldown = true; 
             }
+        }
+
+        
+        if (onCooldown && Time.time - lastTeleportTime >= cooldown)
+        {
+            onCooldown = false; 
         }
     }
 

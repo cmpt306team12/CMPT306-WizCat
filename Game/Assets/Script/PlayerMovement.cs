@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     Vector2 movement;
 
+    private DashIcon dashIconScript;
+    public bool onCooldown = false;
+    private float dashCooldown = 3f;
+    private float currentDashCooldown;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         // grab static data
         canDash = StaticData.canDash;
+        dashIconScript = FindObjectOfType<DashIcon>();
     }
 
     void Update()
@@ -67,17 +73,31 @@ public class PlayerMovement : MonoBehaviour
         //---End of Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
 
         // Dash on spacebar down
-        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && currentDashCooldown<=0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             //catSFX.PlayOneShot(dashSFX);
             gameObject.GetComponent<RandomSound>().PLayClipAt(dashSoundEffect, transform.position);
             dashDirection = dir.normalized;
             dashTime = startDashTime;
+            currentDashCooldown = dashCooldown;
+            onCooldown = true; 
             rb.velocity = Vector2.zero;
             rb.AddForce(dashDirection * dashImpulseForce, ForceMode2D.Impulse);
             // Instantiate(dashEffect, transform.position, Quaternion.identity);
 
         }
+       
+        // Time toggle for IU dash Icon 
+        if (currentDashCooldown > 0)
+        {
+            currentDashCooldown -= Time.deltaTime;
+            onCooldown = true;
+        }
+        else
+        {
+            onCooldown=false;
+        }
+
         if (canDash == true)
         {
             if (dashTime > 0)
@@ -92,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = Vector2.zero;
                 }
 
-                // If not dashing use walk speed
+                // If not dashing then walk speed
                 if (dashTime <= 0 && dir != Vector2.zero)
                 {
                     dir.Normalize();
@@ -107,10 +127,12 @@ public class PlayerMovement : MonoBehaviour
         {
             dir.Normalize();
             rb.velocity = movementSpeed * dir;
+            onCooldown = true;
         }
 
-
-
-
+        if (dashIconScript != null)
+        {
+            dashIconScript.UpdateDashIcon();
+        }
     }
 }

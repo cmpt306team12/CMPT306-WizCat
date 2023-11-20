@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrbitProjectiles : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class OrbitProjectiles : MonoBehaviour
     public static bool canOrbit = false;
     private float orbitDuration = 3.0f;
     private float currentOrbitTime = 0.0f;
-    private float cooldownDuration = 2.0f; 
+    private float cooldownDuration = 4.0f; 
     private float lastCtrlPressTime = 0.0f;
 
     public AudioClip orbitSFX;
@@ -19,6 +20,8 @@ public class OrbitProjectiles : MonoBehaviour
 
     public GameObject orbitCirclePrefab;
     private GameObject orbitCircle;
+
+    public static bool onCooldown = false;
 
     private void Start()
     {
@@ -31,6 +34,10 @@ public class OrbitProjectiles : MonoBehaviour
     {
         if (canOrbit)
         {
+            if (Time.time - lastCtrlPressTime > cooldownDuration){
+                onCooldown = false;
+            }
+            
             if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime >= cooldownDuration))
             {
                 isOrbiting = true;
@@ -41,12 +48,13 @@ public class OrbitProjectiles : MonoBehaviour
 
                 orbitCircle.SetActive(true);
                 orbitCircle.transform.position = characterRigidbody.position;
+                onCooldown = true;
             }
 
-            else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime < cooldownDuration))
+            // visual for orbit cooldown
+            else if (Time.time - lastCtrlPressTime < cooldownDuration)
             {
-                gameObject.GetComponent<RandomSound>().PLayClipAt(noOrbitSFX, transform.position);
-                //catSFX.PlayOneShot(noOrbitSFX);
+                onCooldown = true;
             }
 
             // if (Input.GetKeyUp(KeyCode.LeftControl))
@@ -83,7 +91,7 @@ public class OrbitProjectiles : MonoBehaviour
                 else
                 {
                     isOrbiting = false;
-                    orbitCircle.SetActive(false);
+                    orbitCircle.SetActive(false);   
                 }
             }
         }
