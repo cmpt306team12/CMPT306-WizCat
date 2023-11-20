@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
-        if (gameObject.CompareTag("Player"))
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
         {
             int chooseSound = Random.Range(1, 3);
             if (chooseSound == 1)

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float movementSpeed = 5;
     public Animator animator;
-    Vector2 movement;
+    Vector2 dir;
 
     void Start()
     {
@@ -30,21 +30,20 @@ public class PlayerMovement : MonoBehaviour
         canDash = StaticData.canDash;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
         //---Strictly Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
-        Vector2 dir = Vector2.zero;
+        dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
-            
+
             dir.x = -1;
             animator.SetBool("faceLeft", true);
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            
+
             dir.x = 1;
             animator.SetBool("faceLeft", false);
 
@@ -65,11 +64,14 @@ public class PlayerMovement : MonoBehaviour
 
 
         //---End of Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
+    }
+
+    void Update()
+    {
 
         // Dash on spacebar down
         if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
-            //catSFX.PlayOneShot(dashSFX);
             gameObject.GetComponent<RandomSound>().PLayClipAt(dashSoundEffect, transform.position);
             dashDirection = dir.normalized;
             dashTime = startDashTime;
