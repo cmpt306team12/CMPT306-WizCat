@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Bite : MonoBehaviour
 {
@@ -10,27 +8,26 @@ public class Bite : MonoBehaviour
     private bool isTeleporting = false;
     private float lastTeleportTime = 0.0f;
     private float lastCPressTime = 0.0f;
-    public float delayBetweenEnemies = 0.5f;
+
     public float cooldown = 5.0f;
+    public bool onCooldown = false;
+
     public static bool canBite = false;
 
     public AudioClip biteSFX;
     public AudioClip noBiteSFX;
-
-    public bool onCooldown = false;
-
 
     void Start()
     {
         canBite = false;
     }
 
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (canBite){
+            if (canBite && !onCooldown)
+            {
                 float currentTime = Time.time;
 
                 if (!isTeleporting && currentTime - lastTeleportTime >= cooldown)
@@ -39,21 +36,20 @@ public class Bite : MonoBehaviour
                     lastTeleportTime = currentTime;
                     StartCoroutine(TeleportToNearestEnemies());
                     gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
-                    onCooldown = true;                }
+                    onCooldown = true;
+                }
                 else if (currentTime - lastCPressTime > cooldown)
                 {
                     lastTeleportTime = currentTime - cooldown;
                     lastCPressTime = currentTime;
                     gameObject.GetComponent<RandomSound>().PLayClipAt(noBiteSFX, transform.position);
                 }
-                onCooldown = true; 
             }
         }
 
-        
         if (onCooldown && Time.time - lastTeleportTime >= cooldown)
         {
-            onCooldown = false; 
+            onCooldown = false;
         }
     }
 
@@ -85,10 +81,6 @@ public class Bite : MonoBehaviour
 
     private bool IsEnemyValid(GameObject enemy)
     {
-        if (enemy == null)
-        {
-            return false;
-        }
-        return true;
+        return enemy != null;
     }
 }

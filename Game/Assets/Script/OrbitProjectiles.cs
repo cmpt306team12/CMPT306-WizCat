@@ -12,7 +12,7 @@ public class OrbitProjectiles : MonoBehaviour
     public static bool canOrbit = false;
     private float orbitDuration = 3.0f;
     private float currentOrbitTime = 0.0f;
-    private float cooldownDuration = 4.0f; 
+    public static  float cooldownDuration = 4.0f; 
     private float lastCtrlPressTime = 0.0f;
 
     public AudioClip orbitSFX;

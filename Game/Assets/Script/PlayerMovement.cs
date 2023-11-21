@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private DashIcon dashIconScript;
     public bool onCooldown = false;
-    private float dashCooldown = 3f;
+    public float dashCooldown = 3f;
     private float currentDashCooldown;
 
     void Start()
