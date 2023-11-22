@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -22,6 +23,9 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 _enemyOffset = new Vector3(0.5f, 1.0f, 0.0f);
     private int _enemyCount;
 
+    // level music
+    public LevelMusic backgroundMusic;
+
     private void Start()
     {
         GenerateLevel();
@@ -36,6 +40,8 @@ public class LevelGenerator : MonoBehaviour
         if (_enemyCount <= 0)
         {
             OpenExit();
+            // level music change
+            backgroundMusic.changeBGM();
         }
     }
     
