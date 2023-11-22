@@ -34,6 +34,9 @@ public class ChangeScene : MonoBehaviour
         StaticData.perks = perkManager.GetPerks();
         StaticData.canDash = playerMovement.canDash;
 
+        if (sceneBuildIndex == 1) { StaticData.level++; StaticData.levelContext = ""; }
+        if (sceneBuildIndex == 2) { StaticData.levelContext = " - Shop"; }
+
         print("Switching scene to " + sceneBuildIndex);
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
     }

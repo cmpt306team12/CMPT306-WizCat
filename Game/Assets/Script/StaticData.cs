@@ -9,6 +9,8 @@ public class StaticData : MonoBehaviour
     // set in GameManager.cs
     public static int coins = 0;
     public static int score = 0;
+    public static int level = 1;
+    public static string levelContext = "";
     // set in Health.cs
     public static float maxHealth = 100;
     public static float currentHealth = 100;
@@ -22,6 +24,8 @@ public class StaticData : MonoBehaviour
     {
         coins = 0;
         score = 0;
+        level = 1;
+        levelContext = "";
         maxHealth = 100;
         currentHealth = 100;
         perks = new int[9];
