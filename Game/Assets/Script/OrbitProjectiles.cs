@@ -30,7 +30,8 @@ public class OrbitProjectiles : MonoBehaviour
     private void Update()
     {
         if (canOrbit)
-        {
+        { 
+            orbitCircle.transform.Rotate(0, 0, -1);
             if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Time.time - lastCtrlPressTime >= cooldownDuration))
             {
                 isOrbiting = true;
