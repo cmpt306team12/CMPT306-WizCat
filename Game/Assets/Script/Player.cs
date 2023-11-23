@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     public float fireRate;
     public AudioClip shootSoundEffect;
 
+    // pickup sound
+    public AudioClip perkSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,8 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Perk"))
         {
+            GetComponentInChildren<AudioSource>().clip = perkSound;
+            GetComponentInChildren<AudioSource>().Play();
             int id = collision.gameObject.GetComponent<Perk>().GetPerkID();
             collision.gameObject.GetComponent<Perk>().Despawn();
             gameObject.GetComponent<Perks>().AddPerk(id);

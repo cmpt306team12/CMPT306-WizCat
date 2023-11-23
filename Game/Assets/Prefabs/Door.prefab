@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneBuildIndex: 1
+  transition: {fileID: 0}
+  teleportSound: {fileID: 8300000, guid: ff9345e56ac81d541b32bad90f7a92ec, type: 3}
 --- !u!1001 &1996882426416796933
 PrefabInstance:
   m_ObjectHideFlags: 0

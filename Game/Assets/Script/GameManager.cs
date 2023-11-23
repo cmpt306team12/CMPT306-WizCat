@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public int scoreCount = 0;
     public TMP_Text coinText;
     public int coinCount = 0;
+    public TMP_Text levelText;
+    public int levelCount = 1;
+    public string levelContext = "";
 
     [SerializeField] private GameObject player;
 
@@ -29,8 +32,11 @@ public class GameManager : MonoBehaviour
     {
         coinCount = StaticData.coins;
         scoreCount = StaticData.score;
+        levelCount = StaticData.level;
+        levelContext = StaticData.levelContext;
         coinText.text = "Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
+        levelText.text = "Level: " + levelCount.ToString() + levelContext;
         _levelGenerator = (LevelGenerator) FindObjectOfType(typeof(LevelGenerator));
     }
 

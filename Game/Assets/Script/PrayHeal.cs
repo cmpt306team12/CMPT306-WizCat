@@ -9,6 +9,9 @@ public class PrayHeal : MonoBehaviour
     private GameManager gameManager;
     private GameObject player;
 
+    // heal sound
+    public AudioClip healSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,8 @@ public class PrayHeal : MonoBehaviour
     {
         if (!hasPrayed)
         {
+            player.GetComponentInChildren<AudioSource>().clip = healSound;
+            player.GetComponentInChildren<AudioSource>().Play();
             player.GetComponent<Health>().ApplyHealing(healAmount);
             Destroy(gameObject);
             hasPrayed = true;
