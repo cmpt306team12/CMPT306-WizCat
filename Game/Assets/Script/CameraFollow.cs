@@ -1,13 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;
-    public float cameraSize = 5.0f;
-    public float smoothing = 5.0f;
-    public float maxCameraDistance = 5.0f; 
-    public float verticalPadding = 0.5f; 
+    private Transform player;
     private Camera cam;
+    [SerializeField] float cameraSize = 5.0f;
+    [SerializeField] float xLimit = 3.0f;
+    [SerializeField] float yLimit = 3.0f;
+    [SerializeField] float smoothTime = 0.5f;
+    private Vector3 velocity = Vector3.zero;
+
     private void Start()
     {
         cam = Camera.main;
@@ -17,14 +21,13 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 playerPosition = player.position;
-        Vector3 targetPosition = new Vector3(playerPosition.x, playerPosition.y, transform.position.z);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 targetPos = (player.position + mousePos) / 2f;
 
-        float clampedX = Mathf.Clamp(mousePosition.x, playerPosition.x - maxCameraDistance, playerPosition.x + maxCameraDistance);
-        float clampedY = Mathf.Clamp(mousePosition.y, playerPosition.y - maxCameraDistance * verticalPadding, playerPosition.y + maxCameraDistance * verticalPadding);
+        targetPos.x = Mathf.Clamp(targetPos.x, -xLimit + player.position.x, xLimit + player.position.x);
+        targetPos.y = Mathf.Clamp(targetPos.y, -yLimit + player.position.y, yLimit + player.position.y);
+        targetPos.z = transform.position.z;
 
-        // Set the new camera position
-        transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, clampedY, transform.position.z), smoothing * Time.deltaTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
     }
 }

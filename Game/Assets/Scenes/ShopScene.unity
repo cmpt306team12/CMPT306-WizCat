@@ -9495,11 +9495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72977a258d023e64d9bc39ce9b0ccbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   cameraSize: 4
-  smoothing: 5
-  maxCameraDistance: 5
-  verticalPadding: 0.5
+  xLimit: 3
+  yLimit: 3
+  smoothTime: 0.2
 --- !u!1001 &523140433
 PrefabInstance:
   m_ObjectHideFlags: 0
