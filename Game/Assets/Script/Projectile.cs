@@ -69,10 +69,11 @@ public class Projectile : MonoBehaviour
         {
             float angleIncrement = 360f / splits;
             float separationDistance = 0.5f;
+            float initialAngle = 45.0f;
 
             for (int i = 0; i < splits; i++)
             {
-                Quaternion rotation = Quaternion.Euler(0f, 0f, i * angleIncrement);
+                Quaternion rotation = Quaternion.Euler(0f, 0f, initialAngle + i * angleIncrement);
                 Vector2 direction = rotation * transform.right;
                 Vector3 spawnPosition = transform.position + (Vector3)(direction * separationDistance); 
 
@@ -126,33 +127,6 @@ public class Projectile : MonoBehaviour
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
         rb.velocity = transform.right * projProp.getSpeed(); // Give projectile speed
         gameObject.GetComponent<SpriteRenderer>().color = projProp.getSpriteColor();
-
-
-        // StartCoroutine(SplitCoroutine());
-        // // Fire more projectiles with spread angle
-        // if (projProp.getShots() > 0)
-        // {
-        //     int maxSplits = 4;// no more than 4 shots or else bullets collide with themselves
-        //     int numberOfProjectiles = Mathf.Min(projProp.getShots() + 1, maxSplits);
-        //     float spreadAngle = 35f; 
-        //     float separationDistance = 0.5f;
-        //     for (int i = 0; i < numberOfProjectiles; i++)
-        //     {
-        //         float rotationAngle = (i - numberOfProjectiles / 2) * spreadAngle;
-        //         Vector3 direction = Quaternion.Euler(0, 0, rotationAngle) * transform.right;
-        //         Vector3 spawnPosition = transform.position + direction * separationDistance;
-
-        //         // Instantiate a new projectile at the calculated position
-        //         GameObject newProjectile = Instantiate(baseProjectile, spawnPosition, Quaternion.Euler(0, 0, rotationAngle));
-        //         Projectile newProjectileScript = newProjectile.GetComponent<Projectile>();
-        //         newProjectileScript.projProp = prop;
-        //         newProjectileScript.StartCoroutine(newProjectileScript.DespawnCoroutine(newProjectileScript.projProp.getLifetime())); 
-        //         newProjectileScript.ApplyScale(newProjectileScript.projProp.getScale()); 
-        //         newProjectileScript.bouncesLeft = newProjectileScript.projProp.getBounces(); 
-        //         newProjectileScript.rb.velocity = direction * newProjectileScript.projProp.getSpeed(); 
-        //         newProjectileScript.gameObject.GetComponent<SpriteRenderer>().color = newProjectileScript.projProp.getSpriteColor();
-        //     }
-        // }
     }
 
 
