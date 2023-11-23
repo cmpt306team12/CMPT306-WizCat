@@ -13,6 +13,7 @@ TagManager:
   - SplitTrigger
   - Coin
   - Potion
+  - Canvas
   layers:
   - Default
   - TransparentFX

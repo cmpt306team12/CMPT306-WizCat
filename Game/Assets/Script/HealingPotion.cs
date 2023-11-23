@@ -8,6 +8,9 @@ public class HealingPotion : MonoBehaviour
     private GameManager gameManager;
     private GameObject player;
 
+    // pickup sound
+    public AudioClip healSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,8 @@ public class HealingPotion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.GetComponentInChildren<AudioSource>().clip = healSound;
+            other.GetComponentInChildren<AudioSource>().Play();
             Destroy(gameObject);
             player.GetComponent<Health>().ApplyHealing(healAmount);
         }

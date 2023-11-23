@@ -10,6 +10,9 @@ public class Coin : MonoBehaviour {
     public float attractionRange = 3.0f;
     private Transform playerTransform;
     public float movementSpeed = 5.0f;
+
+    // pickup sound
+    public AudioClip coinSound;
     
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,8 @@ public class Coin : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.GetComponentInChildren<AudioSource>().clip = coinSound;
+            other.GetComponentInChildren<AudioSource>().Play();
             Destroy(gameObject);
             // counter.IncreaseCoins(value);
             gameManager.IncreaseCoins(value);
