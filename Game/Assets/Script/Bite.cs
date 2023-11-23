@@ -17,11 +17,6 @@ public class Bite : MonoBehaviour
     public AudioClip biteSFX;
     public AudioClip noBiteSFX;
 
-    void Start()
-    {
-        canBite = false;
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
