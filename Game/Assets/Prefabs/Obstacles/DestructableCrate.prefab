@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3909001556696391574}
   - component: {fileID: 4304646975444164348}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2939548323707916259}
   - component: {fileID: 1712573284915037771}
   - component: {fileID: -1448938077741199360}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: DestructableCrate
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -279,6 +279,9 @@ MonoBehaviour:
   currentHealth: 60
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &-1448938077741199360
 MonoBehaviour:
   m_ObjectHideFlags: 0

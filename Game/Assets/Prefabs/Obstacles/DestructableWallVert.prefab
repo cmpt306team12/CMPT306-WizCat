@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1114264260261961935}
   - component: {fileID: 6155924215813196263}
   - component: {fileID: 5278873826269202361}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: DestructableWallVert
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -105,6 +105,8 @@ MonoBehaviour:
   EnemyScore: 0
   dropsLoot: 0
   animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &6155924215813196263
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9027755805606650446}
   - component: {fileID: 5231886675332024606}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6021622047156403738}
   - component: {fileID: -2909459683975230144}
   - component: {fileID: -8027615606780983412}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: DestructableBarrel
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -269,6 +269,9 @@ MonoBehaviour:
   currentHealth: 100
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &-2909459683975230144
 MonoBehaviour:
   m_ObjectHideFlags: 0

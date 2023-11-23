@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
@@ -27,17 +28,75 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public AudioClip shootSoundEffect;
 
+    public float nextWaypointDistance = 0.2f;
+    Path path;
+    int currWay = 0;
+    bool reachedEndOfPath = false;
+    Seeker seeker;
+
+
     // Start is called before the first frame update
     void Start()
     {
         _player = GameManager.instance.GetPlayer();
         _wand = gameObject.GetComponentInChildren<Wand>();
+        seeker = GetComponent<Seeker>();
+
+        InvokeRepeating("UpdatePath", 0f, 1.0f);
+        //StartCoroutine(ChangeDirection());
+
         //shootSFX = GetComponent<AudioSource>();
+    }
+
+    private void UpdatePath()
+    {
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(gameObject.GetComponent<Collider2D>().bounds.center, _player.transform.position, OnPathComplete);
+        }
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currWay = 0;
+        }
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(_moveDir * moveSpeed);
+        if (path == null)
+        {
+            Debug.Log("NULL PATH");
+            return;
+        }
+        else if (currWay >= path.vectorPath.Count)
+        {
+            Debug.Log("END PATH");
+            reachedEndOfPath = true;
+            return;
+        }
+        else
+        {
+            reachedEndOfPath = false;
+        }
+
+        // Should move
+        _moveDir = (path.vectorPath[currWay] - gameObject.GetComponent<Collider2D>().bounds.center).normalized;
+        Debug.DrawLine(transform.position, _moveDir, Color.red);
+
+        float distance = Vector2.Distance(gameObject.GetComponent<Collider2D>().bounds.center, path.vectorPath[currWay]);
+        if (distance < nextWaypointDistance)
+        {
+            currWay++;
+        }
+
+        if (!reachedEndOfPath)
+        {
+            transform.Translate(_moveDir * moveSpeed);
+        }
         animator = GetComponent<Animator>();
     }
 
@@ -45,40 +104,18 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 scale = transform.localScale;
-        
 
-
-        if (_canChangeDirection)
-        {
-            StartCoroutine(ChangeDirection());
-        }
         if (_canFire)
         {
             StartCoroutine(FireProjectile());
         } 
 
-        if (_player.transform.position.x > transform.position.x)
-        {
-            //animator.SetBool("faceLeft", false);
-        }
-        else
-        {
-            //animator.SetBool("faceLeft", true);
-        }
         transform.localScale = scale; 
         animator.SetFloat("Horizontal", _moveDir.x);
         animator.SetFloat("Vertical", _moveDir.y);
 
     }
 
-    private IEnumerator ChangeDirection()
-    {
-        _canChangeDirection = false;
-        float movementAngle = Random.Range(0f, 360f);
-        _moveDir = Quaternion.AngleAxis(movementAngle,Vector3.forward) * Vector3.up;
-        yield return new WaitForSeconds(2);
-        _canChangeDirection = true;
-    }
     private IEnumerator FireProjectile()
     {
         // cast a ray to see if you can see player

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2484440252426573152}
   - component: {fileID: 8482940661262056849}
   - component: {fileID: 5456375313831265842}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: DestructableChest
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -194,6 +194,9 @@ MonoBehaviour:
   currentHealth: 200
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &5456375313831265842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3927324720919517170}
   - component: {fileID: 6205847708226780010}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

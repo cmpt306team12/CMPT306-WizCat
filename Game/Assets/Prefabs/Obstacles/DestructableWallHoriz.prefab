@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4153421120468186785}
   - component: {fileID: 2818144572502361950}
   - component: {fileID: 2297905643974105377}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: DestructableWallHoriz
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -150,6 +150,8 @@ MonoBehaviour:
   EnemyScore: 0
   dropsLoot: 0
   animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &2297905643974105377
 MonoBehaviour:
   m_ObjectHideFlags: 0

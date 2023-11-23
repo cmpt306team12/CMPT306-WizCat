@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1908655498324009711}
   - component: {fileID: 8350970290162070929}
   - component: {fileID: 6479187931373572520}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: DestructablePot
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -185,6 +185,9 @@ MonoBehaviour:
   currentHealth: 25
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &8350970290162070929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7131217232853852620}
   - component: {fileID: 4635222779113344869}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

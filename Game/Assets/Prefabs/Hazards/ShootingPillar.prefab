@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6401101784425760008}
   - component: {fileID: 7924876272569515620}
   - component: {fileID: 1840827832594681941}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: ShootingPillar
   m_TagString: Wall
   m_Icon: {fileID: 0}

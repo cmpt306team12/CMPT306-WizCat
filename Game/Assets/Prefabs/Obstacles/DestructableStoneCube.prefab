@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3210272547050145842}
   - component: {fileID: 8473190641044830740}
   - component: {fileID: -6899948030421197833}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: DestructableStoneCube
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -194,6 +194,9 @@ MonoBehaviour:
   currentHealth: 400
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &-6899948030421197833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8615448542726229711}
   - component: {fileID: 4463840947982080106}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

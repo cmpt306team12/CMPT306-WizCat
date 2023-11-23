@@ -1,3 +1,4 @@
+using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private BaseLevelTiles baseLevelTiles;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject doorPrefab;
+    [SerializeField] private GameObject path;
     
     private int _width = 64;
     private int _height = 40;
@@ -25,6 +27,14 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         GenerateLevel();
+        StartCoroutine(DelayScan());
+    }
+
+    private IEnumerator DelayScan()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        AstarPath.active.Scan();
     }
 
     /// <summary>
@@ -84,6 +94,7 @@ public class LevelGenerator : MonoBehaviour
         List<Vector3Int> enemyTiles = GenerateEnemyTiles(5);
         _enemyCount = enemyTiles.Count;
         SpawnEnemies(enemyTiles);
+        
     }
 
     /// <summary>
@@ -449,7 +460,7 @@ public class LevelGenerator : MonoBehaviour
     {
         foreach (Vector3Int location in locations)
         {
-            Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            GameObject e = Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
         }
     }
 

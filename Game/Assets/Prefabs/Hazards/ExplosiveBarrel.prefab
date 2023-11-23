@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7399128295707742629}
   - component: {fileID: 3832738975261222920}
   - component: {fileID: 6313485658810024644}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Fuse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7076308876323130468}
   - component: {fileID: 7574644971577586945}
   - component: {fileID: 8835901161697973930}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: ExplosiveBarrel
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -295,6 +295,8 @@ MonoBehaviour:
   EnemyScore: 50
   dropsLoot: 0
   animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
 --- !u!114 &7574644971577586945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6276694493163734845}
   - component: {fileID: 8761267067989901906}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
