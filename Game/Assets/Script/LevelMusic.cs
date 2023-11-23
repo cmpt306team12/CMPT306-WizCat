@@ -41,6 +41,6 @@ public class LevelMusic : MonoBehaviour
         audioSource.volume = startVolume;
 
         // Play the new AudioClip
-        audioSource.Play();
+        //audioSource.Play();
     }
 }
