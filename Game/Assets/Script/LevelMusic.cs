@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,25 @@ public class LevelMusic : MonoBehaviour
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        // Check static bool if game is paused
+        if (PauseMenu.isPaused)
+        {
+            // Check whether the music is playing from audio source
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            audioSource.Pause();
+        }
+        else
+        {
+            // Resume the music
+            audioSource.UnPause();
+        }
     }
 
     public void changeBGM()

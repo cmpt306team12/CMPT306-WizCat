@@ -23,12 +23,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!PauseMenu.isPaused)
         {
-            gameObject.GetComponentInChildren<Wand>().Shoot();
-            // play player shoot sound effect
-            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameObject.GetComponentInChildren<Wand>().Shoot();
+                // play player shoot sound effect
+                gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
+            }
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
