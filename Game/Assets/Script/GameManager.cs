@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +16,14 @@ public class GameManager : MonoBehaviour
     public int levelCount = 1;
     public string levelContext = "";
 
+    public const string HighScoreKey = "HighScore";
+    private List<int> highScores = new List<int>();
+    private const int MaxHighScores = 10;
+
     [SerializeField] private GameObject player;
 
     private LevelGenerator _levelGenerator;
-    // Start is called before the first frame update
-    
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        // ClearPlayerPrefs();
         coinCount = StaticData.coins;
         scoreCount = StaticData.score;
         levelCount = StaticData.level;
@@ -73,4 +78,37 @@ public class GameManager : MonoBehaviour
         _levelGenerator.EnemyDefeated();
     }
 
+    public void PlayerDiedHighScore()
+    {
+        highScores.Add(scoreCount);
+        highScores.Sort((a, b) => b.CompareTo(a));
+        highScores = highScores.Take(MaxHighScores).ToList();
+
+        SaveHighScores();
+    }
+
+
+    public void SaveHighScores()
+    {
+        // Load existing high scores from PlayerPrefs
+        string existingScoresString = PlayerPrefs.GetString(HighScoreKey, "");
+        List<int> existingScores = new List<int>();
+
+        if (!string.IsNullOrEmpty(existingScoresString))
+        {
+            existingScores = existingScoresString.Split(',').Select(int.Parse).ToList();
+        }
+        // take top 10
+        existingScores.Add(scoreCount);
+        existingScores.Sort((a, b) => b.CompareTo(a));
+        existingScores = existingScores.Take(MaxHighScores).ToList();
+
+        string scoresString = string.Join(",", existingScores.Select(score => score.ToString()).ToArray());
+        PlayerPrefs.SetString(HighScoreKey, scoresString);
+        PlayerPrefs.Save();
+    }
+
+
+
 }
+

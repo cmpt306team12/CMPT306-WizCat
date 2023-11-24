@@ -31,4 +31,14 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
+
+    public void LoadHeighScores()
+    {
+        StartCoroutine(LoadLevel(4));
+    }
+
+    public void LoadMainMenu()
+    {
+        StartCoroutine(LoadLevel(3));
+    }
 }

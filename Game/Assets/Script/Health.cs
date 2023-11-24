@@ -103,6 +103,8 @@ public class Health : MonoBehaviour
 
                 // Play death animation
                 animator.SetBool("IsDead", true);
+                
+                GameManager.instance.SaveHighScores();
 
                 transform.gameObject.tag = "Untagged";
                 GetComponent<PlayerMovement>().enabled = false;

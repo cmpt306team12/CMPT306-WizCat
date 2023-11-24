@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: e992f3a5788a41e43ae3c9ec43e40b12
+  - enabled: 1
+    path: Assets/Scenes/HeighScores.unity
+    guid: 652ea9fd2cc520749a187099cfe7c0f9
   m_configObjects: {}
