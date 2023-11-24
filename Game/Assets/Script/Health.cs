@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
     public AudioClip hurtSFX1;
     public AudioClip hurtSFX2;
 
+    public GameObject FloatingTextPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,12 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
+        void ShowFloatingText(string text)
+        {
+            var floatingText = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+            floatingText.GetComponent<TextMesh>().text = text;
+        }
+
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
         {
             int chooseSound = Random.Range(1, 3);

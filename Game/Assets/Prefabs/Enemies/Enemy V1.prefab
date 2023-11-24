@@ -643,6 +643,8 @@ MonoBehaviour:
   animator: {fileID: 1400065234660262741}
   hurtSFX1: {fileID: 8300000, guid: 45565ded7e42ab84f9d0d2d7efea4e43, type: 3}
   hurtSFX2: {fileID: 8300000, guid: 3827f68db12aa944d89c0838deae7bd3, type: 3}
+  FloatingTextPrefab: {fileID: 4193690504407748929, guid: dc7ca480e978e0946be4f99d75f09f92,
+    type: 3}
 --- !u!114 &8187959008510221659
 MonoBehaviour:
   m_ObjectHideFlags: 0

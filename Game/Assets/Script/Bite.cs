@@ -16,6 +16,13 @@ public class Bite : MonoBehaviour
 
     public AudioClip biteSFX;
     public AudioClip noBiteSFX;
+    public GameObject biteEffect;
+    private Animator biteAnimator;
+
+    private void Start()
+    {
+        biteAnimator = biteEffect.GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -65,10 +72,16 @@ public class Bite : MonoBehaviour
                     Vector3 direction = targetEnemy.position - transform.position;
                     direction.Normalize();
                     transform.position = targetEnemy.position - direction; // distance between player and enemy after tele
-
-                    yield return new WaitForSeconds(0.5f);
+                    
+                    yield return new WaitForSeconds(0.4f);
+                    StartCoroutine(PlayBiteAnimation(targetEnemy.position));
+                    yield return new WaitForSeconds(biteAnimator.GetCurrentAnimatorClipInfo(0).Length);
                 }
             }
+        }
+        else{
+            StartCoroutine(PlayBiteAnimation(transform.position));
+
         }
 
         isTeleporting = false;
@@ -78,4 +91,25 @@ public class Bite : MonoBehaviour
     {
         return enemy != null;
     }
+
+    private IEnumerator PlayBiteAnimation(Vector3 bitePosition)
+    {
+
+        if (enemies.Length > 0)
+        {
+        // Lock the camera to the bite position if on enemy
+        Camera.main.transform.position = new Vector3(bitePosition.x, bitePosition.y, Camera.main.transform.position.z);
+        }
+
+        // Play bite
+        GameObject effectInstance = Instantiate(biteEffect, bitePosition, Quaternion.identity);
+        biteAnimator = effectInstance.GetComponent<Animator>();
+        biteAnimator.SetTrigger("Bite");
+        yield return new WaitForSeconds(biteAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        
+        Destroy(effectInstance);
+        Camera.main.transform.parent = null;
+    }
+
+
 }

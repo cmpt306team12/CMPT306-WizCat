@@ -460,6 +460,8 @@ MonoBehaviour:
   faceUp: 0
   movementSpeed: 6
   animator: {fileID: 0}
+  onCooldown: 0
+  dashCooldown: 3
 --- !u!114 &8020280483396010773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,10 +492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1808773ab63984089ddc783fbdd64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenEnemies: 0.5
   cooldown: 5
+  onCooldown: 0
   biteSFX: {fileID: 8300000, guid: 7c558b0a642dbac49a91fd6ca9c41b25, type: 3}
   noBiteSFX: {fileID: 8300000, guid: 89c7aaceff24d444baec6efcd6e2c471, type: 3}
+  biteEffect: {fileID: 7435750867525932473, guid: c50c49ee861bf884197ec354874644b8,
+    type: 3}
 --- !u!114 &475456157664746230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+  perkSound: {fileID: 0}
 --- !u!95 &8378376417109672244
 Animator:
   serializedVersion: 5
@@ -592,6 +597,7 @@ MonoBehaviour:
   animator: {fileID: 8378376417109672244}
   hurtSFX1: {fileID: 8300000, guid: 452eef5c5a6fb0944b34fa9233b2e6e2, type: 3}
   hurtSFX2: {fileID: 8300000, guid: 2deaaeb570b6017428336e549ff41b59, type: 3}
+  FloatingTextPrefab: {fileID: 0}
 --- !u!114 &607810041982684330
 MonoBehaviour:
   m_ObjectHideFlags: 0
