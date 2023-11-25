@@ -29,6 +29,18 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         GenerateLevel();
+        StartCoroutine(DelayScan());
+    }
+
+    /// <summary>
+    /// Delays the Pathfinding grid scan until after the level is generated.
+    /// If called right after, misses walls and props for some reason, so needs to be delayed a significant
+    /// amount of time
+    /// </summary>
+    private IEnumerator DelayScan()
+    {
+        yield return new WaitForSeconds(0.1f);
+        AstarPath.active.Scan();
     }
 
     /// <summary>

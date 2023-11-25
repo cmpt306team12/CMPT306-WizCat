@@ -1,3 +1,4 @@
+using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,19 +8,16 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    
     private Wand _wand;
 
     [SerializeField] private float firingCooldown;
     [SerializeField] private float moveSpeed;
-    private float sightDistance = 25f;
 
-    private bool _canFire = true;
+    private bool _canFire;
+    private bool _canMove;
     private bool _canChangeDirection = true;
 
     public LayerMask mask;
-
-    //private AudioSource shootSFX;
 
     private Vector3 _moveDir = Vector3.zero;
 
@@ -27,48 +25,103 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public AudioClip shootSoundEffect;
 
+    // Pathfinding stuff
+    public float nextWaypointDistance = 0.2f;
+    Path path;
+    int currWay;
+    bool reachedEndOfPath;
+    Seeker seeker;
+
+    // AI stuff
+    private bool playerSpotted;
+    private float sightDistance = 15.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
         _player = GameManager.instance.GetPlayer();
         _wand = gameObject.GetComponentInChildren<Wand>();
-        //shootSFX = GetComponent<AudioSource>();
+        seeker = GetComponent<Seeker>();
+        animator = GetComponent<Animator>();
+
+        _canFire = true;
+        _canMove = true;
+
+        reachedEndOfPath = false;
+        playerSpotted = false;
+        currWay = 0;
+        StartCoroutine(ChangeDirection());
+    }
+
+    private void UpdatePath()
+    {
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(gameObject.GetComponent<Collider2D>().bounds.center, _player.transform.position, OnPathComplete);
+        }
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currWay = 0;
+        }
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(_moveDir * moveSpeed);
-        animator = GetComponent<Animator>();
+        if (playerSpotted) // Player spotted, use pathfinding to chase them
+        {
+            if (path == null) return;
+            else if (currWay >= path.vectorPath.Count)
+            {
+                Debug.Log("END PATH");
+                reachedEndOfPath = true;
+                return;
+            } else reachedEndOfPath = false;
+
+            // Should move
+            _moveDir = (path.vectorPath[currWay] - gameObject.GetComponent<Collider2D>().bounds.center).normalized;
+            float distance = Vector2.Distance(gameObject.GetComponent<Collider2D>().bounds.center, path.vectorPath[currWay]);
+            if (distance < nextWaypointDistance) currWay++;
+            if (!reachedEndOfPath) transform.Translate(_moveDir * moveSpeed);
+        }
+        else // Player not spotted, move randomly
+        {
+            // Change direction if able to
+            if (_canChangeDirection) StartCoroutine(ChangeDirection());
+            // Move 
+            transform.Translate(_moveDir * moveSpeed);
+        }
+
+        // Start Fire Coroutine if you can fire
+        if (_canFire)
+        {
+            StartCoroutine(FireProjectile());
+        }
+
+        // Animator stuff
+        animator.SetFloat("Horizontal", _moveDir.x);
+        animator.SetFloat("Vertical", _moveDir.y);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         Vector3 scale = transform.localScale;
-        
+        transform.localScale = scale;*/
 
+    }
 
-        if (_canChangeDirection)
-        {
-            StartCoroutine(ChangeDirection());
-        }
-        if (_canFire)
-        {
-            StartCoroutine(FireProjectile());
-        } 
-
-        if (_player.transform.position.x > transform.position.x)
-        {
-            //animator.SetBool("faceLeft", false);
-        }
-        else
-        {
-            //animator.SetBool("faceLeft", true);
-        }
-        transform.localScale = scale; 
-        animator.SetFloat("Horizontal", _moveDir.x);
-        animator.SetFloat("Vertical", _moveDir.y);
-
+    void PlayerSpotted()
+    {
+        playerSpotted = true;
+        InvokeRepeating("UpdatePath", 0f, 1.0f);
+        return;
     }
 
     private IEnumerator ChangeDirection()
@@ -86,8 +139,8 @@ public class Enemy : MonoBehaviour
         Debug.DrawRay(_wand.transform.position, (_player.gameObject.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position));
         if (hit && hit.transform.CompareTag("Player"))
         {
+            if (!playerSpotted) PlayerSpotted();
             _canFire = false;
-            //shootSFX.Play();
             gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
             _wand.Shoot();
             yield return new WaitForSeconds(firingCooldown);

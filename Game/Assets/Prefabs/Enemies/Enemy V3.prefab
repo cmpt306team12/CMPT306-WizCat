@@ -413,7 +413,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4991798097585164787}
   - component: {fileID: 6097656995696800099}
-  - component: {fileID: 6985601266415900147}
   - component: {fileID: 493910303644214428}
   - component: {fileID: 665226902095151630}
   - component: {fileID: 1812020857443957346}
@@ -424,6 +423,8 @@ GameObject:
   - component: {fileID: -4805899373323720148}
   - component: {fileID: 1880579983663682265}
   - component: {fileID: 2468860389227553926}
+  - component: {fileID: 5755505793502365423}
+  - component: {fileID: 6593700711348906456}
   m_Layer: 25
   m_Name: Enemy V3
   m_TagString: Enemy
@@ -502,51 +503,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &6985601266415900147
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992927280101620473}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.022077084, y: 0.34084293}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7558458, y: 0.7436747}
-  m_EdgeRadius: 0
 --- !u!50 &493910303644214428
 Rigidbody2D:
   serializedVersion: 4
@@ -594,6 +550,7 @@ MonoBehaviour:
   animator: {fileID: 1400065234660262741, guid: 86c82a17bfc20104dad8d885a5939e3e,
     type: 3}
   shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+  nextWaypointDistance: 0.2
 --- !u!114 &1812020857443957346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +601,7 @@ MonoBehaviour:
   animator: {fileID: 1400065234660262741}
   hurtSFX1: {fileID: 8300000, guid: 45565ded7e42ab84f9d0d2d7efea4e43, type: 3}
   hurtSFX2: {fileID: 8300000, guid: 3827f68db12aa944d89c0838deae7bd3, type: 3}
+  FloatingTextPrefab: {fileID: 0}
 --- !u!114 &8187959008510221659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +713,69 @@ MonoBehaviour:
   - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
   - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
   - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
+--- !u!58 &5755505793502365423
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992927280101620473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02, y: 0.35}
+  serializedVersion: 2
+  m_Radius: 0.4
+--- !u!114 &6593700711348906456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992927280101620473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &3166187832591890669
 GameObject:
   m_ObjectHideFlags: 0

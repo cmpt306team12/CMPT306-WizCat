@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Pathfinding;
 
 public class Health : MonoBehaviour
 {
@@ -83,6 +84,8 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Enemy>().enabled = false;
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                gameObject.GetComponent<Enemy>().CancelInvoke();
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);

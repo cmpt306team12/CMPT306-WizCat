@@ -6724,6 +6724,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1307057710958827688, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
         type: 3}
       propertyPath: enemyPrefab
@@ -6735,6 +6740,11 @@ PrefabInstance:
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 2047562006}
+    - target: {fileID: 5274840184888955261, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5704256174433288058, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
         type: 3}
       propertyPath: m_ColliderPaths.Array.size
