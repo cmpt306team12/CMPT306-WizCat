@@ -481,7 +481,7 @@ public class LevelGenerator : MonoBehaviour
         changeScene.sceneBuildIndex = 2;
         for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
         {
-            walls.SetTile(new Vector3Int(x, _height, 0), baseLevelTiles.inLevelRoomBorder);
+            walls.SetTile(new Vector3Int(x, _height, 0), baseLevelTiles.exitDoor);
         }
     }
 
