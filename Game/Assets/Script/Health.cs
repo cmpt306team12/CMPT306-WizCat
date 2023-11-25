@@ -91,7 +91,6 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 gameObject.GetComponent<Enemy>().CancelInvoke();
-                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
@@ -128,7 +127,7 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 gameObject.GetComponent<Player>().CancelInvoke();
-                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                gameObject.GetComponentInChildren<Wand>().enabled = false;
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);

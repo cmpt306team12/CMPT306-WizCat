@@ -13,12 +13,16 @@ public class Player : MonoBehaviour
     // pickup sound
     public AudioClip perkSound;
 
+    // Wand ref
+    private Wand wand;
+
     // Start is called before the first frame update
     void Start()
     {
         // Apply perks Saved in StaticData
         gameObject.GetComponent<Perks>().SetPerks(StaticData.perks);
         gameObject.GetComponent<ProjectileProperties>().ApplyPerks(StaticData.perks);
+        wand = gameObject.GetComponentInChildren<Wand>();
         stunned = false;
     }
 
@@ -46,10 +50,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !stunned)
+        if (Input.GetMouseButtonDown(0) && !stunned && wand.enabled)
         {
-            Debug.Log("Stunned: " + stunned);
-            gameObject.GetComponentInChildren<Wand>().Shoot();
+            wand.Shoot();
             // play player shoot sound effect
             gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
         }

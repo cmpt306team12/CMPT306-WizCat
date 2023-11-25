@@ -125,6 +125,12 @@ public class Enemy : MonoBehaviour
         // Animator stuff
         animator.SetFloat("Horizontal", _moveDir.x);
         animator.SetFloat("Vertical", _moveDir.y);
+
+        // Pathfinding should stop if player is dead
+        if (playerSpotted && !_player.GetComponent<Collider2D>().enabled)
+        {
+            playerSpotted = false;
+        }
     }
 
     // Update is called once per frame
@@ -158,8 +164,13 @@ public class Enemy : MonoBehaviour
         Debug.DrawRay(_wand.transform.position, (_player.gameObject.GetComponent<BoxCollider2D>().bounds.center - _wand.transform.position));
         if (hit && hit.transform.CompareTag("Player"))
         {
-            if (!playerSpotted) PlayerSpotted();
             _canFire = false;
+            if (!playerSpotted && _player.gameObject.GetComponent<BoxCollider2D>().enabled)
+            {
+                PlayerSpotted();
+            }
+            yield return new WaitForSeconds(0.2f); // Delay so enemies dont fire the nanosecond they see you
+            
             gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
             _wand.Shoot();
             yield return new WaitForSeconds(firingCooldown);
