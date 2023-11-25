@@ -38,45 +38,50 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //---Strictly Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
-        dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
+        
+        if (!gameObject.GetComponent<Player>().IsStunned())
         {
+            dir = Vector2.zero;
+            //---Strictly Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
 
-            dir.x = -1;
-            animator.SetBool("faceLeft", true);
+            if (Input.GetKey(KeyCode.A))
+            {
+
+                dir.x = -1;
+                animator.SetBool("faceLeft", true);
+
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+
+                dir.x = 1;
+                animator.SetBool("faceLeft", false);
+
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                dir.y = 1;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                dir.y = -1;
+            }
+
+            animator.SetFloat("Horizontal", dir.x);
+            animator.SetFloat("Vertical", dir.y);
+            animator.SetFloat("Speed", dir.sqrMagnitude);
+
+            //---End of Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
 
         }
-        else if (Input.GetKey(KeyCode.D))
-        {
-
-            dir.x = 1;
-            animator.SetBool("faceLeft", false);
-
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            dir.y = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            dir.y = -1;
-        }
-
-        animator.SetFloat("Horizontal", dir.x);
-        animator.SetFloat("Vertical", dir.y);
-        animator.SetFloat("Speed", dir.sqrMagnitude);
-
-
-        //---End of Player Movement Controls------------------------------------------------------------------------------------------------------------------------------
     }
 
     void Update()
     {
 
         // Dash on spacebar down
-        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && currentDashCooldown<=0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        if (Input.GetKeyDown(KeyCode.Space) && !gameObject.GetComponent<Player>().IsStunned() && dashTime <= 0 && currentDashCooldown<=0 && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             gameObject.GetComponent<RandomSound>().PLayClipAt(dashSoundEffect, transform.position);
             dashDirection = dir.normalized;
@@ -100,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             onCooldown=false;
         }
 
-        if (canDash == true)
+        if (canDash == true && !gameObject.GetComponent<Player>().IsStunned())
         {
             if (dashTime > 0)
             {
@@ -125,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Can't dash
-        else
+        else if (!gameObject.GetComponent<Player>().IsStunned())
         {
             dir.Normalize();
             rb.velocity = movementSpeed * dir;

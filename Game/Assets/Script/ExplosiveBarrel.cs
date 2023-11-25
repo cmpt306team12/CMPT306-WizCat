@@ -6,7 +6,8 @@ public class ExplosiveBarrel : MonoBehaviour
 {
     [SerializeField] float explodingBarrelFuseTime = 2.0f;
     [SerializeField] float ExplodingBarrelExplosionScale = 1.0f;
-    [SerializeField] float explodingBarrelDamage = 50.0f;
+    [SerializeField] float explodingBarrelDamage = 51.0f;
+    [SerializeField] float explosionKnockback = 5.0f;
     public GameObject explosion;
     public GameObject fuse;
     private bool isLit;
@@ -45,6 +46,7 @@ public class ExplosiveBarrel : MonoBehaviour
         GameObject expl = Instantiate(explosion, transform.position + offset, transform.rotation); // create explosion offscreen
         expl.transform.localScale = new Vector3(ExplodingBarrelExplosionScale, ExplodingBarrelExplosionScale, ExplodingBarrelExplosionScale); // scale explosion
         expl.GetComponent<Explosion>().SetDamage(explodingBarrelDamage); // Set explosion damage
+        expl.GetComponent<Explosion>().SetKnockback(explodingBarrelDamage); // Set explosion damage
         expl.transform.position = transform.position; // move explosion back
         Destroy(gameObject);
     }
