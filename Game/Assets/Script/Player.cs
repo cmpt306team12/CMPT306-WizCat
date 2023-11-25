@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public float fireRate;
     public AudioClip shootSoundEffect;
     private bool stunned;
-    [SerializeField] float recoverTime = 2.0f;
 
     // pickup sound
     public AudioClip perkSound;
@@ -23,10 +22,10 @@ public class Player : MonoBehaviour
         stunned = false;
     }
 
-    public void Stun()
+    public void Stun(float stunTime)
     {
         stunned = true;
-        StartCoroutine(Recover(recoverTime));
+        StartCoroutine(Recover(stunTime));
     }
 
     public bool IsStunned()
@@ -39,7 +38,6 @@ public class Player : MonoBehaviour
         // wait for specified time
         yield return new WaitForSeconds(rt);
         stunned = false;
-        Debug.Log("Recovered from stun");
         yield return null;
     }
 

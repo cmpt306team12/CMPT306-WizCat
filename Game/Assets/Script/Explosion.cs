@@ -6,6 +6,7 @@ public class Explosion : MonoBehaviour
 {
     public float explosionDamage = 0.0f;
     public float knockback = 0.0f;
+    public float stunTime = 1.0f;
     public AudioClip explosionClip;
     private void Start()
     {
@@ -15,17 +16,6 @@ public class Explosion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
         {
-            
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                // Stun player so knockback can be applied
-                Debug.Log("Stunned Player");
-                collision.gameObject.GetComponent<Player>().Stun();
-            } else if (collision.gameObject.CompareTag("Enemy"))
-            {
-                // Stun enemy
-            }
-
             // Ally the knockback to the RigidBody2D
             float scaleFactor = 1.0f;
             if (collision.GetComponent<Rigidbody2D>() != null)
@@ -38,11 +28,20 @@ public class Explosion : MonoBehaviour
                 {
                     scaleFactor = Mathf.Clamp((((1.0f - (dist / radius)) / 0.5f) * 0.75f) + 0.25f, 0.25f, 1.0f);
                     scaledKnockback = scaleFactor * knockback;
-                    Debug.Log("F: " + scaleFactor + " D: " + dist + "P: " + (dist/radius));
+                    //Debug.Log("F: " + scaleFactor + " D: " + dist + "P: " + (dist/radius));
                 }
                 collision.gameObject.GetComponent<Health>().ApplyDamage(Mathf.Floor(explosionDamage * scaleFactor));
                 Vector2 knockbackDirection = (collision.GetComponent<Collider2D>().bounds.center - gameObject.transform.position).normalized;
                 collision.GetComponent<Rigidbody2D>().AddForce(knockbackDirection * scaledKnockback, ForceMode2D.Impulse);
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    // Stun player so knockback can be applied
+                    collision.gameObject.GetComponent<Player>().Stun(stunTime * scaleFactor);
+                } else if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    // Stun enemy
+                    collision.gameObject.GetComponent<Enemy>().Stun(stunTime * scaleFactor);
+                }
             }
         }
 

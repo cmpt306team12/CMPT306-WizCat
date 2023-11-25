@@ -32,9 +32,10 @@ public class Enemy : MonoBehaviour
     bool reachedEndOfPath;
     Seeker seeker;
 
-    // AI stuff
+    // AI and behaviour stuff
     private bool playerSpotted;
     private float sightDistance = 15.0f;
+    private bool stunned;
 
 
     // Start is called before the first frame update
@@ -52,6 +53,24 @@ public class Enemy : MonoBehaviour
         playerSpotted = false;
         currWay = 0;
         StartCoroutine(ChangeDirection());
+    }
+
+    public void Stun(float stunTime)
+    {
+        stunned = true;
+        StartCoroutine(Recover(stunTime));
+    }
+
+    public bool IsStunned()
+    {
+        return stunned;
+    }
+    IEnumerator Recover(float rt)
+    {
+        // wait for specified time
+        yield return new WaitForSeconds(rt);
+        stunned = false;
+        yield return null;
     }
 
     private void UpdatePath()
@@ -73,7 +92,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerSpotted) // Player spotted, use pathfinding to chase them
+        if (playerSpotted && !stunned) // Player spotted, use pathfinding to chase them
         {
             if (path == null) return;
             else if (currWay >= path.vectorPath.Count)
@@ -89,7 +108,7 @@ public class Enemy : MonoBehaviour
             if (distance < nextWaypointDistance) currWay++;
             if (!reachedEndOfPath) transform.Translate(_moveDir * moveSpeed);
         }
-        else // Player not spotted, move randomly
+        else if (!stunned) // Player not spotted, move randomly
         {
             // Change direction if able to
             if (_canChangeDirection) StartCoroutine(ChangeDirection());
@@ -98,7 +117,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Start Fire Coroutine if you can fire
-        if (_canFire)
+        if (_canFire && !stunned)
         {
             StartCoroutine(FireProjectile());
         }
