@@ -47,13 +47,10 @@ public class Health : MonoBehaviour
             else
             {
                 gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
-            }
-        }
-
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
-        {
+            } 
             animator.SetTrigger("IsHurt");
         }
+
 
         currentHealth -= damageAmount;
 
