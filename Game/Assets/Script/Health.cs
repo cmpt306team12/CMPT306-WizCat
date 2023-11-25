@@ -57,11 +57,16 @@ public class Health : MonoBehaviour
             {
                 gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
             }
+            animator.SetTrigger("IsHurt");
         }
 
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Obstacle") && gameObject.GetComponent<ExplosiveBarrel>() != null)
         {
-            animator.SetTrigger("IsHurt");
+            // Explosive barrel - set off fuze
+            if (!gameObject.GetComponent<ExplosiveBarrel>().IsLit())
+            {
+                gameObject.GetComponent<ExplosiveBarrel>().LightFuse();
+            }
         }
 
         currentHealth -= damageAmount;
@@ -93,6 +98,11 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.CompareTag("Obstacle"))
             {
+                if (gameObject.GetComponent<ExplosiveBarrel>() != null)
+                {
+                    // Make explosive barrel explode
+                    gameObject.GetComponent<ExplosiveBarrel>().Explode();
+                }
                 // if Gameobject is an obstacle, drop loot if it does, then destroy
                 if (dropsLoot)
                 {
