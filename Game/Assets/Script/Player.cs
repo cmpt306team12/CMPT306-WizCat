@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Perk"))
         {
             GetComponentInChildren<AudioSource>().clip = perkSound;
+            GetComponentInChildren<AudioSource>().volume = 0.25f;
             GetComponentInChildren<AudioSource>().Play();
             int id = collision.gameObject.GetComponent<Perk>().GetPerkID();
             collision.gameObject.GetComponent<Perk>().Despawn();
