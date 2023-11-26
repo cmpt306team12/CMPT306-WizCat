@@ -8,8 +8,9 @@ public class CameraFollow : MonoBehaviour
     private Camera cam;
     [SerializeField] float cameraSize = 5.0f;
     [SerializeField] float xLimit = 3.0f;
-    [SerializeField] float yLimit = 3.0f;
+    [SerializeField] float yLimit = 2.5f;
     [SerializeField] float smoothTime = 0.5f;
+    [SerializeField] private float deadzone = 2.5f;
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
@@ -21,13 +22,27 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 targetPos = (player.position + mousePos) / 2f;
+        Vector3 playerPos = player.position;
+        Vector3 cameraPos = transform.position;
+        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        targetPos.x = Mathf.Clamp(targetPos.x, -xLimit + player.position.x, xLimit + player.position.x);
-        targetPos.y = Mathf.Clamp(targetPos.y, -yLimit + player.position.y, yLimit + player.position.y);
-        targetPos.z = transform.position.z;
-
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
+        float mouseDistFromPlayer = Mathf.Abs(Vector2.Distance(mousePos, playerPos));
+        Vector3 targetPos;
+        if (mouseDistFromPlayer > deadzone)
+        {
+            Vector3 deadZoneOffset = deadzone * ((Vector2) mousePos - (Vector2) playerPos).normalized;
+            targetPos = (playerPos + mousePos - deadZoneOffset) / 2f;
+            targetPos.x = Mathf.Clamp(targetPos.x, -xLimit + playerPos.x, xLimit + playerPos.x);
+            targetPos.y = Mathf.Clamp(targetPos.y, -yLimit + playerPos.y, yLimit + playerPos.y);
+            targetPos.z = cameraPos.z;
+        }
+        else
+        {
+            targetPos = playerPos;
+            targetPos.z = cameraPos.z;
+        }
+        
+        cameraPos = Vector3.SmoothDamp(cameraPos, targetPos, ref velocity, smoothTime);
+        transform.position = cameraPos;
     }
 }

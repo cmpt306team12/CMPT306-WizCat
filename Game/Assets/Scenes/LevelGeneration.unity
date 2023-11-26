@@ -670,7 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSize: 6
   xLimit: 3
-  yLimit: 3
+  yLimit: 2.5
   smoothTime: 0.5
 --- !u!81 &985890633
 AudioListener:

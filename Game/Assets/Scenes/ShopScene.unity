@@ -9497,7 +9497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSize: 4
   xLimit: 3
-  yLimit: 3
+  yLimit: 2.5
   smoothTime: 0.2
 --- !u!1001 &523140433
 PrefabInstance:
