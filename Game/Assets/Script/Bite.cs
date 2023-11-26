@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class Bite : MonoBehaviour
 {
@@ -15,14 +17,10 @@ public class Bite : MonoBehaviour
     public static bool canBite = false;
 
     public AudioClip biteSFX;
-    public AudioClip noBiteSFX;
     public GameObject biteEffect;
     private Animator biteAnimator;
 
-    private void Start()
-    {
-        biteAnimator = biteEffect.GetComponent<Animator>();
-    }
+    public float damage = 10.0f;
 
     private void Update()
     {
@@ -37,14 +35,13 @@ public class Bite : MonoBehaviour
                     isTeleporting = true;
                     lastTeleportTime = currentTime;
                     StartCoroutine(TeleportToNearestEnemies());
-                    gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
                     onCooldown = true;
                 }
                 else if (currentTime - lastCPressTime > cooldown)
                 {
                     lastTeleportTime = currentTime - cooldown;
                     lastCPressTime = currentTime;
-                    gameObject.GetComponent<RandomSound>().PLayClipAt(noBiteSFX, transform.position);
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
                 }
             }
         }
@@ -58,49 +55,82 @@ public class Bite : MonoBehaviour
     private IEnumerator TeleportToNearestEnemies()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> validEnemies = new List<GameObject>();
 
         if (enemies.Length > 0)
         {
             int maxEnemiesToTeleport = Mathf.Min(enemies.Length, 2);
+           
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if (IsEnemyValid(enemies[i]))
+                {
+                    validEnemies.Add(enemies[i]);
+                }
+            }
+
+            maxEnemiesToTeleport = Mathf.Min(validEnemies.Count, 2);
 
             for (int i = 0; i < maxEnemiesToTeleport; i++)
             {
-                targetEnemy = enemies[i].transform;
+                targetEnemy = validEnemies[i].transform;
 
-                if (IsEnemyValid(targetEnemy.gameObject))
-                {
-                    Vector3 direction = targetEnemy.position - transform.position;
-                    direction.Normalize();
-                    transform.position = targetEnemy.position - direction; // distance between player and enemy after tele
-                    
-                    yield return new WaitForSeconds(0.4f);
-                    StartCoroutine(PlayBiteAnimation(targetEnemy.position));
-                    yield return new WaitForSeconds(biteAnimator.GetCurrentAnimatorClipInfo(0).Length);
-                }
+                Vector3 direction = targetEnemy.position - transform.position;
+                direction.Normalize();
+                transform.position = targetEnemy.position - direction; // distance between player and enemy after tele
+
+                yield return new WaitForSeconds(0.4f);
+                targetEnemy.GetComponent<Health>().ApplyDamage(damage); // deal damage to enemy
+                StartCoroutine(PlayBiteAnimation(targetEnemy.position, validEnemies));
+                yield return new WaitForSeconds(biteAnimator.GetCurrentAnimatorClipInfo(0).Length);
+            }
+
+            if(validEnemies.Count==0){
+                StartCoroutine(PlayBiteAnimation(transform.position, validEnemies));
             }
         }
-        else{
-            StartCoroutine(PlayBiteAnimation(transform.position));
 
+        else{
+            StartCoroutine(PlayBiteAnimation(transform.position, validEnemies));
         }
+       
+        
 
         isTeleporting = false;
     }
 
     private bool IsEnemyValid(GameObject enemy)
     {
-        return enemy != null;
+        if (enemy != null)
+        {
+            Collider2D enemyCollider = enemy.GetComponent<Collider2D>();
+            Rigidbody2D enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
+
+            if (enemyCollider != null && enemyCollider.enabled && enemyRigidbody != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    private IEnumerator PlayBiteAnimation(Vector3 bitePosition)
+
+    private IEnumerator PlayBiteAnimation(Vector3 bitePosition, List<GameObject> validEnemies)
     {
 
-        if (enemies.Length > 0)
+        float yOffset = 1.0f;
+        float xOffset = 0.5f;
+        bitePosition += new Vector3(xOffset, yOffset, 0);
+
+        if (validEnemies.Count>0)
         {
         // Lock the camera to the bite position if on enemy
         Camera.main.transform.position = new Vector3(bitePosition.x, bitePosition.y, Camera.main.transform.position.z);
         }
-
+        
+        gameObject.GetComponent<RandomSound>().PLayClipAt(biteSFX, transform.position);
+        
         // Play bite
         GameObject effectInstance = Instantiate(biteEffect, bitePosition, Quaternion.identity);
         biteAnimator = effectInstance.GetComponent<Animator>();
