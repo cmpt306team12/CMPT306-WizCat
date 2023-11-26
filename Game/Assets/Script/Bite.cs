@@ -89,7 +89,12 @@ public class Bite : MonoBehaviour
 
     private bool IsEnemyValid(GameObject enemy)
     {
-        return enemy != null;
+        if(enemy != null){
+            if(enemy.GetComponent<Collider2D>().enabled){
+                return true;
+            }
+        }
+        return false;
     }
 
     private IEnumerator PlayBiteAnimation(Vector3 bitePosition)
