@@ -888,7 +888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HeighScores
+  m_text: High Scores
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef3ce19cf2c10f40a4199d39d3f345b, type: 2}
   m_sharedMaterial: {fileID: 4812089106464548504, guid: aef3ce19cf2c10f40a4199d39d3f345b,
@@ -2746,7 +2746,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 831166445}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: LoadHeighScores
+        m_MethodName: LoadHighScores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

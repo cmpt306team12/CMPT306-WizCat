@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(levelIndex);
     }
 
-    public void LoadHeighScores()
+    public void LoadHighScores()
     {
         StartCoroutine(LoadLevel(4));
     }
