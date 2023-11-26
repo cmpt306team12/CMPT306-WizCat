@@ -10348,6 +10348,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &626719667
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7175074
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.077851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698932869487624501, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
+        type: 3}
+      propertyPath: m_Name
+      value: ReadableSign
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38236bc4f4709504d8e1f0e3c3c196bd, type: 3}
 --- !u!1001 &629781612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12508,6 +12581,7 @@ GameObject:
   - component: {fileID: 1156827751}
   - component: {fileID: 1156827750}
   - component: {fileID: 1156827753}
+  - component: {fileID: 1156827754}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12577,6 +12651,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 475341090}
   coinCount: 0
+--- !u!114 &1156827754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156827749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84526c9fb686e974b86a7efc37c7bcda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - Perk and Item Shop<br>NO LOITERING!
+  - Perk and Item Shop<br>All sales final.
+  - Perk and Item Shop<br>Sale on now!
+  - Perk and Item Shop<br>Everything must go!
+  - Perk and Item Shop<br>Buy one get one full price!
+  - Perk and Item Shop<br>Shoplifters will be vaporized.
+  - Perk and Item Shop<br>Please stop destroying my stuff.
+  - Perk and Item Shop<br>Washrooms for staff only.
+  - Perk and Item Shop<br>Complimentary healing at the statue.
 --- !u!4 &1159434393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 9e7797bb065982d4497d030f065d6e2f,
@@ -12948,7 +13044,6 @@ Transform:
   - {fileID: 1461156614}
   - {fileID: 1321072104}
   - {fileID: 573435069}
-  - {fileID: 1941317261}
   m_Father: {fileID: 2053583979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1252202585 stripped
@@ -14087,84 +14182,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfa0a5ef94fb05d4f97d095a05dc55c5, type: 3}
---- !u!1001 &1627607766
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1251146765}
-    m_Modifications:
-    - target: {fileID: 2055102311959635369, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_Name
-      value: PF Props Road Sign E
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635369, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.025641
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4190179
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.268878
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b823debd04fd63f4d8e579210fe0ff20, type: 3}
 --- !u!4 &1636554855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,
@@ -39855,13 +39872,120 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1861971047}
+    m_ColliderPaths:
+    - - X: 172500000
+        Y: 90000000
+      - X: -152500000
+        Y: 90000000
+      - X: -152500000
+        Y: -132500000
+      - X: 172500000
+        Y: -132500000
+    - - X: -150000000
+        Y: -130000000
+      - X: -150000000
+        Y: 70000000
+      - X: 170000000
+        Y: 70000000
+      - X: 170000000
+        Y: -130000000
+    - - X: -30000000
+        Y: -69687504
+      - X: -30000000
+        Y: -40000000
+      - X: -100000000
+        Y: -40000000
+      - X: -100000000
+        Y: 30000000
+      - X: 80000000
+        Y: 30000000
+      - X: 80000000
+        Y: -40000000
+      - X: 10000000
+        Y: -40000000
+      - X: 10000000
+        Y: -69687504
+      - X: 10312500
+        Y: -70000000
+      - X: 99687504
+        Y: -70000000
+      - X: 100000000
+        Y: -69687504
+      - X: 100000000
+        Y: 60000000
+      - X: -120000000
+        Y: 60000000
+      - X: -120000000
+        Y: -70000000
+      - X: -30312500
+        Y: -70000000
+    - - X: -117500000
+        Y: -50000000
+      - X: -117500000
+        Y: 57500000
+      - X: 97500000
+        Y: 57500000
+      - X: 97500000
+        Y: -50000000
+      - X: 12500000
+        Y: -50000000
+      - X: 12500000
+        Y: -42500000
+      - X: 82500000
+        Y: -42500000
+      - X: 82500000
+        Y: 50000000
+      - X: -102500000
+        Y: 50000000
+      - X: -102500000
+        Y: -42500000
+      - X: -32500000
+        Y: -42500000
+      - X: -32500000
+        Y: -50000000
   m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.5
+    m_Paths:
+    - - {x: 17.249971, y: -13.25}
+      - {x: 17.249971, y: 9}
+      - {x: -15.25, y: 8.99997}
+      - {x: -15.249971, y: -13.25}
+    - - {x: 17, y: -12.99997}
+      - {x: -15, y: -12.99997}
+      - {x: -14.999971, y: 7}
+      - {x: 17, y: 6.9999704}
+    - - {x: -3.0312607, y: -7}
+      - {x: -3, y: -6.9687395}
+      - {x: -3.0000293, y: -4}
+      - {x: -10, y: -3.9999704}
+      - {x: -9.99997, y: 3}
+      - {x: 8, y: 2.9999707}
+      - {x: 7.9999704, y: -4}
+      - {x: 1, y: -4.000029}
+      - {x: 1.0000076, y: -6.9687586}
+      - {x: 1.0312608, y: -7}
+      - {x: 9.968759, y: -6.999992}
+      - {x: 10, y: -6.9687395}
+      - {x: 9.99997, y: 6}
+      - {x: -12, y: 5.999971}
+      - {x: -11.99997, y: -7}
+    - - {x: 9.75, y: -4.9999704}
+      - {x: 1.25, y: -4.9999704}
+      - {x: 1.2500294, y: -4.25}
+      - {x: 8.25, y: -4.249971}
+      - {x: 8.24997, y: 5}
+      - {x: -10.25, y: 4.999971}
+      - {x: -10.24997, y: -4.25}
+      - {x: -3.25, y: -4.2500296}
+      - {x: -3.2500293, y: -5}
+      - {x: -11.75, y: -4.9999704}
+      - {x: -11.74997, y: 5.75}
+      - {x: 9.75, y: 5.7499704}
+  m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1861971043}
@@ -39923,7 +40047,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -43225,12 +43349,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 502930477}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1941317261 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: b823debd04fd63f4d8e579210fe0ff20,
-    type: 3}
-  m_PrefabInstance: {fileID: 1627607766}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1942841188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43953,6 +44071,7 @@ SceneRoots:
   - {fileID: 55272474}
   - {fileID: 699240049}
   - {fileID: 885611105}
+  - {fileID: 626719667}
   - {fileID: 405302507}
   - {fileID: 2084554961}
   - {fileID: 680727702}
