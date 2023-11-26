@@ -19,13 +19,16 @@ public class Coin : MonoBehaviour {
     {
         // counter = GameManager.instance.GetComponent<CoinCounter>();
         gameManager = GameManager.instance;
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameManager.instance.GetPlayer().transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        MoveTowardsPlayer();
+        if (playerTransform.gameObject.GetComponent<Collider2D>().enabled)
+        {
+            MoveTowardsPlayer();
+        }
     }
 
 
