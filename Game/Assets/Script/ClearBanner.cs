@@ -10,6 +10,8 @@ public class ClearBanner : MonoBehaviour
     [SerializeField] private bool showBanner = false;
     [SerializeField] private bool hideBanner = false;
 
+    [SerializeField] private int showBannerFor = 5;
+
     public void ShowBanner()
     {
         showBanner = true;
@@ -17,7 +19,7 @@ public class ClearBanner : MonoBehaviour
 
     public IEnumerator HideBanner()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(showBannerFor);
         hideBanner = true;
     }
 
