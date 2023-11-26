@@ -86,7 +86,7 @@ public class Health : MonoBehaviour
                 tempList.AddRange(new string[]{
                 "My monitor was unplugged",
                 "You're just a cat...",
-                "Friendly reminder: life is meant to be lived. unless it's your life, in which case it was meant to given to me.",
+                "Friendly reminder: life is meant to be lived. Unless it's your life, in which case it was meant to given to me.",
                 "They say the definition of insanity is repeating the same option over and over again and expecting different results. But hear me out - there's no way you're going to kill me again.",
                 "Please, we don’t believe you should be swagging that hard ok, listen, we worry about your hands, feet, head, ankles, arms, and face.",
                 "Are you hungry?",
