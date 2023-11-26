@@ -3947,6 +3947,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2079344000394495657, guid: a9a8497c31e088c40b28b3d969564d37,
+        type: 3}
+      propertyPath: m_Name
+      value: BiteUI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
