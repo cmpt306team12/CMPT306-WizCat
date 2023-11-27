@@ -35,6 +35,17 @@ public class Health : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private IEnumerator RedHurt()
+    {
+        //getting the wands might be a little scuffed
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+       
+    }
+
     public void ApplyDamage(float damageAmount)
     {
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
@@ -47,7 +58,9 @@ public class Health : MonoBehaviour
             else
             {
                 gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
-            } 
+            }
+           
+            StartCoroutine(RedHurt());
             animator.SetTrigger("IsHurt");
         }
 
