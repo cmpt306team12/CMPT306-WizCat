@@ -86,8 +86,8 @@ public class LevelGenerator : MonoBehaviour
         SpawnStructures(partitionedAreas);
         SpawnInnerBorders(borders);
         AddExit();
-        // TODO: Rework enemy spawning when power budgeting system is implemented
-        List<Vector3Int> enemyTiles = GenerateEnemyTiles(5);
+        int possibleEnemyCount = GenerateEnemyCount();
+        List<Vector3Int> enemyTiles = GenerateEnemyTiles(possibleEnemyCount);
         _enemyCount = enemyTiles.Count;
         SpawnEnemies(enemyTiles);
     }
@@ -364,10 +364,13 @@ public class LevelGenerator : MonoBehaviour
             }
             // Add openings in each border in order to connect the rooms
             List<Vector3Int> tiles = GenerateTilesFromRect(border);
-            int randomTileIndexToRemove = Random.Range(1, tiles.Count - 1);
-            walls.SetTile(tiles[randomTileIndexToRemove], null);
-            walls.SetTile(tiles[randomTileIndexToRemove - 1], null);
-            walls.SetTile(tiles[randomTileIndexToRemove + 1], null);
+            for (int i = 0; i < 3; i++)
+            {
+                int randomTileIndexToRemove = Random.Range(1, tiles.Count - 1);
+                walls.SetTile(tiles[randomTileIndexToRemove], null);
+                walls.SetTile(tiles[randomTileIndexToRemove - 1], null);
+                walls.SetTile(tiles[randomTileIndexToRemove + 1], null);
+            }
         }
     }
 
@@ -386,6 +389,16 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return tiles;
+    }
+    
+    /// <summary>
+    /// Generate the amount of enemies that should generate on the current level
+    /// </summary>
+    private int GenerateEnemyCount()
+    {
+        int minEnemies = Mathf.Min(10,Mathf.Max(1, StaticData.level - 5));
+        int maxEnemies = Mathf.Min(StaticData.level, 11);
+        return Random.Range(minEnemies, maxEnemies);
     }
 
     /// <summary>
@@ -448,14 +461,24 @@ public class LevelGenerator : MonoBehaviour
     }
     
     /// <summary>
-    /// Spawns enemies on the given location tiles
+    /// Spawns enemies on the given location tiles and adds perks to them based on the current level
     /// </summary>
-    // TODO: Rework this method when power budgeting system is implemented
     private void SpawnEnemies(List<Vector3Int> locations)
     {
+        List<Tuple<int, int>> possiblePerks = Perks.GetValidEnemyPerks();
+        int powerBudget = StaticData.level * 10;
+        List<Perks> enemyPerksList = new List<Perks>();
         foreach (Vector3Int location in locations)
         {
-            Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            GameObject enemy = Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            enemyPerksList.Add(enemy.GetComponent<Perks>());
+        }
+        // Add perks until the power budget is used up
+        while (powerBudget > 0)
+        {
+            Tuple<int, int> selectedPerk = possiblePerks[Random.Range(0, possiblePerks.Count)];
+            enemyPerksList[Random.Range(0, enemyPerksList.Count)].AddPerk(selectedPerk.Item1);
+            powerBudget -= selectedPerk.Item2;
         }
     }
 
