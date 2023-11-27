@@ -19,7 +19,7 @@ public class ProjectileProperties : MonoBehaviour
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
     [SerializeField] float lifetimeMod = 0.5f;
-    [SerializeField] float damageMod = 3.0f;
+    [SerializeField] float damageMod = 5.0f;
     [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
@@ -40,9 +40,22 @@ public class ProjectileProperties : MonoBehaviour
     private bool bursting = false;
     private int burstNumber = baseBurstNumber;
     private int splits = baseSplits;
+
+    // bonus attributes
+    private float bonusScaleMod = 0.05f;
+    private float bonusSpeedMod = 1.0f;
+    private float bonusDamageMod = 2.0f;
+    private float bonusDamage = 0.0f;
+    private float bonusSpeed = 0.0f;
+    private float bonusSize = 0.0f;
     
     public void ApplyPerks(int[] perks)
     {
+        // Reset bonus values first
+        bonusDamage = 0.0f;
+        bonusSize = 0.0f;
+        bonusSpeed = 0.0f;
+
         for (int i = 0; i < perks.Length; i++)
         {
             switch (i)
@@ -53,10 +66,18 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 1: // Speed up/down perks: +50% per speed perk
                     this.speed = baseSpeed * (Mathf.Pow(speedFactor, perks[i]));
+                    if (perks[i] < 0) // Have speed down perks; apply damage bonus
+                    {
+                        bonusDamage = bonusDamage + Mathf.Abs(perks[i] * bonusDamageMod);
+                    }
                     break;
 
                 case 2: // Lifetime up/down perks
                     this.lifetime = baseLifetime + (perks[i] * lifetimeMod);
+                    if (perks[i] < 0) // Have lifetime down perks; apply size bonus
+                    {
+                        bonusSize = bonusSize + (Mathf.Abs(perks[i] * bonusScaleMod));
+                    }
                     break;
 
                 case 3: // Damage up/down
@@ -73,6 +94,10 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 5: // Size up/down
                     this.scale = baseScale * (Mathf.Pow(scaleMod, perks[i]));
+                    if (perks[i] < 0) //Have size down perks, apply bonus speed
+                    {
+                        bonusSpeed = bonusSpeed + (Mathf.Abs(perks[i] * bonusSpeedMod));
+                    }
                     break;
 
                 case 6: // Burst shot
@@ -96,11 +121,11 @@ public class ProjectileProperties : MonoBehaviour
     }
 
     public float getLifetime() { return lifetime; }
-    public float getDamage() { return damage; }
-    public float getSpeed() { return speed; }
+    public float getDamage() { return damage + bonusDamage; }
+    public float getSpeed() { return speed + bonusSpeed; }
     public int getBounces() { return bounces; }
     public bool isExplosive() {  return explosive; }
-    public float getScale() {  return scale; }
+    public float getScale() {  return scale + bonusSize; }
     public float getExplosionScale() { return explosionScale; }
     public Color getSpriteColor() { return myColor; }
     public bool isBursting() {  return bursting; }
