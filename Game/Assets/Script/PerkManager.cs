@@ -94,4 +94,18 @@ public class Perks : MonoBehaviour
     {
         this.perks = perks;
     }
+
+    public static List<Tuple<int, int>> GetValidEnemyPerks()
+    {
+        return new List<Tuple<int, int>>{
+            new Tuple<int, int>(0, 1), // bounce+
+            new Tuple<int, int>(1, 2), // speed+
+            new Tuple<int, int>(3, 1), // time+
+            new Tuple<int, int>(5, 2), // damage+
+            new Tuple<int, int>(7, 2), // explosive+
+            new Tuple<int, int>(8, 3), // size+
+            new Tuple<int, int>(10, 3), // burst+
+            new Tuple<int, int>(14, 2), // splits+
+    };
+}
 }
