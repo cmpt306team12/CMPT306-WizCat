@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     private bool playerSpotted;
     private float sightDistance = 15.0f;
     private bool stunned;
+    public GameObject stun;
 
 
     // Start is called before the first frame update
@@ -67,10 +68,20 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Recover(float rt)
     {
-        // wait for specified time
+        // Display stunned icon
+        if (stun == null) yield break;
+        else
+        {
+            stun.SetActive(true);
+        }
         yield return new WaitForSeconds(rt);
+        if (stun == null) yield break;
+        else
+        {
+            stun.SetActive(false);
+        }
+        // recover from stun
         stunned = false;
-        yield return null;
     }
 
     private void UpdatePath()

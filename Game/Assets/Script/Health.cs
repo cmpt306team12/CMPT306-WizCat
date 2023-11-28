@@ -91,10 +91,13 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 gameObject.GetComponent<Enemy>().CancelInvoke();
+                Destroy(gameObject.GetComponent<Enemy>().stun);
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                gameObject.transform.GetChild(5).gameObject.SetActive(false);
             }
             else if (gameObject.CompareTag("Obstacle"))
             {
@@ -128,10 +131,13 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 gameObject.GetComponent<Player>().CancelInvoke();
                 gameObject.GetComponentInChildren<Wand>().enabled = false;
+                Destroy(gameObject.GetComponent<Player>().stun);
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                gameObject.transform.GetChild(5).gameObject.SetActive(false);
 
                 this.enabled = false;
 

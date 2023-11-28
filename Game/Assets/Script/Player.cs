@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     // Wand ref
     private Wand wand;
 
+    // Stun gameobject reference
+    public GameObject stun;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +42,20 @@ public class Player : MonoBehaviour
 
     IEnumerator Recover(float rt)
     {
-        // wait for specified time
+        // Display stunned icon
+        if (stun == null) yield break;
+        else
+        {
+            stun.SetActive(true);
+        }
         yield return new WaitForSeconds(rt);
+        if (stun == null) yield break;
+        else
+        {
+            stun.SetActive(false);
+        }
+        // recover from stun
         stunned = false;
-        yield return null;
     }
 
 
