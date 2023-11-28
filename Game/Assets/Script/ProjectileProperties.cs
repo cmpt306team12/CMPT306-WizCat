@@ -23,6 +23,8 @@ public class ProjectileProperties : MonoBehaviour
     [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
+    private static float baseHomingForce = 1.0f;
+    
 
 
 
@@ -40,6 +42,9 @@ public class ProjectileProperties : MonoBehaviour
     private bool bursting = false;
     private int burstNumber = baseBurstNumber;
     private int splits = baseSplits;
+    private bool homing = false;
+    private float homingForce = baseHomingForce;
+    private string homingTag = "";
 
     // bonus attributes
     private float bonusScaleMod = 0.05f;
@@ -112,11 +117,24 @@ public class ProjectileProperties : MonoBehaviour
                     this.splits = baseSplits + perks[i];
                     break;
 
+                case 9: // Homing projectiles: Additional perks means stronger homing force
+                    this.homingForce = baseHomingForce * perks[i];
+                    this.homing = perks[i] > 0;
+                    Debug.Log("Homing = " + this.homing);
+                    break;
+
                 default:
                     Debug.LogError("Applying undefined PerkID: " + i);
 
                     break;
             }
+        }
+        if (gameObject.CompareTag("Player"))
+        {
+            this.homingTag = "Enemy";
+        } else if (gameObject.CompareTag("Enemy"))
+        {
+            this.homingTag = "Player";
         }
     }
 
@@ -133,4 +151,8 @@ public class ProjectileProperties : MonoBehaviour
     public float getExplosionDamage() {  return explosionDamage; }
     public float getExplosionKnockback() { return explosionKnockback; }
     public int getSplits() { return splits; }
+    public bool IsHoming() { return homing; }
+    public float getHomingForce() {  return homingForce; }
+    public string getHomingTag() { return homingTag;  }
+    public void setHomingTag(string tag) { homingTag = tag; }
 }

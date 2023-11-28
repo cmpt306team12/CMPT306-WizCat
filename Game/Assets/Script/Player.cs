@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Perk"))
+        if (collision.CompareTag("Perk") && gameObject.CompareTag("Player"))
         {
             GetComponentInChildren<AudioSource>().clip = perkSound;
             GetComponentInChildren<AudioSource>().Play();

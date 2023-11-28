@@ -17,8 +17,9 @@ public class Perks : MonoBehaviour
     * 6: Burst
     * 7: Non-modify
     * 8: Split
+    * 9: Homing Shots
     * */
-    int[] perks = new int[9];
+    int[] perks = new int[10];
 
     public void AddPerk(int i)
     {
@@ -28,6 +29,7 @@ public class Perks : MonoBehaviour
         {
             case 0: case 1:// bounce+ or speed+
                 index = i;
+                change = 1;
                 break;
             case 2: //speed-
                 index = 1;
@@ -35,6 +37,7 @@ public class Perks : MonoBehaviour
                 break;
             case 3: //time+
                 index = 2;
+                change = 1;
                 break;
             case 4: //time-
                 index = 2;
@@ -42,6 +45,7 @@ public class Perks : MonoBehaviour
                 break;
             case 5: //damage+
                 index = 3;
+                change = 1;
                 break;
             case 6: //damage-
                 index = 3;
@@ -49,9 +53,11 @@ public class Perks : MonoBehaviour
                 break;
             case 7: //explosive+
                 index = 4;
+                change = 1;
                 break;
             case 8: //size+
                 index = 5;
+                change = 1;
                 break;
             case 9: //size-
                 index = 5;
@@ -59,6 +65,7 @@ public class Perks : MonoBehaviour
                 break;
             case 10: //burst
                 index = 6;
+                change = 1;
                 break;
             case 11: //bite
                 index = 7;
@@ -71,6 +78,11 @@ public class Perks : MonoBehaviour
                 break;
             case 14: //splits+
                 index = 8;
+                change = 1;
+                break;
+            case 15: //homing+
+                index = 9;
+                change = 1;
                 break;
             default:
                 break;

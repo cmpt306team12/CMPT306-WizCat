@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
     private int bouncesLeft;
+    private Transform homingTargetTransform = null;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,24 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(Mathf.Min(splitInterval, remainingLifetime));
             Split();
             remainingLifetime -= splitInterval;
+        }
+    }
+
+    private IEnumerator HomingCoroutine()
+    {
+        while (homingTargetTransform != null) // While projectile has a target
+        {
+            Vector2 nearestEnemy = (homingTargetTransform.position - transform.position).normalized;
+            float angle = Vector2.SignedAngle(rb.velocity, nearestEnemy);
+            Vector2 turnDirection = Vector2.Perpendicular(rb.velocity.normalized);
+            if (angle < 0)
+            {
+                turnDirection = Vector2.Perpendicular(-rb.velocity.normalized);
+            }
+            // Apply turning force
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(turnDirection * projProp.getHomingForce(), ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -166,17 +185,39 @@ public class Projectile : MonoBehaviour
             dup.GetComponent<Projectile>().Fire(gameObject.GetComponent<ProjectileProperties>());
         }
     }
-    void Update()
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        // Rotate sprite to face direction of travel
-        Vector2 rotation = rb.velocity.normalized;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        if (projProp.IsHoming() && collision.CompareTag("HomingZone") && collision.transform.parent.CompareTag(projProp.getHomingTag()))
+        {
+            // Projectile is in a homing zone
+            if (homingTargetTransform == null)
+            {
+                // Sets the target
+                homingTargetTransform = collision.transform;
+                StartCoroutine(HomingCoroutine());
+                return;
+            }
+            else if (Vector2.Distance(transform.position, collision.transform.position) < Vector2.Distance(transform.position, homingTargetTransform.position))
+            {
+                // Switch to closer target
+                homingTargetTransform = collision.transform;
+                return;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("HomingZone") && collision.transform == homingTargetTransform)
+        {
+            // Exited homing zone of closest enemy
+            homingTargetTransform = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if ((collision.CompareTag("Projectile")) && !despawning)
         {
             if (collision.gameObject.GetComponentInParent<Projectile>().projProp.getScale() >= this.projProp.getScale())

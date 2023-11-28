@@ -15,7 +15,7 @@ public class StaticData : MonoBehaviour
     public static float maxHealth = 100;
     public static float currentHealth = 100;
     // set in Player.cs
-    public static int[] perks = new int[9];
+    public static int[] perks = new int[10];
     // set in PlayerMovement.cs
     public static bool canDash = false;
 
@@ -28,7 +28,7 @@ public class StaticData : MonoBehaviour
         levelContext = "";
         maxHealth = 100;
         currentHealth = 100;
-        perks = new int[9];
+        perks = new int[10];
         canDash = false;
         Bite.canBite = false;
         OrbitProjectiles.canOrbit = false;

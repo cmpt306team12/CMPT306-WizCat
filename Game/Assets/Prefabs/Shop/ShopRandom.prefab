@@ -465,6 +465,7 @@ MonoBehaviour:
   - {fileID: 7545011607710849246, guid: f68921bce6464724180a0ecc58abf30a, type: 3}
   - {fileID: 248169646391386133, guid: 97b0d218fd72ab949ad588a6532e73df, type: 3}
   - {fileID: 7545011607710849246, guid: c9870fafef29815408c5b337abfe0475, type: 3}
+  - {fileID: 7545011607710849246, guid: 43ddec2f2ae7a864aaf97069e4ec6d98, type: 3}
   selectedPerk: {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b,
     type: 3}
   price: 1
