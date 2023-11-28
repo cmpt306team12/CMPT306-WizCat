@@ -18,6 +18,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject doorPrefab;
 
+    // exit arrow stuff
     private GameObject door;
     private GameObject player;
     
@@ -510,8 +511,26 @@ public class LevelGenerator : MonoBehaviour
             walls.SetTile(new Vector3Int(x, _height, 0), null);
         }
         // give exitArrow exit coords and enable it
-        Transform arrow = player.transform.Find("ExitArrow");
-        arrow.GetComponent<ExitArrow>().targetCoordinates = door.transform.position;
-        if (arrow != null) { arrow.gameObject.SetActive(true); }
+        // Check if the parentObject is found
+        if (player != null)
+        {
+            // Find the child object by name
+            Transform childTransform = player.transform.Find("ExitArrow");
+
+            // Check if the childTransform is found
+            if (childTransform != null)
+            {
+                // Enable the child GameObject
+                childTransform.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("No child object found with the specified name.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No object found with the specified tag.");
+        }
     }
 }
