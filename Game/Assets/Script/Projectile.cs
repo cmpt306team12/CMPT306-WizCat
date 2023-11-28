@@ -93,6 +93,38 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private IEnumerator WiggleCoroutine()
+    {
+        int framesPerTurn = projProp.getWiggleFrame();
+        float force = projProp.getWiggleForce();
+        float sign = 1;
+        Vector2 turnDirection;
+        int count;
+        for (count = 0; count < framesPerTurn / 2; count++) // make the first half turn
+        {
+            turnDirection = Vector2.Perpendicular(rb.velocity.normalized * sign);
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(turnDirection * force, ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
+        }
+        count = 0;
+        sign = -1;
+        while (true) //loop to 
+        {
+            // apply force towards firing point
+            turnDirection = Vector2.Perpendicular(rb.velocity.normalized * sign);
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+             rb.AddForce(turnDirection * force, ForceMode2D.Force);
+            count++;
+            if (count == framesPerTurn)
+            {
+                count = 0;
+                sign *= -1;
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
 
     private void Split()
     {
@@ -164,6 +196,10 @@ public class Projectile : MonoBehaviour
             Debug.Log("Starting Boomerang Coroutine");
             boomerangTargetPosition = transform.position;
             StartCoroutine(BoomerangCoroutine());
+        }
+        if (projProp.IsWiggling())
+        {
+            StartCoroutine(WiggleCoroutine());
         }
     }
 

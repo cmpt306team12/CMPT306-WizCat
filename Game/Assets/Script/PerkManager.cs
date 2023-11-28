@@ -6,7 +6,7 @@ using UnityEngine;
 public class Perks : MonoBehaviour
 {
     public ProjectileProperties projectileProperties;
-    
+
     /* Perk mods array:
     * 0: Bounces
     * 1: Speed (+/-)
@@ -19,8 +19,9 @@ public class Perks : MonoBehaviour
     * 8: Split
     * 9: Homing Shots
     * 10: Boomerang Shots
+    * 11: Wiggle Shots
     * */
-    int[] perks = new int[11];
+    int[] perks = new int[12];
 
     public void AddPerk(int i)
     {
@@ -87,6 +88,10 @@ public class Perks : MonoBehaviour
                 break;
             case 16: //boomerang+
                 index = 10;
+                change = 1;
+                break;
+            case 17: //wiggle+
+                index = 11;
                 change = 1;
                 break;
             default:

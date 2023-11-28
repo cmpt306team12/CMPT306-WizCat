@@ -102,6 +102,9 @@ public class Shop : MonoBehaviour
                 case 16: // Homing Perk
                     perktext.text = "Boomerang Projectiles";
                     break;
+                case 17: // Wiggle Perk
+                    perktext.text = "Wiggling Projectiles";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");

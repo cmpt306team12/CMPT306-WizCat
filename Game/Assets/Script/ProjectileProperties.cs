@@ -25,6 +25,10 @@ public class ProjectileProperties : MonoBehaviour
     [SerializeField] float explosionScaleFactor = 1.2f;
     private static float baseHomingForce = 1.0f;
     private static float baseBoomerangForce = 2.0f;
+    private static int baseWiggleFrames = 16;
+    private static float baseWiggleForce = 4.0f;
+    private static float wiggleForceMod = 2.0f;
+    private static int wiggleFramesMod = 4;
 
 
 
@@ -48,6 +52,9 @@ public class ProjectileProperties : MonoBehaviour
     private string homingTag = "";
     private float boomerangForce = baseBoomerangForce;
     private bool boomerang = false;
+    private bool wiggling = false;
+    private float wiggleForce = baseWiggleForce;
+    private int wiggleFrames = baseWiggleFrames;
 
     // bonus attributes
     private float bonusScaleMod = 0.05f;
@@ -132,7 +139,13 @@ public class ProjectileProperties : MonoBehaviour
                     this.boomerang = perks[i] > 0;
                     this.bonusSpeed = bonusSpeed + (Mathf.Abs(perks[i] * bonusSpeedMod));
                     this.bonusLifetime = bonusLifetime + (Mathf.Abs(perks[i] * bonusLifetimeMod));
-                    Debug.Log("Boomerang: " + boomerang);
+                    break;
+                
+                case 11: // Wiggle projectiles: Additional perks add force and reduce frames
+                    this.wiggleForce = Mathf.Clamp(baseWiggleForce + (wiggleForceMod * (perks[i] - 1)),4.0f, 10.0f);
+                    this.wiggleFrames = Mathf.Clamp(baseWiggleFrames - (wiggleFramesMod * (perks[i] - 1)), 6, 16);
+                    this.wiggling = perks[i] > 0;
+                    this.bonusDamage = bonusDamage + (Mathf.Abs(perks[i] * bonusDamageMod));
                     break;
 
                 default:
@@ -169,4 +182,7 @@ public class ProjectileProperties : MonoBehaviour
     public void setHomingTag(string tag) { homingTag = tag; }
     public bool IsBoomerang() { return boomerang; }
     public float getBoomerangForce() { return boomerangForce; }
+    public int getWiggleFrame() { return wiggleFrames; }
+    public float getWiggleForce() { return wiggleForce; }
+    public bool IsWiggling() { return wiggling; }
 }
