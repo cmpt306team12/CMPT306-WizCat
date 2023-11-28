@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
     private bool despawning = false;
     private int bouncesLeft;
     private Transform homingTargetTransform = null;
+    private Vector3 boomerangTargetPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,18 @@ public class Projectile : MonoBehaviour
             // Apply turning force
             Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
             rb.AddForce(turnDirection * projProp.getHomingForce(), ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    private IEnumerator BoomerangCoroutine()
+    {
+        while (true)
+        {
+            // apply force towards firing point
+            Vector2 forceDirection = (boomerangTargetPosition - transform.position).normalized;
+            Debug.DrawRay(gameObject.transform.position, forceDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(forceDirection * projProp.getBoomerangForce(), ForceMode2D.Force);
             yield return new WaitForSeconds(0.05f);
         }
     }
@@ -146,6 +159,12 @@ public class Projectile : MonoBehaviour
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
         rb.velocity = transform.right * projProp.getSpeed(); // Give projectile speed
         gameObject.GetComponent<SpriteRenderer>().color = projProp.getSpriteColor();
+        if (projProp.IsBoomerang())
+        {
+            Debug.Log("Starting Boomerang Coroutine");
+            boomerangTargetPosition = transform.position;
+            StartCoroutine(BoomerangCoroutine());
+        }
     }
 
 

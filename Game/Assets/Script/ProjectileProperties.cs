@@ -18,13 +18,14 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseExplosionKnockback = 2.0f;
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
-    [SerializeField] float lifetimeMod = 0.5f;
+    [SerializeField] float lifetimeMod = 1.0f;
     [SerializeField] float damageMod = 5.0f;
     [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
     private static float baseHomingForce = 1.0f;
-    
+    private static float baseBoomerangForce = 2.0f;
+
 
 
 
@@ -45,6 +46,8 @@ public class ProjectileProperties : MonoBehaviour
     private bool homing = false;
     private float homingForce = baseHomingForce;
     private string homingTag = "";
+    private float boomerangForce = baseBoomerangForce;
+    private bool boomerang = false;
 
     // bonus attributes
     private float bonusScaleMod = 0.05f;
@@ -53,6 +56,8 @@ public class ProjectileProperties : MonoBehaviour
     private float bonusDamage = 0.0f;
     private float bonusSpeed = 0.0f;
     private float bonusSize = 0.0f;
+    private float bonusLifetime = 0.0f;
+    private float bonusLifetimeMod = 0.8f;
     
     public void ApplyPerks(int[] perks)
     {
@@ -120,7 +125,14 @@ public class ProjectileProperties : MonoBehaviour
                 case 9: // Homing projectiles: Additional perks means stronger homing force
                     this.homingForce = baseHomingForce * perks[i];
                     this.homing = perks[i] > 0;
-                    Debug.Log("Homing = " + this.homing);
+                    break;
+
+                case 10: // Boomerang projectiles: Additional perks add boomerang force
+                    this.boomerangForce = baseBoomerangForce * perks[i];
+                    this.boomerang = perks[i] > 0;
+                    this.bonusSpeed = bonusSpeed + (Mathf.Abs(perks[i] * bonusSpeedMod));
+                    this.bonusLifetime = bonusLifetime + (Mathf.Abs(perks[i] * bonusLifetimeMod));
+                    Debug.Log("Boomerang: " + boomerang);
                     break;
 
                 default:
@@ -138,7 +150,7 @@ public class ProjectileProperties : MonoBehaviour
         }
     }
 
-    public float getLifetime() { return lifetime; }
+    public float getLifetime() { return lifetime + bonusLifetime; }
     public float getDamage() { return damage + bonusDamage; }
     public float getSpeed() { return speed + bonusSpeed; }
     public int getBounces() { return bounces; }
@@ -155,4 +167,6 @@ public class ProjectileProperties : MonoBehaviour
     public float getHomingForce() {  return homingForce; }
     public string getHomingTag() { return homingTag;  }
     public void setHomingTag(string tag) { homingTag = tag; }
+    public bool IsBoomerang() { return boomerang; }
+    public float getBoomerangForce() { return boomerangForce; }
 }

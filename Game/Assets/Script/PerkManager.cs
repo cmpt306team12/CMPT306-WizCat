@@ -18,8 +18,9 @@ public class Perks : MonoBehaviour
     * 7: Non-modify
     * 8: Split
     * 9: Homing Shots
+    * 10: Boomerang Shots
     * */
-    int[] perks = new int[10];
+    int[] perks = new int[11];
 
     public void AddPerk(int i)
     {
@@ -82,6 +83,10 @@ public class Perks : MonoBehaviour
                 break;
             case 15: //homing+
                 index = 9;
+                change = 1;
+                break;
+            case 16: //boomerang+
+                index = 10;
                 change = 1;
                 break;
             default:

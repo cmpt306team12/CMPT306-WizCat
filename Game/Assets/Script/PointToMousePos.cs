@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointToMousePos : MonoBehaviour
 {
-    private Vector3 mousePos;
+    public Vector3 mousePos;
     private Camera mainCam;
 
     // Start is called before the first frame update
