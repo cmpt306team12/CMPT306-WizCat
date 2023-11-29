@@ -4213,8 +4213,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Once you finish a level, use your collected coins to buy perks or a health
-    potion from the shop!
+  m_text: You can use the coins Wizcat has collected to either buy perks or a health
+    potion from the item shop!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef3ce19cf2c10f40a4199d39d3f345b, type: 2}
   m_sharedMaterial: {fileID: 4812089106464548504, guid: aef3ce19cf2c10f40a4199d39d3f345b,
@@ -7573,8 +7573,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You can reach the shop by using the teleportation stone. \nThis only activates
-    once all enemies have been defeated in a level."
+  m_text: "The shop can be reached by using the teleportation stone. \nThis is only
+    accessible once all enemies in a level have been defeated."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef3ce19cf2c10f40a4199d39d3f345b, type: 2}
   m_sharedMaterial: {fileID: 4812089106464548504, guid: aef3ce19cf2c10f40a4199d39d3f345b,
@@ -9768,11 +9768,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Use the arrow keys to move Wizcat across the screen.
+  m_text: 'Use the W-A-S-D keys to move Wizcat across the screen.
 
 
-    Left-click
-    to shoot projectiles.'
+    Move the
+    mouse to aim and left-click to shoot magic projectiles.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef3ce19cf2c10f40a4199d39d3f345b, type: 2}
   m_sharedMaterial: {fileID: 4812089106464548504, guid: aef3ce19cf2c10f40a4199d39d3f345b,
@@ -13290,8 +13290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -145}
-  m_SizeDelta: {x: 700, y: 225}
+  m_AnchoredPosition: {x: 0, y: -140}
+  m_SizeDelta: {x: 700, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1837625268
 MonoBehaviour:
