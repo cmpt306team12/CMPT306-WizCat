@@ -15,6 +15,10 @@ public class Health : MonoBehaviour
     public AudioClip hurtSFX1;
     public AudioClip hurtSFX2;
 
+    //Should only be used by the player
+    public CanvasGroup gameOverScreen;
+    public bool fadeIn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +33,27 @@ public class Health : MonoBehaviour
         //hurtSFX = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (fadeIn)
+        {
+            if (gameOverScreen.alpha < 1)
+            {
+                gameOverScreen.alpha += Time.deltaTime;
+                if (gameOverScreen.alpha >= 1)
+                {
+                    fadeIn = false;
+                    this.enabled = false;  //Disables "Health" script
+                }
+            }
+        }
+    }
+
     private IEnumerator PlayerDeath()
     {
         yield return new WaitForSeconds(5.0f);
-        SceneManager.LoadScene(0);
+        fadeIn = true;
+        //SceneManager.LoadScene(0);
     }
 
     private IEnumerator RedHurt()
@@ -116,8 +137,6 @@ public class Health : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
-
-                this.enabled = false;
 
                 StartCoroutine(PlayerDeath());
                 StaticData.Reset();
