@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject warningMenu;
+    public GameObject controlsMenu;
     public static bool isPaused;
     
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         warningMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class PauseMenu : MonoBehaviour
             {
                 ResumeGame();
                 warningMenu.SetActive(false);
+                controlsMenu.SetActive(false);
             }
             else
             {
@@ -54,15 +57,27 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    public void showWarningMenu()
+    public void ShowWarningMenu()
     {
         pauseMenu.SetActive(false);
         warningMenu.SetActive(true);
     }
 
-    public void closeWarningMenu()
+    public void CloseWarningMenu()
     {
         warningMenu.SetActive(false);
+        pauseMenu.SetActive(true);
+    }
+
+    public void ShowControlsMenu()
+    {
+        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void CloseControlsMenu()
+    {
+        controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
     
