@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ShootingPillar : MonoBehaviour
 {
@@ -20,9 +21,11 @@ public class ShootingPillar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+
+
         // cast ray to see if can see player
 
-        
+
         if (collision.gameObject.CompareTag("Player") && Time.time > fireTime)
         {
             // cast a ray to see if you can see player
@@ -30,14 +33,22 @@ public class ShootingPillar : MonoBehaviour
             Debug.DrawRay(firepoint.transform.position, (collision.gameObject.GetComponent<BoxCollider2D>().bounds.center - firepoint.transform.position));
             if (hit && hit.transform.CompareTag("Player"))
             {
-                // shoot at player
-                pillar.GetComponentInChildren<Wand>().Shoot();
-                // make shooting sound effect
-                gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
                 fireTime = Time.time + shootingDelay;
-                animator.SetTrigger("FireTime");
+                StartCoroutine(FireProjectile());
             }
         }
+    }
+
+    private IEnumerator FireProjectile()
+    {
+        yield return new WaitForSeconds(0.2f); // Delay so pillar doesnt fire the nanosecond it sees you
+        gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
+        // shoot at player
+        pillar.GetComponentInChildren<Wand>().Shoot();
+        // make shooting sound effect
+        gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, transform.position);
+        animator.SetTrigger("FireTime");
+        StopCoroutine(FireProjectile());
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
