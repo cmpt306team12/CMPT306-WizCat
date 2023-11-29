@@ -9,8 +9,8 @@ public class DeathMessage : MonoBehaviour
     string writer;
 
     [SerializeField] private List<string> deathMessage;
-    [SerializeField] float delayBeforeStart = 0.5f;
-    [SerializeField] float timeBetweenChars = 0.1f;
+    [SerializeField] float delayBeforeStart = 0.7f;
+    [SerializeField] float timeBetweenChars = 0.5f;
 
 
     // Start is called before the first frame update

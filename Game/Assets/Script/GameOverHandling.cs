@@ -8,6 +8,8 @@ public class GameOverHandling : MonoBehaviour
 
     public CanvasGroup gameOverScreen;
     public DeathMessage deathMessage;
+    public LevelMusic gameOverMusic;
+    public GameObject ambience;
 
     private bool messageVisible = false;
 
@@ -22,9 +24,12 @@ public class GameOverHandling : MonoBehaviour
     {
         if (gameOverScreen.alpha >= 1 && !messageVisible)
         {
+            ambience.SetActive(false);
+            gameOverMusic.GetComponent<LevelMusic>().CallPlayerDeath();
             deathMessage.GetComponent<DeathMessage>().TypeMessage();
             gameOverScreen.interactable = true;
             messageVisible = true;
+            
         }
     }
 

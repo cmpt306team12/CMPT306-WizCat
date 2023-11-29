@@ -51,9 +51,8 @@ public class Health : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(4.0f);
         fadeIn = true;
-        //SceneManager.LoadScene(0);
     }
 
     private IEnumerator RedHurt()
