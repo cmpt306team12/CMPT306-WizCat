@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
             if (isPaused)
             {
                 ResumeGame();
+                warningMenu.SetActive(false);
             }
             else
             {
