@@ -230,6 +230,7 @@ public class Projectile : MonoBehaviour
         if (projProp.getSpeed() > 10.0f)
         {
             speedPS.SetActive(true);
+            StartCoroutine(SpeedPSChecker());
         }
         if (projProp.isBursting())
         {
@@ -243,8 +244,25 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private IEnumerator SpeedPSChecker()
+    {
+        // Monitor speed of particle, if speed < 10, disable SpeedPS, otherwise enable
+        while (true)
+        {
+            if (rb.velocity.magnitude < 10.0f)
+            {
+                speedPS.GetComponent<ParticleSystem>().Stop();
+            }
+            else
+            {
+                speedPS.GetComponent<ParticleSystem>().Play();
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
 
-    private void ApplyScale(float scale)
+
+        private void ApplyScale(float scale)
     {
         // Debug.Log("Scale: " + scale);
         float offset = (scale * 0.2f); // Offset so your projectiles dont hit yourself when scaled up
