@@ -25,6 +25,14 @@ public class Projectile : MonoBehaviour
     private Transform homingTargetTransform = null;
     private Vector3 boomerangTargetPosition;
 
+    // Particle system gameobject references
+    public GameObject explosivePS;
+    public GameObject burstPS;
+    public GameObject homingPS;
+    public GameObject wigglePS;
+    public GameObject speedPS;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -167,7 +175,14 @@ public class Projectile : MonoBehaviour
         if (!trail.IsDestroyed())
         {
             trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
-            trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
+            trail.GetComponent<ParticleSystem>().Stop(); // Stop default trail PS
+            if (explosivePS.activeSelf) explosivePS.GetComponent<ParticleSystem>().Stop();
+            if (burstPS.activeSelf) burstPS.GetComponent<ParticleSystem>().Stop();
+            if (homingPS.activeSelf) homingPS.GetComponent<ParticleSystem>().Stop();
+            if (wigglePS.activeSelf) wigglePS.GetComponent<ParticleSystem>().Stop();
+            if (speedPS.activeSelf) speedPS.GetComponent<ParticleSystem>().Stop();
+            Destroy(trail, 2.0f); // Destory trail after all particles will have died - 2 seconds max
+            //trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
         }
         // play despawn sound
         gameObject.GetComponent<RandomSound>().PLayClipAt(destroySound, transform.position);
@@ -184,6 +199,7 @@ public class Projectile : MonoBehaviour
         if (projProp.getSplits() > 0)
         {
             StartCoroutine(SplitCoroutine());
+            burstPS.SetActive(true);
         }
         StartCoroutine(RotateProjectile()); // Start coroutine to rotate projectile to correct direction
         StartCoroutine(DespawnCoroutine(projProp.getLifetime())); // Start despawn coroutine
@@ -196,10 +212,34 @@ public class Projectile : MonoBehaviour
             Debug.Log("Starting Boomerang Coroutine");
             boomerangTargetPosition = transform.position;
             StartCoroutine(BoomerangCoroutine());
+            wigglePS.SetActive(true);
         }
         if (projProp.IsWiggling())
         {
             StartCoroutine(WiggleCoroutine());
+            wigglePS.SetActive(true);
+        }
+        if (projProp.isExplosive())
+        {
+            explosivePS.SetActive(true);
+        }
+        if (projProp.IsHoming())
+        {
+            homingPS.SetActive(true);
+        }
+        if (projProp.getSpeed() > 10.0f)
+        {
+            speedPS.SetActive(true);
+        }
+        if (projProp.isBursting())
+        {
+            burstPS.SetActive(true);
+        }
+        if (projProp.getBounces() > 0)
+        {
+            // Set trail colour to green
+            var main = trail.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.green;
         }
     }
 
