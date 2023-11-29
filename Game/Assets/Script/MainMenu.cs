@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject highScoreMenu;
     public GameObject creditsMenu;
+    public GameObject creditsButton;
 
     private void Start()
     {
@@ -45,6 +46,7 @@ public class MainMenu : MonoBehaviour
     public void showHighScores()
     {
         mainMenu.SetActive(false);
+        creditsButton.SetActive(false);
         highScoreMenu.SetActive(true);
     }
 
@@ -52,11 +54,13 @@ public class MainMenu : MonoBehaviour
     {
         highScoreMenu.SetActive(false);
         mainMenu.SetActive(true);
+        creditsButton.SetActive(true);
     }
     
     public void showCreditsMenu()
     {
         mainMenu.SetActive(false);
+        creditsButton.SetActive(false);
         creditsMenu.SetActive(true);
     }
 
@@ -64,5 +68,6 @@ public class MainMenu : MonoBehaviour
     {
         creditsMenu.SetActive(false);
         mainMenu.SetActive(true);
+        creditsButton.SetActive(true);
     }
 }
