@@ -91,9 +91,22 @@ public class Health : MonoBehaviour
             animator.SetTrigger("IsHurt");
         }
 
+        // player takes less damage at low health
+        if (gameObject.CompareTag("Player"))
+        {
+            if (currentHealth / maxHealth <= .33)
+            {
+                float reducedDamage = damageAmount * 0.66f;
+                int roundedDamage = (int)Mathf.Round(reducedDamage);
+                if (roundedDamage < 1) { roundedDamage = 1; }
+                currentHealth -= roundedDamage;
+            }
+            else { currentHealth -= damageAmount; }
+        }
+        // when anything other than the player takes damage
+        else { currentHealth -= damageAmount; }
 
-        currentHealth -= damageAmount;
-
+        // death
         if (currentHealth <= 0.0f)
         {
             currentHealth = 0.0f;

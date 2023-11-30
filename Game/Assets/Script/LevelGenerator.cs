@@ -17,6 +17,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private BaseLevelTiles baseLevelTiles;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject doorPrefab;
+
+    // exit arrow stuff
+    private GameObject door;
+    private GameObject player;
     
     private int _width = 64;
     private int _height = 40;
@@ -31,6 +35,7 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         GenerateLevel();
+        player = GameObject.FindWithTag("Player");
     }
 
     /// <summary>
@@ -494,7 +499,7 @@ public class LevelGenerator : MonoBehaviour
     /// </summary>
     private void AddExit()
     {
-        GameObject door = Instantiate(doorPrefab, new Vector3(_width / 2,_height + 2.5f, 0), Quaternion.identity);
+        door = Instantiate(doorPrefab, new Vector3(_width / 2,_height + 2.5f, 0), Quaternion.identity);
         ChangeScene changeScene = door.GetComponent<ChangeScene>();
         changeScene.sceneBuildIndex = 2;
         for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
@@ -511,6 +516,28 @@ public class LevelGenerator : MonoBehaviour
         for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
         {
             walls.SetTile(new Vector3Int(x, _height, 0), null);
+        }
+        // give exitArrow exit coords and enable it
+        // Check if the parentObject is found
+        if (player != null)
+        {
+            // Find the child object by name
+            Transform childTransform = player.transform.Find("ExitArrow");
+
+            // Check if the childTransform is found
+            if (childTransform != null)
+            {
+                // Enable the child GameObject
+                childTransform.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("No child object found with the specified name.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No object found with the specified tag.");
         }
     }
 }

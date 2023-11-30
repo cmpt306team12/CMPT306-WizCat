@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2484440252426573152}
   - component: {fileID: 8482940661262056849}
   - component: {fileID: 5456375313831265842}
+  - component: {fileID: 2561862800589166981}
   m_Layer: 20
   m_Name: DestructableChest
   m_TagString: Obstacle
@@ -36,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3927324720919517170}
+  - {fileID: 5083170598375257041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8377682144976395244
@@ -194,6 +196,13 @@ MonoBehaviour:
   currentHealth: 200
   EnemyScore: 0
   dropsLoot: 1
+  animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
+  EnemyFloatingTextPrefab: {fileID: 0}
+  AppraisalFloatingTextPrefab: {fileID: 0}
+  deathQuotes: []
+  appraisalQuotes: []
 --- !u!114 &5456375313831265842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +240,117 @@ MonoBehaviour:
   - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
   - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
   - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
+--- !u!114 &2561862800589166981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833966524122137686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65cc4d5da315d9042afd8ff618a48969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openedSprite: {fileID: 21300040, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  interactor: {fileID: 3070007419105626856}
+--- !u!1 &3070007419105626856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5083170598375257041}
+  - component: {fileID: 1615675375261955868}
+  - component: {fileID: 8799717196318748201}
+  m_Layer: 20
+  m_Name: Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5083170598375257041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070007419105626856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 450803486591001686}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615675375261955868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070007419105626856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472cb4afa5631084b87586b0ad9499c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInRange: 0
+  interactKey: 101
+  interactAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2561862800589166981}
+        m_TargetAssemblyTypeName: OpenableChest, Assembly-CSharp
+        m_MethodName: openChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &8799717196318748201
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070007419105626856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.24}
+  serializedVersion: 2
+  m_Radius: 1.02
 --- !u!1 &7544757127592011088
 GameObject:
   m_ObjectHideFlags: 0
