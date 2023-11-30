@@ -67,3 +67,4 @@ MonoBehaviour:
   lowerTopLeftCorner: {fileID: 11400000, guid: 8be27a7af89a7164283e45689a61753d, type: 2}
   upperTopLeftCorner: {fileID: 11400000, guid: 91cb03f8c22d3984389f65d131eeb946, type: 2}
   inLevelRoomBorder: {fileID: 11400000, guid: e526722938ad948499ec6fa6a5e6f215, type: 2}
+  exitDoor: {fileID: 11400000, guid: a1b956f677bdd6e4496fd905561941bd, type: 2}

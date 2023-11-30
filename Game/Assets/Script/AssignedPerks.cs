@@ -13,11 +13,13 @@ public class AssignedPerks : MonoBehaviour
     public int NumberOfSize = 0;
     public int NumberOfBurst = 0;
     public int NumberOfSplit = 0;
+    public int NumberOfHoming = 0;
+    public int NumberOfWiggle = 0;
     private int[] perks;
     // Start is called before the first frame update
     private void Awake()
     {
-        perks = new int[8];
+        perks = new int[12]; // One less than player because enemies cant Dash, Orbit or Bite which use index 7 (non-modify projectiles)
         perks[0] = NumberOfBounce;
         perks[1] = NumberOfSpeed;
         perks[2] = NumberOfLifetime;
@@ -25,7 +27,11 @@ public class AssignedPerks : MonoBehaviour
         perks[4] = NumberOfExplosive;
         perks[5] = NumberOfSize;
         perks[6] = NumberOfBurst;
-        perks[7] = NumberOfSplit;
+        perks[7] = 0; // Reserved for PLayer perks, doesn't modifiy projectiles.
+        perks[8] = NumberOfSplit;
+        perks[9] = NumberOfHoming;
+        perks[10] = 0; // Dont give enemies boomerang, as they will kill themselves
+        perks[11] = NumberOfWiggle;
         projProp.ApplyPerks(perks);
     }
 }

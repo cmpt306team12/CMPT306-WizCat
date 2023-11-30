@@ -26,6 +26,7 @@ public class BaseLevelTiles : ScriptableObject
     public Tile upperTopLeftCorner;
 
     public Tile inLevelRoomBorder;
+    public Tile exitDoor;
     // public Tile topRightWall;
     // public Tile bottomRightWall;
     // public Tile areaBorder;

@@ -15,13 +15,21 @@ public class ProjectileProperties : MonoBehaviour
     private static float baseExplosionDamage = 5.0f;
     private static int baseBurstNumber = 3;
     private static int baseSplits = 0;
+    private static float baseExplosionKnockback = 2.0f;
     private static Color baseSpriteColor = Color.white;
     [SerializeField] float speedFactor = 1.5f;
-    [SerializeField] float lifetimeMod = 0.5f;
-    [SerializeField] float damageMod = 3.0f;
+    [SerializeField] float lifetimeMod = 1.0f;
+    [SerializeField] float damageMod = 5.0f;
     [SerializeField] float explosionDamageMod = 5.0f;
     [SerializeField] float scaleMod = 1.25f;
     [SerializeField] float explosionScaleFactor = 1.2f;
+    private static float baseHomingForce = 1.0f;
+    private static float baseBoomerangForce = 2.0f;
+    private static int baseWiggleFrames = 16;
+    private static float baseWiggleForce = 4.0f;
+    private static float wiggleForceMod = 2.0f;
+    private static int wiggleFramesMod = 4;
+
 
 
 
@@ -34,13 +42,37 @@ public class ProjectileProperties : MonoBehaviour
     private float scale = baseScale;
     private float explosionScale = baseExplosionScale;
     private float explosionDamage = baseExplosionDamage;
+    private float explosionKnockback = baseExplosionKnockback;
     private Color myColor = baseSpriteColor;
     private bool bursting = false;
     private int burstNumber = baseBurstNumber;
     private int splits = baseSplits;
+    private bool homing = false;
+    private float homingForce = baseHomingForce;
+    private string homingTag = "";
+    private float boomerangForce = baseBoomerangForce;
+    private bool boomerang = false;
+    private bool wiggling = false;
+    private float wiggleForce = baseWiggleForce;
+    private int wiggleFrames = baseWiggleFrames;
+
+    // bonus attributes
+    private float bonusScaleMod = 0.05f;
+    private float bonusSpeedMod = 1.0f;
+    private float bonusDamageMod = 2.0f;
+    private float bonusDamage = 0.0f;
+    private float bonusSpeed = 0.0f;
+    private float bonusSize = 0.0f;
+    private float bonusLifetime = 0.0f;
+    private float bonusLifetimeMod = 0.8f;
     
     public void ApplyPerks(int[] perks)
     {
+        // Reset bonus values first
+        bonusDamage = 0.0f;
+        bonusSize = 0.0f;
+        bonusSpeed = 0.0f;
+
         for (int i = 0; i < perks.Length; i++)
         {
             switch (i)
@@ -51,10 +83,18 @@ public class ProjectileProperties : MonoBehaviour
 
                 case 1: // Speed up/down perks: +50% per speed perk
                     this.speed = baseSpeed * (Mathf.Pow(speedFactor, perks[i]));
+                    if (perks[i] < 0) // Have speed down perks; apply damage bonus
+                    {
+                        bonusDamage = bonusDamage + Mathf.Abs(perks[i] * bonusDamageMod);
+                    }
                     break;
 
                 case 2: // Lifetime up/down perks
                     this.lifetime = baseLifetime + (perks[i] * lifetimeMod);
+                    if (perks[i] < 0) // Have lifetime down perks; apply size bonus
+                    {
+                        bonusSize = bonusSize + (Mathf.Abs(perks[i] * bonusScaleMod));
+                    }
                     break;
 
                 case 3: // Damage up/down
@@ -66,10 +106,15 @@ public class ProjectileProperties : MonoBehaviour
                     this.explosive = perks[i] > 0;
                     this.explosionScale = baseExplosionScale * (Mathf.Pow(explosionScaleFactor, perks[i]));
                     this.explosionDamage = baseExplosionDamage + (perks[i] * explosionDamageMod);
+                    this.explosionKnockback = baseExplosionKnockback * perks[i];
                     break;
 
                 case 5: // Size up/down
                     this.scale = baseScale * (Mathf.Pow(scaleMod, perks[i]));
+                    if (perks[i] < 0) //Have size down perks, apply bonus speed
+                    {
+                        bonusSpeed = bonusSpeed + (Mathf.Abs(perks[i] * bonusSpeedMod));
+                    }
                     break;
 
                 case 6: // Burst shot
@@ -84,25 +129,60 @@ public class ProjectileProperties : MonoBehaviour
                     this.splits = baseSplits + perks[i];
                     break;
 
+                case 9: // Homing projectiles: Additional perks means stronger homing force
+                    this.homingForce = baseHomingForce * perks[i];
+                    this.homing = perks[i] > 0;
+                    break;
+
+                case 10: // Boomerang projectiles: Additional perks add boomerang force
+                    this.boomerangForce = baseBoomerangForce * perks[i];
+                    this.boomerang = perks[i] > 0;
+                    this.bonusSpeed = bonusSpeed + (Mathf.Abs(perks[i] * bonusSpeedMod));
+                    this.bonusLifetime = bonusLifetime + (Mathf.Abs(perks[i] * bonusLifetimeMod));
+                    break;
+                
+                case 11: // Wiggle projectiles: Additional perks add force and reduce frames
+                    this.wiggleForce = Mathf.Clamp(baseWiggleForce + (wiggleForceMod * (perks[i] - 1)),4.0f, 10.0f);
+                    this.wiggleFrames = Mathf.Clamp(baseWiggleFrames - (wiggleFramesMod * (perks[i] - 1)), 6, 16);
+                    this.wiggling = perks[i] > 0;
+                    this.bonusDamage = bonusDamage + (Mathf.Abs(perks[i] * bonusDamageMod));
+                    break;
+
                 default:
                     Debug.LogError("Applying undefined PerkID: " + i);
 
                     break;
             }
         }
+        if (gameObject.CompareTag("Player"))
+        {
+            this.homingTag = "Enemy";
+        } else if (gameObject.CompareTag("Enemy"))
+        {
+            this.homingTag = "Player";
+        }
     }
 
-    public float getLifetime() { return lifetime; }
-    public float getDamage() { return damage; }
-    public float getSpeed() { return speed; }
+    public float getLifetime() { return lifetime + bonusLifetime; }
+    public float getDamage() { return damage + bonusDamage; }
+    public float getSpeed() { return speed + bonusSpeed; }
     public int getBounces() { return bounces; }
     public bool isExplosive() {  return explosive; }
-    public float getScale() {  return scale; }
+    public float getScale() {  return scale + bonusSize; }
     public float getExplosionScale() { return explosionScale; }
     public Color getSpriteColor() { return myColor; }
     public bool isBursting() {  return bursting; }
     public int getBurstNumber() {  return burstNumber; }
-
     public float getExplosionDamage() {  return explosionDamage; }
+    public float getExplosionKnockback() { return explosionKnockback; }
     public int getSplits() { return splits; }
+    public bool IsHoming() { return homing; }
+    public float getHomingForce() {  return homingForce; }
+    public string getHomingTag() { return homingTag;  }
+    public void setHomingTag(string tag) { homingTag = tag; }
+    public bool IsBoomerang() { return boomerang; }
+    public float getBoomerangForce() { return boomerangForce; }
+    public int getWiggleFrame() { return wiggleFrames; }
+    public float getWiggleForce() { return wiggleForce; }
+    public bool IsWiggling() { return wiggling; }
 }

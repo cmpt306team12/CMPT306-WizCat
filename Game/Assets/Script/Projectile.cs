@@ -22,6 +22,16 @@ public class Projectile : MonoBehaviour
     // Local variables needed for applying perks over projectile lifetime
     private bool despawning = false;
     private int bouncesLeft;
+    private Transform homingTargetTransform = null;
+    private Vector3 boomerangTargetPosition;
+
+    // Particle system gameobject references
+    public GameObject explosivePS;
+    public GameObject burstPS;
+    public GameObject homingPS;
+    public GameObject wigglePS;
+    public GameObject speedPS;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +68,68 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(Mathf.Min(splitInterval, remainingLifetime));
             Split();
             remainingLifetime -= splitInterval;
+        }
+    }
+
+    private IEnumerator HomingCoroutine()
+    {
+        while (homingTargetTransform != null) // While projectile has a target
+        {
+            Vector2 nearestEnemy = (homingTargetTransform.position - transform.position).normalized;
+            float angle = Vector2.SignedAngle(rb.velocity, nearestEnemy);
+            Vector2 turnDirection = Vector2.Perpendicular(rb.velocity.normalized);
+            if (angle < 0)
+            {
+                turnDirection = Vector2.Perpendicular(-rb.velocity.normalized);
+            }
+            // Apply turning force
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(turnDirection * projProp.getHomingForce(), ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    private IEnumerator BoomerangCoroutine()
+    {
+        while (true)
+        {
+            // apply force towards firing point
+            Vector2 forceDirection = (boomerangTargetPosition - transform.position).normalized;
+            Debug.DrawRay(gameObject.transform.position, forceDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(forceDirection * projProp.getBoomerangForce(), ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    private IEnumerator WiggleCoroutine()
+    {
+        int framesPerTurn = projProp.getWiggleFrame();
+        float force = projProp.getWiggleForce();
+        float sign = 1;
+        Vector2 turnDirection;
+        int count;
+        for (count = 0; count < framesPerTurn / 2; count++) // make the first half turn
+        {
+            turnDirection = Vector2.Perpendicular(rb.velocity.normalized * sign);
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+            rb.AddForce(turnDirection * force, ForceMode2D.Force);
+            yield return new WaitForSeconds(0.05f);
+        }
+        count = 0;
+        sign = -1;
+        while (true) //loop to 
+        {
+            // apply force towards firing point
+            turnDirection = Vector2.Perpendicular(rb.velocity.normalized * sign);
+            Debug.DrawRay(gameObject.transform.position, turnDirection.normalized, Color.red, 0.05f);
+             rb.AddForce(turnDirection * force, ForceMode2D.Force);
+            count++;
+            if (count == framesPerTurn)
+            {
+                count = 0;
+                sign *= -1;
+            }
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -103,7 +175,14 @@ public class Projectile : MonoBehaviour
         if (!trail.IsDestroyed())
         {
             trail.transform.parent = null; // decouple trail to allow it to not instantly disappear
-            trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
+            trail.GetComponent<ParticleSystem>().Stop(); // Stop default trail PS
+            if (explosivePS.activeSelf) explosivePS.GetComponent<ParticleSystem>().Stop();
+            if (burstPS.activeSelf) burstPS.GetComponent<ParticleSystem>().Stop();
+            if (homingPS.activeSelf) homingPS.GetComponent<ParticleSystem>().Stop();
+            if (wigglePS.activeSelf) wigglePS.GetComponent<ParticleSystem>().Stop();
+            if (speedPS.activeSelf) speedPS.GetComponent<ParticleSystem>().Stop();
+            Destroy(trail, 2.0f); // Destory trail after all particles will have died - 2 seconds max
+            //trail.GetComponent<TrailRenderer>().autodestruct = true; // trail destroys when trail reaches end
         }
         // play despawn sound
         gameObject.GetComponent<RandomSound>().PLayClipAt(destroySound, transform.position);
@@ -120,6 +199,7 @@ public class Projectile : MonoBehaviour
         if (projProp.getSplits() > 0)
         {
             StartCoroutine(SplitCoroutine());
+            burstPS.SetActive(true);
         }
         StartCoroutine(RotateProjectile()); // Start coroutine to rotate projectile to correct direction
         StartCoroutine(DespawnCoroutine(projProp.getLifetime())); // Start despawn coroutine
@@ -127,10 +207,62 @@ public class Projectile : MonoBehaviour
         bouncesLeft = projProp.getBounces(); // Set value for number of bounces remaining
         rb.velocity = transform.right * projProp.getSpeed(); // Give projectile speed
         gameObject.GetComponent<SpriteRenderer>().color = projProp.getSpriteColor();
+        if (projProp.IsBoomerang())
+        {
+            Debug.Log("Starting Boomerang Coroutine");
+            boomerangTargetPosition = transform.position;
+            StartCoroutine(BoomerangCoroutine());
+            wigglePS.SetActive(true);
+        }
+        if (projProp.IsWiggling())
+        {
+            StartCoroutine(WiggleCoroutine());
+            wigglePS.SetActive(true);
+        }
+        if (projProp.isExplosive())
+        {
+            explosivePS.SetActive(true);
+        }
+        if (projProp.IsHoming())
+        {
+            homingPS.SetActive(true);
+        }
+        if (projProp.getSpeed() > 10.0f)
+        {
+            speedPS.SetActive(true);
+            StartCoroutine(SpeedPSChecker());
+        }
+        if (projProp.isBursting())
+        {
+            burstPS.SetActive(true);
+        }
+        if (projProp.getBounces() > 0)
+        {
+            // Set trail colour to green
+            var main = trail.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.green;
+        }
+    }
+
+    private IEnumerator SpeedPSChecker()
+    {
+        // Monitor speed of particle, if speed < 10, disable SpeedPS, otherwise enable
+        while (true)
+        {
+            if (rb.velocity.magnitude < 10.0f)
+            {
+                speedPS.GetComponent<ParticleSystem>().Stop();
+            }
+            else
+            {
+                speedPS.GetComponent<ParticleSystem>().Play();
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 
 
-    private void ApplyScale(float scale)
+        private void ApplyScale(float scale)
     {
         // Debug.Log("Scale: " + scale);
         float offset = (scale * 0.2f); // Offset so your projectiles dont hit yourself when scaled up
@@ -145,6 +277,7 @@ public class Projectile : MonoBehaviour
         GameObject expl = Instantiate(explosion, transform.position + offset, transform.rotation); // create explosion offscreen
         expl.transform.localScale = new Vector3(explosion_scale, explosion_scale, explosion_scale); // scale explosion
         expl.GetComponent<Explosion>().SetDamage(projProp.getExplosionDamage()); // Set explosion damage
+        expl.GetComponent<Explosion>().SetKnockback(projProp.getExplosionKnockback()); // Set explosion knockback
         expl.transform.position = transform.position; // move explosion back
 
     }
@@ -165,17 +298,39 @@ public class Projectile : MonoBehaviour
             dup.GetComponent<Projectile>().Fire(gameObject.GetComponent<ProjectileProperties>());
         }
     }
-    void Update()
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        // Rotate sprite to face direction of travel
-        Vector2 rotation = rb.velocity.normalized;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        if (projProp.IsHoming() && collision.CompareTag("HomingZone") && collision.transform.parent.CompareTag(projProp.getHomingTag()))
+        {
+            // Projectile is in a homing zone
+            if (homingTargetTransform == null)
+            {
+                // Sets the target
+                homingTargetTransform = collision.transform;
+                StartCoroutine(HomingCoroutine());
+                return;
+            }
+            else if (Vector2.Distance(transform.position, collision.transform.position) < Vector2.Distance(transform.position, homingTargetTransform.position))
+            {
+                // Switch to closer target
+                homingTargetTransform = collision.transform;
+                return;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("HomingZone") && collision.transform == homingTargetTransform)
+        {
+            // Exited homing zone of closest enemy
+            homingTargetTransform = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if ((collision.CompareTag("Projectile")) && !despawning)
         {
             if (collision.gameObject.GetComponentInParent<Projectile>().projProp.getScale() >= this.projProp.getScale())

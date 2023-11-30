@@ -36,6 +36,18 @@ public class LevelGenerator : MonoBehaviour
     {
         GenerateLevel();
         player = GameObject.FindWithTag("Player");
+        StartCoroutine(DelayScan());
+    }
+
+    /// <summary>
+    /// Delays the Pathfinding grid scan until after the level is generated.
+    /// If called right after, misses walls and props for some reason, so needs to be delayed a significant
+    /// amount of time
+    /// </summary>
+    private IEnumerator DelayScan()
+    {
+        yield return new WaitForSeconds(0.1f);
+        AstarPath.active.Scan();
     }
 
     /// <summary>
@@ -504,7 +516,7 @@ public class LevelGenerator : MonoBehaviour
         changeScene.sceneBuildIndex = 2;
         for (int x = _width / 2 - 2; x < _width / 2 + 2; x++)
         {
-            walls.SetTile(new Vector3Int(x, _height, 0), baseLevelTiles.inLevelRoomBorder);
+            walls.SetTile(new Vector3Int(x, _height, 0), baseLevelTiles.exitDoor);
         }
     }
 

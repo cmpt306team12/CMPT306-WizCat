@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+using Pathfinding;
 
 public class Health : MonoBehaviour
 {
@@ -89,6 +90,15 @@ public class Health : MonoBehaviour
            
             StartCoroutine(RedHurt());
             animator.SetTrigger("IsHurt");
+        }
+
+        if (gameObject.CompareTag("Obstacle") && gameObject.GetComponent<ExplosiveBarrel>() != null)
+        {
+            // Explosive barrel - set off fuze
+            if (!gameObject.GetComponent<ExplosiveBarrel>().IsLit())
+            {
+                gameObject.GetComponent<ExplosiveBarrel>().LightFuse();
+            }
         }
 
         // player takes less damage at low health
@@ -192,13 +202,23 @@ public class Health : MonoBehaviour
                 gameObject.GetComponent<Enemy>().enabled = false;
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                gameObject.GetComponent<Enemy>().CancelInvoke();
+                Destroy(gameObject.GetComponent<Enemy>().stun);
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                gameObject.transform.GetChild(5).gameObject.SetActive(false);
             }
             else if (gameObject.CompareTag("Obstacle"))
             {
+                if (gameObject.GetComponent<ExplosiveBarrel>() != null)
+                {
+                    // Make explosive barrel explode
+                    gameObject.GetComponent<ExplosiveBarrel>().Explode();
+                }
                 // if Gameobject is an obstacle, drop loot if it does, then destroy
                 if (dropsLoot)
                 {
@@ -221,10 +241,16 @@ public class Health : MonoBehaviour
                 GetComponent<Bite>().enabled = false;
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                gameObject.GetComponent<Player>().CancelInvoke();
+                gameObject.GetComponentInChildren<Wand>().enabled = false;
+                Destroy(gameObject.GetComponent<Player>().stun);
                 gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                gameObject.transform.GetChild(5).gameObject.SetActive(false);
 
                 StartCoroutine(PlayerDeath());
                 StaticData.Reset();
