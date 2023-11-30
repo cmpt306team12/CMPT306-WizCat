@@ -26,6 +26,9 @@ public class Health : MonoBehaviour
     public CanvasGroup gameOverScreen;
     public bool fadeIn = false;
 
+    // Heal particle effect gameobject
+    public GameObject healPS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +74,23 @@ public class Health : MonoBehaviour
         gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
        
+    }
+
+    private IEnumerator GreenHeal()
+    {
+        //getting the wands might be a little scuffed
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        healPS.SetActive(true);
+        healPS.GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(0.3f);
+        healPS.GetComponent<ParticleSystem>().Stop();
+
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(2.0f);
+        healPS.SetActive(false);
+
     }
 
     public void ApplyDamage(float damageAmount)
@@ -267,6 +287,10 @@ public class Health : MonoBehaviour
     public void ApplyHealing(float healAmount)
     {
         currentHealth += healAmount;
+        if (gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(GreenHeal());
+        }
 
         if (currentHealth > maxHealth)
         {
