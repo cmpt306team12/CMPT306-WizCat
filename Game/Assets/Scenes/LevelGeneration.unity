@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCoordinates: {x: 32, y: 42.5}
-  distance: 6
+  offsetDistance: 2.5
 --- !u!1 &985890631
 GameObject:
   m_ObjectHideFlags: 0

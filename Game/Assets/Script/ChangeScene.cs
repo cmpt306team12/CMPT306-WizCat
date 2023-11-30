@@ -29,7 +29,7 @@ public class ChangeScene : MonoBehaviour
         perkManager = player.GetComponent<Perks>();
         playerMovement = player.GetComponent<PlayerMovement>();
         // scene transition setup
-        GameObject canvasObject = GameObject.FindGameObjectWithTag("Canvas");
+        GameObject canvasObject = GameObject.FindGameObjectWithTag("Levelloader");
         transition = canvasObject.GetComponentInChildren<Animator>();
     }
 

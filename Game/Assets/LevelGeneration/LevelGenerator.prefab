@@ -893,6 +893,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 16b98551f46256a4294b17c3dad1f9a0, type: 2}
   - {fileID: 11400000, guid: f0d7b64c0540b8a46940ad21e6d54e6f, type: 2}
   - {fileID: 11400000, guid: e156e3c6cfaff4d488a64bb55b7f5b41, type: 2}
+  - {fileID: 11400000, guid: 29ba1fb1f30b5b847b814ea0abd44b1d, type: 2}
+  - {fileID: 11400000, guid: b5fd8362fb7654c4dba4759aa0ad38cb, type: 2}
   walls: {fileID: 7382907338179376721}
   ground: {fileID: 1386107777402378509}
   props: {fileID: 8702862274674598847}
@@ -903,6 +905,7 @@ MonoBehaviour:
   doorPrefab: {fileID: 355978249493521748, guid: 41d75e7ec52af1341a0f564c7e5ffa8b,
     type: 3}
   backgroundMusic: {fileID: 0}
+  banner: {fileID: 0}
 --- !u!156049354 &1213841034878856996
 Grid:
   m_ObjectHideFlags: 0
