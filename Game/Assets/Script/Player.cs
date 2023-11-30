@@ -63,12 +63,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !stunned && wand.enabled)
+        if (!PauseMenu.isPaused && Input.GetMouseButtonDown(0) && !stunned && wand.enabled)
         {
             wand.Shoot();
             // play player shoot sound effect
-            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
+            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position)
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,6 +77,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Perk") && gameObject.CompareTag("Player"))
         {
             GetComponentInChildren<AudioSource>().clip = perkSound;
+            GetComponentInChildren<AudioSource>().volume = 0.25f;
             GetComponentInChildren<AudioSource>().Play();
             int id = collision.gameObject.GetComponent<Perk>().GetPerkID();
             collision.gameObject.GetComponent<Perk>().Despawn();
