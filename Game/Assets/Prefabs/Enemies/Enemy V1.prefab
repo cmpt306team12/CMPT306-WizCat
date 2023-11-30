@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 6402174955218543694}
   - component: {fileID: 5791647326916602991}
   m_Layer: 0
-  m_Name: WizWand
+  m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: -44025399
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 6d1eb2543f0071e418244e1581b51841, type: 3}
+  m_Sprite: {fileID: -568171118, guid: a8bb4b3b282f809418de8e58ae3826b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -304,7 +304,7 @@ Animator:
   m_GameObject: {fileID: 1557545385859107712}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8ffda142c1a81d479bf893f5482cf34, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -444,8 +444,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4479570914830633144}
   - {fileID: 5163030934891789235}
+  - {fileID: 4479570914830633144}
   - {fileID: 2024666492324324849}
   - {fileID: 909524523822960259}
   m_Father: {fileID: 0}

@@ -26,6 +26,8 @@ public class LevelGenerator : MonoBehaviour
     // level music
     public LevelMusic backgroundMusic;
 
+    public ClearBanner banner;
+
     private void Start()
     {
         GenerateLevel();
@@ -42,6 +44,11 @@ public class LevelGenerator : MonoBehaviour
             OpenExit();
             // level music change
             backgroundMusic.changeBGM();
+
+            // Show "Clear" Banner 
+            banner.ShowBanner();
+            StartCoroutine(banner.HideBanner());
+
         }
     }
     

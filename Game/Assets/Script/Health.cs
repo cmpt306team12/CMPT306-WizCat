@@ -21,6 +21,9 @@ public class Health : MonoBehaviour
     public GameObject AppraisalFloatingTextPrefab;
     public string[] deathQuotes;
     public string[] appraisalQuotes;
+    //Should only be used by the player
+    public CanvasGroup gameOverScreen;
+    public bool fadeIn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +39,37 @@ public class Health : MonoBehaviour
         //hurtSFX = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (fadeIn)
+        {
+            if (gameOverScreen.alpha < 1)
+            {
+                gameOverScreen.alpha += Time.deltaTime;
+                if (gameOverScreen.alpha >= 1)
+                {
+                    fadeIn = false;
+                    this.enabled = false;  //Disables "Health" script
+                }
+            }
+        }
+    }
+
     private IEnumerator PlayerDeath()
     {
-        yield return new WaitForSeconds(5.0f);
-        SceneManager.LoadScene(0);
+        yield return new WaitForSeconds(4.0f);
+        fadeIn = true;
+    }
+
+    private IEnumerator RedHurt()
+    {
+        //getting the wands might be a little scuffed
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+       
     }
 
     public void ApplyDamage(float damageAmount)
@@ -56,12 +86,11 @@ public class Health : MonoBehaviour
             {
                 gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
             }
-        }
-
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
-        {
+           
+            StartCoroutine(RedHurt());
             animator.SetTrigger("IsHurt");
         }
+
 
         currentHealth -= damageAmount;
 
@@ -183,8 +212,6 @@ public class Health : MonoBehaviour
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 gameObject.transform.GetChild(3).gameObject.SetActive(false);
-
-                this.enabled = false;
 
                 StartCoroutine(PlayerDeath());
                 StaticData.Reset();

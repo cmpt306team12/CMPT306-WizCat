@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a9e2ad9160b3334ba9d0ce3a1e2b784
+guid: 85c7a8850ba48734f82a83c4af9bd54c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,64 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CatWizHurtL_0
+      name: CatGhostlyDeath-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88dd78d0ae06b8f4fb24644357973fcf
-      internalID: -477817196
+      spriteID: 653981ad25717f444b8b1c2b69fd0481
+      internalID: 1084488862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CatWizHurtL_1
+      name: CatGhostlyDeath-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 829f6febf01264246946e669b0b6694d
-      internalID: -1086055326
+      spriteID: 047254fe73b09db42b9f4263420367bb
+      internalID: -322586559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CatWizHurtL_2
+      name: CatGhostlyDeath-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba5e15ec4bc499842a488552576485e0
-      internalID: -1234494420
+      spriteID: 103d19f2d43a00d43a00d80ae2c7a587
+      internalID: -2011038295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatGhostlyDeath-Sheet 1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab66c33c2b6ac84cac353e00036e829
+      internalID: 219174768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatGhostlyDeath-Sheet 1_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90274a8bf12a9514eae9d55f9e595be9
+      internalID: -1379867851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatGhostlyDeath-Sheet 1_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 430d8ac827261754da84eb3142a68842
+      internalID: 1042256243
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CatWizHurtL_0: -477817196
-      CatWizHurtL_1: -1086055326
-      CatWizHurtL_2: -1234494420
+      CatGhostlyDeath-Sheet 1_0: 1084488862
+      CatGhostlyDeath-Sheet 1_1: -322586559
+      CatGhostlyDeath-Sheet 1_2: -2011038295
+      CatGhostlyDeath-Sheet 1_3: 219174768
+      CatGhostlyDeath-Sheet 1_4: -1379867851
+      CatGhostlyDeath-Sheet 1_5: 1042256243
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

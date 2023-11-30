@@ -6,6 +6,8 @@ public class LevelMusic : MonoBehaviour
 {
     public AudioClip victory;
 
+    public AudioClip gameOver;
+
     private AudioSource audioSource;
 
     private void Start()
@@ -16,6 +18,29 @@ public class LevelMusic : MonoBehaviour
     public void changeBGM()
     {
         StartCoroutine(FadeOutAndChange());
+    } 
+
+    public void CallPlayerDeath()
+    {
+        StartCoroutine(PlayerDeath());
+    }
+
+    IEnumerator PlayerDeath()
+    {
+        float fadeDuration = 1f;
+        float startVolume = audioSource.volume;
+
+        // Gradually decrease the volume to zero
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+        audioSource.volume = 0;
+        audioSource.clip = gameOver;
+        audioSource.volume = startVolume;
+        audioSource.Play();
+        StartCoroutine(StopClipIn(gameOver.length));
     }
 
     IEnumerator FadeOutAndChange()
@@ -43,4 +68,11 @@ public class LevelMusic : MonoBehaviour
         // Play the new AudioClip
         //audioSource.Play();
     }
+
+    IEnumerator StopClipIn(float value)
+    {
+        yield return new WaitForSeconds(value);
+        audioSource.Stop();
+    }
+
 }
