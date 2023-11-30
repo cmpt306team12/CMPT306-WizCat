@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         {
             wand.Shoot();
             // play player shoot sound effect
-            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position)
+            gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
         }
         
     }

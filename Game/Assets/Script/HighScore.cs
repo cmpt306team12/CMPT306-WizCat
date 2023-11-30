@@ -15,7 +15,7 @@ public class HighScore : MonoBehaviour
 
     private void DisplayHighScores(List<int> highScores)
     {
-        highScoreText.text = "High Scores:\n";
+        highScoreText.text = "";
 
         // Display each high score on a new line and log to the console
         for (int i = 0; i < highScores.Count; i++)
