@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PrayHeal : MonoBehaviour
 {
@@ -11,12 +12,21 @@ public class PrayHeal : MonoBehaviour
 
     // heal sound
     public AudioClip healSound;
+    public GameObject stoneHealPS;
+
+    public GameObject AccessFloatingTextPrefab;
+    public TextMeshProUGUI secretFoundText;
+    // player pref secret
+    private string secretFoundKey = "SecretHealFound";
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
         player = gameManager.GetPlayer();
+
+        stoneHealPS.SetActive(true);
+        stoneHealPS.GetComponent<ParticleSystem>().Play();
     }
 
     public void Pray()
@@ -28,6 +38,23 @@ public class PrayHeal : MonoBehaviour
             player.GetComponent<Health>().ApplyHealing(healAmount);
             Destroy(gameObject);
             hasPrayed = true;
+
+            // check if found before
+            if (PlayerPrefs.GetInt(secretFoundKey, 0) == 0)
+            {
+            // Display reward of access and stop particle effect
+            Vector3 offset = new Vector3(0.0f, -1.0f, 0.0f);
+            GameObject text = Instantiate(AccessFloatingTextPrefab, gameObject.transform.position + offset, Quaternion.identity);
+            TextMeshProUGUI textMesh = text.GetComponentInChildren<TextMeshProUGUI>();
+            string Text = "Secret Found!";
+            textMesh.text = Text;
+            Destroy(text, 3.0f);
+            
+            PlayerPrefs.SetInt(secretFoundKey, 1);
+            PlayerPrefs.Save();
+            }
+
+            stoneHealPS.SetActive(false);
         }
     }
 }
