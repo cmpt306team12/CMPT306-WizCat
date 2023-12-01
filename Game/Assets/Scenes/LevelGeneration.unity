@@ -1779,7 +1779,7 @@ PrefabInstance:
     - target: {fileID: 212217081995349893, guid: aa7bc7fb6a8be4709bc787a0b7cf6f32,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1522692252652114230, guid: aa7bc7fb6a8be4709bc787a0b7cf6f32,
         type: 3}
@@ -7646,7 +7646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c1146a9c121264c965e165b59db8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victory: {fileID: 8300000, guid: 085912f13847c4f44a6be0fc3058d875, type: 3}
+  victory: {fileID: 8300000, guid: 31f8a8b2f28294c65a499311c4c858c6, type: 3}
   gameOver: {fileID: 8300000, guid: d5e8617b3eef08d4dbd42a1ecac3bb41, type: 3}
 --- !u!1001 &1920704146524227263
 PrefabInstance:

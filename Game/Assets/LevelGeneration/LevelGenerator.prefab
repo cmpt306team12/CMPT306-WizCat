@@ -979,6 +979,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 72db34f829569b4449b4e95d132a585e, type: 2}
   - {fileID: 11400000, guid: 4edf28a1b4457a4468546ff83fc0eb29, type: 2}
   - {fileID: 11400000, guid: f64cf44dcb28c854ca903dd6b49c5958, type: 2}
+  - {fileID: 11400000, guid: d281bdd79b35fd74eaffaeebd3913639, type: 2}
+  - {fileID: 11400000, guid: 40cfc37d65d56da469af24ea9dc8840f, type: 2}
+  - {fileID: 11400000, guid: 2b1af8a320fbaa546816c4afef2830ee, type: 2}
+  - {fileID: 11400000, guid: b4dee57c7658d694aa7a9f4a5aa1c536, type: 2}
+  - {fileID: 11400000, guid: 6f8374d2416b8d24e9833555db956984, type: 2}
+  - {fileID: 11400000, guid: ff1dc44563a1cbc42b089e0599603263, type: 2}
+  - {fileID: 11400000, guid: f0d7b64c0540b8a46940ad21e6d54e6f, type: 2}
+  - {fileID: 11400000, guid: e156e3c6cfaff4d488a64bb55b7f5b41, type: 2}
+  - {fileID: 11400000, guid: 53f460ea25152574fb762962f8f4a649, type: 2}
+  - {fileID: 11400000, guid: a108e1b5da5965d4f8e743d0fbade831, type: 2}
+  - {fileID: 11400000, guid: 22132ead958f6df4ebe247968f3315d7, type: 2}
+  - {fileID: 11400000, guid: 17ca896c40e98394886db4f5c1849c62, type: 2}
+  - {fileID: 11400000, guid: a02640b402db63d4d93778409220a59e, type: 2}
+  - {fileID: 11400000, guid: a2bd181b19777044fa61dcf3c04ce531, type: 2}
+  - {fileID: 11400000, guid: b3ec37beb6bfd9c4ba9afd8a85509022, type: 2}
+  - {fileID: 11400000, guid: 100a20af4e904644cb2e59965dbda521, type: 2}
+  - {fileID: 11400000, guid: 71ec94c49f1fd0d43a4dedd5c5b0a66f, type: 2}
+  - {fileID: 11400000, guid: 16b98551f46256a4294b17c3dad1f9a0, type: 2}
+  - {fileID: 11400000, guid: 29ba1fb1f30b5b847b814ea0abd44b1d, type: 2}
+  - {fileID: 11400000, guid: b5fd8362fb7654c4dba4759aa0ad38cb, type: 2}
   walls: {fileID: 7382907338179376721}
   ground: {fileID: 1386107777402378509}
   props: {fileID: 8702862274674598847}
@@ -989,6 +1009,7 @@ MonoBehaviour:
   doorPrefab: {fileID: 355978249493521748, guid: 41d75e7ec52af1341a0f564c7e5ffa8b,
     type: 3}
   backgroundMusic: {fileID: 0}
+  banner: {fileID: 0}
 --- !u!156049354 &1213841034878856996
 Grid:
   m_ObjectHideFlags: 0
