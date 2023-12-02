@@ -635,7 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0
   shootSoundEffect: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
-  perkSound: {fileID: 0}
+  perkSound: {fileID: 8300000, guid: 596f02d947e6ca941b4959311adaa450, type: 3}
   stun: {fileID: 8049844929025240453}
 --- !u!95 &8378376417109672244
 Animator:

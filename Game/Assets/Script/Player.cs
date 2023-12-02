@@ -76,13 +76,21 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Perk") && gameObject.CompareTag("Player"))
         {
-            GetComponentInChildren<AudioSource>().clip = perkSound;
-            GetComponentInChildren<AudioSource>().volume = 0.25f;
-            GetComponentInChildren<AudioSource>().Play();
             int id = collision.gameObject.GetComponent<Perk>().GetPerkID();
             collision.gameObject.GetComponent<Perk>().Despawn();
             gameObject.GetComponent<Perks>().AddPerk(id);
+            GetComponentInChildren<AudioSource>().clip = perkSound;
+            StartCoroutine(softerPerk());
         }
+    }
+
+    IEnumerator softerPerk()
+    {
+        GetComponentInChildren<AudioSource>().clip = perkSound;
+        GetComponentInChildren<AudioSource>().volume = 0.25f;
+        GetComponentInChildren<AudioSource>().Play();
+        yield return new WaitForSeconds(1.8f);
+        GetComponentInChildren<AudioSource>().volume = 1;
     }
 
 }

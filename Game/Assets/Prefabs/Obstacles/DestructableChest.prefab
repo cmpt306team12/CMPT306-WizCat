@@ -203,6 +203,9 @@ MonoBehaviour:
   AppraisalFloatingTextPrefab: {fileID: 0}
   deathQuotes: []
   appraisalQuotes: []
+  gameOverScreen: {fileID: 0}
+  fadeIn: 0
+  healPS: {fileID: 0}
 --- !u!114 &5456375313831265842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,23 +226,30 @@ MonoBehaviour:
   - rarePerks
   weights:
   - 0
-  - 90
-  - 8
-  - 2
+  - 70
+  - 15
+  - 10
   tier1Drops:
   - {fileID: 100000, guid: e97985069115aee48a0ecee9af654ffa, type: 3}
   tier2Drops:
-  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
-  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
-  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
-  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: cc1ea1ad9e2fb5d4a8144af690f04de1, type: 3}
   - {fileID: 7545011607710849246, guid: 795441f821c16234581a364ed10efff7, type: 3}
-  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
-  tier3Drops:
-  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
-  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
-  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
   - {fileID: 7545011607710849246, guid: ba2b127157b43e84fb36a9a89d2e0236, type: 3}
+  - {fileID: 7545011607710849246, guid: 4e70cef64c017f6418957715cb790c4b, type: 3}
+  - {fileID: 7545011607710849246, guid: 12b8140a37a5b4941b38fdbf365258cf, type: 3}
+  - {fileID: 7545011607710849246, guid: 43ddec2f2ae7a864aaf97069e4ec6d98, type: 3}
+  - {fileID: 7545011607710849246, guid: 42e5bad765d8cd2448ad2f47ce56fc4c, type: 3}
+  - {fileID: 7545011607710849246, guid: 2f8dcbf2b9a9eab4590d590bec066fc5, type: 3}
+  - {fileID: 7545011607710849246, guid: f07253fb5aa406647bb25052ab27e6af, type: 3}
+  - {fileID: 7545011607710849246, guid: 3170ee803acea8544a92d879bcf3f05d, type: 3}
+  - {fileID: 7545011607710849246, guid: 35622c9e41f07354dac5c04656c15210, type: 3}
+  - {fileID: 7545011607710849246, guid: 54bdca5a045d70d4891a839bdf87388b, type: 3}
+  - {fileID: 7545011607710849246, guid: c9870fafef29815408c5b337abfe0475, type: 3}
+  - {fileID: 7545011607710849246, guid: 1a5e4b94cb3476a47bc01d765b7c3c59, type: 3}
+  tier3Drops:
+  - {fileID: 404603458289445419, guid: 4636f9ac9cffad04bb99aa038bc55ea1, type: 3}
+  - {fileID: 7545011607710849246, guid: f68921bce6464724180a0ecc58abf30a, type: 3}
+  - {fileID: 248169646391386133, guid: 97b0d218fd72ab949ad588a6532e73df, type: 3}
 --- !u!114 &2561862800589166981
 MonoBehaviour:
   m_ObjectHideFlags: 0
