@@ -12,7 +12,8 @@ public class PrayHeal : MonoBehaviour
 
     // heal sound
     public AudioClip healSound;
-    public GameObject stoneHealPS;
+    public GameObject godRays;
+    public GameObject leafCircle;
 
     public GameObject AccessFloatingTextPrefab;
     public TextMeshProUGUI secretFoundText;
@@ -24,9 +25,6 @@ public class PrayHeal : MonoBehaviour
     {
         gameManager = GameManager.instance;
         player = gameManager.GetPlayer();
-
-        stoneHealPS.SetActive(true);
-        stoneHealPS.GetComponent<ParticleSystem>().Play();
     }
 
     public void Pray()
@@ -36,7 +34,7 @@ public class PrayHeal : MonoBehaviour
             player.GetComponentInChildren<AudioSource>().clip = healSound;
             player.GetComponentInChildren<AudioSource>().Play();
             player.GetComponent<Health>().ApplyHealing(healAmount);
-            Destroy(gameObject);
+            //Destroy(gameObject);
             hasPrayed = true;
 
             // check if found before
@@ -54,7 +52,8 @@ public class PrayHeal : MonoBehaviour
             PlayerPrefs.Save();
             }
 
-            stoneHealPS.SetActive(false);
+            godRays.GetComponent<ParticleSystem>().Stop();
+            leafCircle.GetComponent<ParticleSystem>().Stop();
         }
     }
 }
