@@ -122,6 +122,9 @@ public class Shop : MonoBehaviour
                     perktext.text = "Wiggling Projectiles";
                     price = tier1;
                     break;
+                case 18:
+                    perktext.text = "Max Health Up";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");

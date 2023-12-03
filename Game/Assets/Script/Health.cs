@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
-            // maxHealth = StaticData.maxHealth;
+            maxHealth = StaticData.maxHealth;
             currentHealth = StaticData.currentHealth;
         }
 
@@ -369,4 +369,9 @@ public class Health : MonoBehaviour
         return null;
     }
 
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+    }
 }
