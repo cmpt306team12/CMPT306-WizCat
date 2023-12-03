@@ -6,6 +6,7 @@ using UnityEngine;
 public class Perks : MonoBehaviour
 {
     public ProjectileProperties projectileProperties;
+    private Health _health;
 
     /* Perk mods array:
     * 0: Bounces
@@ -22,6 +23,11 @@ public class Perks : MonoBehaviour
     * 11: Wiggle Shots
     * */
     int[] perks = new int[12];
+
+    private void Awake()
+    {
+        _health = gameObject.GetComponent<Health>();
+    }
 
     public void AddPerk(int i)
     {
@@ -94,6 +100,11 @@ public class Perks : MonoBehaviour
                 index = 11;
                 change = 1;
                 break;
+            case 18: //health+
+                index = 7;
+                change = 1;
+                _health.IncreaseMaxHealth(15);
+                break;
             default:
                 break;
         }
@@ -120,14 +131,16 @@ public class Perks : MonoBehaviour
     public static List<Tuple<int, int>> GetValidEnemyPerks()
     {
         return new List<Tuple<int, int>>{
-            new Tuple<int, int>(0, 1), // bounce+
-            new Tuple<int, int>(1, 2), // speed+
-            new Tuple<int, int>(3, 1), // time+
-            new Tuple<int, int>(5, 2), // damage+
-            new Tuple<int, int>(7, 2), // explosive+
-            new Tuple<int, int>(8, 3), // size+
-            new Tuple<int, int>(10, 3), // burst+
-            new Tuple<int, int>(14, 2), // splits+
+            new Tuple<int, int>(0, 10), // bounce+
+            new Tuple<int, int>(1, 40), // speed+
+            new Tuple<int, int>(3, 10), // time+
+            new Tuple<int, int>(5, 30), // damage+
+            new Tuple<int, int>(7, 30), // explosive+
+            new Tuple<int, int>(8, 30), // size+
+            new Tuple<int, int>(10, 30), // burst+
+            new Tuple<int, int>(14, 30), // splits+
+            new Tuple<int, int>(17, 20), // wiggle+
+            new Tuple<int, int>(18, 10) // health+
     };
 }
 }

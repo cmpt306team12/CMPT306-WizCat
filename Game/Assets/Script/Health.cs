@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
-            // maxHealth = StaticData.maxHealth;
+            maxHealth = StaticData.maxHealth;
             currentHealth = StaticData.currentHealth;
         }
 
@@ -319,4 +319,9 @@ public class Health : MonoBehaviour
         textMesh.transform.position = originalPosition;
     }
 
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+    }
 }

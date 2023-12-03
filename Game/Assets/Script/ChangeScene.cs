@@ -38,6 +38,7 @@ public class ChangeScene : MonoBehaviour
         // store scene game data in StaticData for next scene
         StaticData.coins = gameManager.coinCount;
         StaticData.score = gameManager.scoreCount;
+        StaticData.maxHealth = health.maxHealth;
         StaticData.currentHealth = health.currentHealth;
         StaticData.maxHealth = health.maxHealth;
         StaticData.perks = perkManager.GetPerks();

@@ -105,6 +105,9 @@ public class Shop : MonoBehaviour
                 case 17: // Wiggle Perk
                     perktext.text = "Wiggling Projectiles";
                     break;
+                case 18:
+                    perktext.text = "Max Health Up";
+                    break;
 
                 default:
                     Debug.LogError("Applying undefined PerkID:");

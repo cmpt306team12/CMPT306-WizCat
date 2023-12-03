@@ -55,6 +55,7 @@ public class LevelGenerator : MonoBehaviour
     /// </summary>
     public void EnemyDefeated()
     {
+        print("Enemy count was " + _enemyCount + ", now " + (_enemyCount - 1));
         _enemyCount -= 1;
         if (_enemyCount <= 0)
         {
@@ -420,7 +421,7 @@ public class LevelGenerator : MonoBehaviour
     /// </summary>
     private int GenerateEnemyCount()
     {
-        int minEnemies = Mathf.Min(10,Mathf.Max(1, StaticData.level - 5));
+        int minEnemies = Mathf.Min(10,Mathf.Max(2, StaticData.level - 3));
         int maxEnemies = Mathf.Min(StaticData.level, 11);
         return Random.Range(minEnemies, maxEnemies);
     }
@@ -490,7 +491,7 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnEnemies(List<Vector3Int> locations)
     {
         List<Tuple<int, int>> possiblePerks = Perks.GetValidEnemyPerks();
-        int powerBudget = StaticData.level * 10;
+        int powerBudget = 10 + 30 * StaticData.level;
         List<Perks> enemyPerksList = new List<Perks>();
         foreach (Vector3Int location in locations)
         {
