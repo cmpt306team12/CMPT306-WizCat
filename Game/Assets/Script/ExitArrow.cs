@@ -26,7 +26,7 @@ public class ExitArrow : MonoBehaviour
         // Calculate the rotation angle to make the arrow point towards the target coordinates
         float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
-        angle += 90f;
+        angle -= 90f;
 
         // Set the ExitArrow's local rotation
         transform.localRotation = Quaternion.Euler(0f, 0f, angle);

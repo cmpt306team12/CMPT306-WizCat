@@ -281,6 +281,16 @@ public class Health : MonoBehaviour
                 // Unhandled object with health of zero
                 Debug.Log("Gameobject has health zero: " + gameObject.name);
             }
+
+            // disable minimap icon
+
+            GameObject minimapIcon = FindMinimapInChildren();
+
+            // Check if minimapTransform is not null before using it
+            if (minimapIcon != null)
+            {
+                minimapIcon.SetActive(false);
+            }
         }
     }
 
@@ -317,6 +327,23 @@ public class Health : MonoBehaviour
         }
         textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0.0f);
         textMesh.transform.position = originalPosition;
+    }
+
+    // Function to find the "Minimap" tag in children
+    GameObject FindMinimapInChildren()
+    {
+        Transform[] children = GetComponentsInChildren<Transform>(true);
+
+        foreach (Transform child in children)
+        {
+            if (child.CompareTag("Minimap"))
+            {
+                return child.gameObject;
+            }
+        }
+
+        // Return null if "Minimap" tag is not found in children
+        return null;
     }
 
 }

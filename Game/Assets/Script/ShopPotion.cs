@@ -13,6 +13,7 @@ public class ShopPotion : MonoBehaviour
     private GameManager gameManager;
 
     public GameObject priceText;
+    TextMeshPro pricetext;
     public GameObject itemImage;
     public GameObject itemName;
 
@@ -22,7 +23,7 @@ public class ShopPotion : MonoBehaviour
         gameManager = GameManager.instance;
 
         // set price text
-        TextMeshPro pricetext = priceText.GetComponent<TextMeshPro>();
+        pricetext = priceText.GetComponent<TextMeshPro>();
         pricetext.text = "" + price;
 
         // set item image
@@ -34,6 +35,13 @@ public class ShopPotion : MonoBehaviour
         TextMeshPro itemText = itemName.GetComponent<TextMeshPro>();
         itemText.text = "Healing Potion";
     }
+
+    void Update()
+    {
+        if (price > gameManager.coinCount) { pricetext.color = Color.red; }
+        else { pricetext.color = Color.white; }
+    }
+
     public void InstantiateItem()
     {
         Debug.Log("Not enough coins");
