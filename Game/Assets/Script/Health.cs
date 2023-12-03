@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public float currentHealth;
     public int EnemyScore = 50;
     public bool dropsLoot = false;
+    public bool isImmune = false;
+    public float immunityDuration = 0.5f;
 
     public Animator animator;
     public AudioClip hurtSFX1;
@@ -22,6 +24,7 @@ public class Health : MonoBehaviour
     public GameObject AppraisalFloatingTextPrefab;
     public string[] deathQuotes;
     public string[] appraisalQuotes;
+
     //Should only be used by the player
     public CanvasGroup gameOverScreen;
     public bool fadeIn = false;
@@ -95,67 +98,76 @@ public class Health : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
-
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
+        if (!isImmune)
         {
-            int chooseSound = Random.Range(1, 3);
-            if (chooseSound == 1)
+            if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
             {
-                gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX1, transform.position);
+                int chooseSound = Random.Range(1, 3);
+                if (chooseSound == 1)
+                {
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX1, transform.position);
+                }
+                else
+                {
+                    gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
+                }
+
+                StartCoroutine(RedHurt());
+                animator.SetTrigger("IsHurt");
             }
+
+            if (gameObject.CompareTag("Obstacle") && gameObject.GetComponent<ExplosiveBarrel>() != null)
+            {
+                // Explosive barrel - set off fuze
+                if (!gameObject.GetComponent<ExplosiveBarrel>().IsLit())
+                {
+                    gameObject.GetComponent<ExplosiveBarrel>().LightFuse();
+                }
+            }
+
+            // player takes less damage at low health
+            if (gameObject.CompareTag("Player"))
+            {
+                if (currentHealth / maxHealth <= .33)
+                {
+                    float reducedDamage = damageAmount * 0.66f;
+                    int roundedDamage = (int)Mathf.Round(reducedDamage);
+                    if (roundedDamage < 1) { roundedDamage = 1; }
+                    currentHealth -= roundedDamage;
+                }
+                else
+                {
+                    currentHealth -= damageAmount;
+                    StartCoroutine(ToggleImmunity(immunityDuration));
+                }
+            }
+            // when anything other than the player takes damage
             else
             {
-                gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX2, transform.position);
+                currentHealth -= damageAmount;
+                if (gameObject.CompareTag("Player")) { StartCoroutine(ToggleImmunity(immunityDuration)); }
             }
-           
-            StartCoroutine(RedHurt());
-            animator.SetTrigger("IsHurt");
-        }
 
-        if (gameObject.CompareTag("Obstacle") && gameObject.GetComponent<ExplosiveBarrel>() != null)
-        {
-            // Explosive barrel - set off fuze
-            if (!gameObject.GetComponent<ExplosiveBarrel>().IsLit())
+            // death
+            if (currentHealth <= 0.0f)
             {
-                gameObject.GetComponent<ExplosiveBarrel>().LightFuse();
-            }
-        }
+                currentHealth = 0.0f;
+                Debug.Log(gameObject.tag + " has died.");
 
-        // player takes less damage at low health
-        if (gameObject.CompareTag("Player"))
-        {
-            if (currentHealth / maxHealth <= .33)
-            {
-                float reducedDamage = damageAmount * 0.66f;
-                int roundedDamage = (int)Mathf.Round(reducedDamage);
-                if (roundedDamage < 1) { roundedDamage = 1; }
-                currentHealth -= roundedDamage;
-            }
-            else { currentHealth -= damageAmount; }
-        }
-        // when anything other than the player takes damage
-        else { currentHealth -= damageAmount; }
-
-        // death
-        if (currentHealth <= 0.0f)
-        {
-            currentHealth = 0.0f;
-            Debug.Log(gameObject.tag + " has died.");
-
-            if (gameObject.CompareTag("Enemy"))
-            {
-                if (dropsLoot)
+                if (gameObject.CompareTag("Enemy"))
                 {
-                    gameObject.GetComponent<DropOnDestroy>().Drop();
-                }
-                // Handle killing an enemy
+                    if (dropsLoot)
+                    {
+                        gameObject.GetComponent<DropOnDestroy>().Drop();
+                    }
+                    // Handle killing an enemy
 
 
 
-                // 30% chance to drop an enemy message
-                deathQuotes = new string[0];
-                List<string> tempList = new List<string>(deathQuotes);
-                tempList.AddRange(new string[]{
+                    // 30% chance to drop an enemy message
+                    deathQuotes = new string[0];
+                    List<string> tempList = new List<string>(deathQuotes);
+                    tempList.AddRange(new string[]{
                 "My monitor was unplugged",
                 "You're just a cat...",
                 "Friendly reminder: life is meant to be lived. Unless it's your life, in which case it was meant to given to me.",
@@ -165,28 +177,28 @@ public class Health : MonoBehaviour
                 "I'm cooking something up for you ...",
                 "Yum, yum, yum!",
                 "Fried okra, raw beans, washed mushrooms, raw peppers, dank cheese, astringent spinach, moldy celery ...",
-                "Acidic bananas, appealing grapes, appetizing yams, aromatic chard, balsamic watermelon, beautiful wheatgrass, blazed carrots ...", 
-                "Blended eggs, blunt romaine, boiled bacon, briny basil, burnt bread, caustic  garlic, cold pasta, chunky salt, creamy water, crispy oranges ...", 
+                "Acidic bananas, appealing grapes, appetizing yams, aromatic chard, balsamic watermelon, beautiful wheatgrass, blazed carrots ...",
+                "Blended eggs, blunt romaine, boiled bacon, briny basil, burnt bread, caustic  garlic, cold pasta, chunky salt, creamy water, crispy oranges ...",
                 "Crunchy nectarines, cured peaches, delectable apricots, delightful basil, doughy apples, drenched raisins, dry plums, elastic turkey ...",
                 });
-                deathQuotes = tempList.ToArray();
+                    deathQuotes = tempList.ToArray();
 
-                float randomChance = Random.value;
-                Vector3 offset = new Vector3(0.0f, 2.0f, 0.0f);
-                GameObject text = Instantiate(EnemyFloatingTextPrefab, gameObject.transform.position + offset, Quaternion.identity);
-                TextMeshProUGUI atextMesh = text.GetComponentInChildren<TextMeshProUGUI>();
-                string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
-                // string aText = deathQuotes[Random.Range(0, deathQuotes.Length)];
-                atextMesh.text = aText;
-                if (!string.IsNullOrEmpty(aText))
-                {
-                    Destroy(text, 10.0f);
-                }
+                    float randomChance = Random.value;
+                    Vector3 offset = new Vector3(0.0f, 2.0f, 0.0f);
+                    GameObject text = Instantiate(EnemyFloatingTextPrefab, gameObject.transform.position + offset, Quaternion.identity);
+                    TextMeshProUGUI atextMesh = text.GetComponentInChildren<TextMeshProUGUI>();
+                    string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
+                    // string aText = deathQuotes[Random.Range(0, deathQuotes.Length)];
+                    atextMesh.text = aText;
+                    if (!string.IsNullOrEmpty(aText))
+                    {
+                        Destroy(text, 10.0f);
+                    }
 
-                // 50% chance to drop an appraisal message
-                appraisalQuotes = new string[0];
-                List<string> tempList2 = new List<string>(appraisalQuotes);
-                tempList2.AddRange(new string[]{
+                    // 50% chance to drop an appraisal message
+                    appraisalQuotes = new string[0];
+                    List<string> tempList2 = new List<string>(appraisalQuotes);
+                    tempList2.AddRange(new string[]{
                     "Great Job!",
                     "Keep it Up!",
                     "Wow!",
@@ -200,98 +212,109 @@ public class Health : MonoBehaviour
                     "Arcane Spellbind!",
                     "Gimbal and Gyre!"
                 });
-                appraisalQuotes = tempList2.ToArray();
+                    appraisalQuotes = tempList2.ToArray();
 
-                float randomChance2 = Random.value;
-                Vector3 offset2 = new Vector3(0.0f, -1.0f, 0.0f);
-                GameObject text2 = Instantiate(AppraisalFloatingTextPrefab, gameObject.transform.position + offset2, Quaternion.identity);
-                TextMeshProUGUI textMesh2 = text2.GetComponentInChildren<TextMeshProUGUI>();
-                string Text2 = (randomChance2 < 0.5f) ? appraisalQuotes[Random.Range(0, appraisalQuotes.Length)] : string.Empty;
-                // string Text2 = appraisalQuotes[Random.Range(0, appraisalQuotes.Length)];
-                textMesh2.text = Text2;
-                if (!string.IsNullOrEmpty(Text2))
+                    float randomChance2 = Random.value;
+                    Vector3 offset2 = new Vector3(0.0f, -1.0f, 0.0f);
+                    GameObject text2 = Instantiate(AppraisalFloatingTextPrefab, gameObject.transform.position + offset2, Quaternion.identity);
+                    TextMeshProUGUI textMesh2 = text2.GetComponentInChildren<TextMeshProUGUI>();
+                    string Text2 = (randomChance2 < 0.5f) ? appraisalQuotes[Random.Range(0, appraisalQuotes.Length)] : string.Empty;
+                    // string Text2 = appraisalQuotes[Random.Range(0, appraisalQuotes.Length)];
+                    textMesh2.text = Text2;
+                    if (!string.IsNullOrEmpty(Text2))
+                    {
+                        StartCoroutine(ShimmerText(textMesh2));
+                        Destroy(text2, 3.0f);
+                    }
+
+
+                    GameManager.instance.IncreaseScore(EnemyScore);
+                    GameManager.instance.EnemyDefeated();
+                    animator.SetBool("IsDead", true);
+                    gameObject.GetComponent<Enemy>().enabled = false;
+                    gameObject.GetComponent<Collider2D>().enabled = false;
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                    gameObject.GetComponent<Enemy>().CancelInvoke();
+                    Destroy(gameObject.GetComponent<Enemy>().stun);
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(5).gameObject.SetActive(false);
+                }
+                else if (gameObject.CompareTag("Obstacle"))
                 {
-                    StartCoroutine(ShimmerText(textMesh2));
-                    Destroy(text2, 3.0f);
+                    if (gameObject.GetComponent<ExplosiveBarrel>() != null)
+                    {
+                        // Make explosive barrel explode
+                        gameObject.GetComponent<ExplosiveBarrel>().Explode();
+                    }
+                    // if Gameobject is an obstacle, drop loot if it does, then destroy
+                    if (dropsLoot)
+                    {
+                        gameObject.GetComponent<DropOnDestroy>().Drop();
+                    }
+                    Destroy(gameObject);
+                }
+                else if (gameObject.CompareTag("Player"))
+                {
+                    // Handle killing player
+
+                    // Play death animation
+                    animator.SetBool("IsDead", true);
+
+                    GameManager.instance.SaveHighScores();
+
+                    transform.gameObject.tag = "Untagged";
+                    GetComponent<PlayerMovement>().enabled = false;
+                    GetComponent<OrbitProjectiles>().enabled = false;
+                    GetComponent<Bite>().enabled = false;
+                    gameObject.GetComponent<Collider2D>().enabled = false;
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                    gameObject.GetComponent<Player>().CancelInvoke();
+                    gameObject.GetComponentInChildren<Wand>().enabled = false;
+                    Destroy(gameObject.GetComponent<Player>().stun);
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(5).gameObject.SetActive(false);
+
+                    StartCoroutine(PlayerDeath());
+                    StaticData.Reset();
+
+                }
+                else
+                {
+                    // Unhandled object with health of zero
+                    Debug.Log("Gameobject has health zero: " + gameObject.name);
                 }
 
+                // disable minimap icon
 
-                GameManager.instance.IncreaseScore(EnemyScore);
-                GameManager.instance.EnemyDefeated();
-                animator.SetBool("IsDead", true);
-                gameObject.GetComponent<Enemy>().enabled = false;
-                gameObject.GetComponent<Collider2D>().enabled = false;
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                gameObject.GetComponent<Enemy>().CancelInvoke();
-                Destroy(gameObject.GetComponent<Enemy>().stun);
-                gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                gameObject.transform.GetChild(2).gameObject.SetActive(false);
-                gameObject.transform.GetChild(3).gameObject.SetActive(false);
-                gameObject.transform.GetChild(4).gameObject.SetActive(false);
-                gameObject.transform.GetChild(5).gameObject.SetActive(false);
-            }
-            else if (gameObject.CompareTag("Obstacle"))
-            {
-                if (gameObject.GetComponent<ExplosiveBarrel>() != null)
+                GameObject minimapIcon = FindMinimapInChildren();
+
+                // Check if its null
+                if (minimapIcon != null)
                 {
-                    // Make explosive barrel explode
-                    gameObject.GetComponent<ExplosiveBarrel>().Explode();
+                    minimapIcon.SetActive(false);
                 }
-                // if Gameobject is an obstacle, drop loot if it does, then destroy
-                if (dropsLoot)
-                {
-                    gameObject.GetComponent<DropOnDestroy>().Drop();
-                }
-                Destroy(gameObject);
-            }
-            else if (gameObject.CompareTag("Player"))
-            {
-                // Handle killing player
-
-                // Play death animation
-                animator.SetBool("IsDead", true);
-                
-                GameManager.instance.SaveHighScores();
-
-                transform.gameObject.tag = "Untagged";
-                GetComponent<PlayerMovement>().enabled = false;
-                GetComponent<OrbitProjectiles>().enabled = false;
-                GetComponent<Bite>().enabled = false;
-                gameObject.GetComponent<Collider2D>().enabled = false;
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                gameObject.GetComponent<Player>().CancelInvoke();
-                gameObject.GetComponentInChildren<Wand>().enabled = false;
-                Destroy(gameObject.GetComponent<Player>().stun);
-                gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                gameObject.transform.GetChild(2).gameObject.SetActive(false);
-                gameObject.transform.GetChild(3).gameObject.SetActive(false);
-                gameObject.transform.GetChild(4).gameObject.SetActive(false);
-                gameObject.transform.GetChild(5).gameObject.SetActive(false);
-
-                StartCoroutine(PlayerDeath());
-                StaticData.Reset();
-
-            }
-            else
-            {
-                // Unhandled object with health of zero
-                Debug.Log("Gameobject has health zero: " + gameObject.name);
-            }
-
-            // disable minimap icon
-
-            GameObject minimapIcon = FindMinimapInChildren();
-
-            // Check if minimapTransform is not null before using it
-            if (minimapIcon != null)
-            {
-                minimapIcon.SetActive(false);
             }
         }
+    }
+
+    // immunity toggle
+    private IEnumerator ToggleImmunity(float duration)
+    {
+        isImmune = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isImmune = false;
     }
 
     public void ApplyHealing(float healAmount)
