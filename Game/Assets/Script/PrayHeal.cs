@@ -34,7 +34,7 @@ public class PrayHeal : MonoBehaviour
             player.GetComponentInChildren<AudioSource>().clip = healSound;
             player.GetComponentInChildren<AudioSource>().Play();
             player.GetComponent<Health>().ApplyHealing(healAmount);
-            //Destroy(gameObject);
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             hasPrayed = true;
 
             // check if found before

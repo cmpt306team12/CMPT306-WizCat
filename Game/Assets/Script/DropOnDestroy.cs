@@ -17,7 +17,7 @@ public class DropOnDestroy : MonoBehaviour
 
     private void Start()
     {
-        droppables = new GameObject[tierNames.Length][];
+        droppables = new GameObject[6][];
         droppables[0] = new GameObject[0];
         droppables[1] = tier1Drops;
         droppables[2] = tier2Drops;
