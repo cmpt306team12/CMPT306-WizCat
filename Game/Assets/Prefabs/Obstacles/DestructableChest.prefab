@@ -197,6 +197,8 @@ MonoBehaviour:
   currentHealth: 200
   EnemyScore: 0
   dropsLoot: 1
+  isImmune: 0
+  immunityDuration: 0.5
   animator: {fileID: 0}
   hurtSFX1: {fileID: 0}
   hurtSFX2: {fileID: 0}
@@ -251,6 +253,7 @@ MonoBehaviour:
   - {fileID: 404603458289445419, guid: 4636f9ac9cffad04bb99aa038bc55ea1, type: 3}
   - {fileID: 7545011607710849246, guid: f68921bce6464724180a0ecc58abf30a, type: 3}
   - {fileID: 248169646391386133, guid: 97b0d218fd72ab949ad588a6532e73df, type: 3}
+  - {fileID: 8905925993588242281, guid: a00889e3db3254345ae12bfab61c730a, type: 3}
 --- !u!114 &2561862800589166981
 MonoBehaviour:
   m_ObjectHideFlags: 0
