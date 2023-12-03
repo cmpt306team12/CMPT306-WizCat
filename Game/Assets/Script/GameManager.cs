@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,7 +42,10 @@ public class GameManager : MonoBehaviour
         levelContext = StaticData.levelContext;
         coinText.text = "Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
-        levelText.text = "Level: " + levelCount.ToString() + levelContext;
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            levelText.text = "Level: " + levelCount.ToString() + levelContext;
+        }
         _levelGenerator = (LevelGenerator) FindObjectOfType(typeof(LevelGenerator));
     }
 
