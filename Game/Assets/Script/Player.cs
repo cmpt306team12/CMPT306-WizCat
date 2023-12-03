@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     // Stun gameobject reference
     public GameObject stun;
 
+    // Fire rate stuff
+    public float cooldown = 0.5f;
+    public bool canFire = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,14 +62,22 @@ public class Player : MonoBehaviour
         stunned = false;
     }
 
+    IEnumerator FireCooldown(float c)
+    {
+        canFire = false;
+        yield return new WaitForSeconds(c);
+        canFire = true;
+    }
+
 
 
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.isPaused && Input.GetMouseButtonDown(0) && !stunned && wand.enabled)
+        if (!PauseMenu.isPaused && Input.GetMouseButton(0) && !stunned && wand.enabled && canFire)
         {
             wand.Shoot();
+            StartCoroutine(FireCooldown(cooldown));
             // play player shoot sound effect
             gameObject.GetComponent<RandomSound>().PLayClipAt(shootSoundEffect, gameObject.transform.position);
         }
