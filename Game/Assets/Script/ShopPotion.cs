@@ -8,7 +8,7 @@ public class ShopPotion : MonoBehaviour
     [SerializeField] bool OneUse = true;
     public GameObject selectedItem;
 
-    public int price = 1;
+    public int price = 2;
 
     private GameManager gameManager;
 

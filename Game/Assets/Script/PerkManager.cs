@@ -140,7 +140,8 @@ public class Perks : MonoBehaviour
             new Tuple<int, int>(10, 30), // burst+
             new Tuple<int, int>(14, 30), // splits+
             new Tuple<int, int>(17, 20), // wiggle+
-            new Tuple<int, int>(18, 10) // health+
+            new Tuple<int, int>(18, 10), // health+
+            new Tuple<int, int>(9, 30) // homing
     };
 }
 }

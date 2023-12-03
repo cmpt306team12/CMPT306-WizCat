@@ -422,7 +422,7 @@ public class LevelGenerator : MonoBehaviour
     private int GenerateEnemyCount()
     {
         int minEnemies = Mathf.Min(10,Mathf.Max(2, StaticData.level - 3));
-        int maxEnemies = Mathf.Min(StaticData.level, 11);
+        int maxEnemies = Mathf.Min(StaticData.level + 2, 11);
         return Random.Range(minEnemies, maxEnemies);
     }
 
@@ -496,6 +496,8 @@ public class LevelGenerator : MonoBehaviour
         foreach (Vector3Int location in locations)
         {
             GameObject enemy = Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            enemy.GetComponent<Health>().maxHealth += (StaticData.level - 1) * 10;
+            enemy.GetComponent<Health>().currentHealth = enemy.GetComponent<Health>().maxHealth;
             enemyPerksList.Add(enemy.GetComponent<Perks>());
         }
         // Add perks until the power budget is used up

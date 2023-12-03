@@ -12,6 +12,8 @@ public class DropOnDestroy : MonoBehaviour
     public GameObject[] tier1Drops;
     public GameObject[] tier2Drops;
     public GameObject[] tier3Drops;
+    public GameObject[] tier4Drops;
+    public GameObject[] tier5Drops;
 
     private void Start()
     {
@@ -20,6 +22,8 @@ public class DropOnDestroy : MonoBehaviour
         droppables[1] = tier1Drops;
         droppables[2] = tier2Drops;
         droppables[3] = tier3Drops;
+        droppables[4] = tier4Drops;
+        droppables[5] = tier5Drops;
     }
 
     public void Drop()
