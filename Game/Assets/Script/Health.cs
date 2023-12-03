@@ -42,7 +42,6 @@ public class Health : MonoBehaviour
         }
 
         else { currentHealth = maxHealth; }
-
         //hurtSFX = GetComponent<AudioSource>();
     }
 
@@ -65,6 +64,7 @@ public class Health : MonoBehaviour
     private IEnumerator PlayerDeath()
     {
         yield return new WaitForSeconds(4.0f);
+        gameOverScreen.gameObject.SetActive(true);
         fadeIn = true;
     }
 

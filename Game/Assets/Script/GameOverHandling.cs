@@ -17,6 +17,7 @@ public class GameOverHandling : MonoBehaviour
     void Start()
     {
         gameOverScreen = GetComponent<CanvasGroup>();
+        gameOverScreen.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
