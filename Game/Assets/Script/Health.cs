@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 using Pathfinding;
+using UnityEngine.UIElements;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -102,7 +104,7 @@ public class Health : MonoBehaviour
         {
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
             {
-                int chooseSound = Random.Range(1, 3);
+                int chooseSound = UnityEngine.Random.Range(1, 3);
                 if (chooseSound == 1)
                 {
                     gameObject.GetComponent<RandomSound>().PLayClipAt(hurtSFX1, transform.position);
@@ -183,16 +185,16 @@ public class Health : MonoBehaviour
                 });
                     deathQuotes = tempList.ToArray();
 
-                    float randomChance = Random.value;
+                    float randomChance = UnityEngine.Random.value;
                     Vector3 offset = new Vector3(0.0f, 2.0f, 0.0f);
                     GameObject text = Instantiate(EnemyFloatingTextPrefab, gameObject.transform.position + offset, Quaternion.identity);
                     TextMeshProUGUI atextMesh = text.GetComponentInChildren<TextMeshProUGUI>();
-                    string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
-                    // string aText = deathQuotes[Random.Range(0, deathQuotes.Length)];
+                    //string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
+                    string aText = deathQuotes[UnityEngine.Random.Range(0, deathQuotes.Length)];
                     atextMesh.text = aText;
                     if (!string.IsNullOrEmpty(aText))
                     {
-                        Destroy(text, 10.0f);
+                        StartCoroutine(WiggleText(atextMesh, text));
                     }
 
                     // 50% chance to drop an appraisal message
@@ -214,11 +216,11 @@ public class Health : MonoBehaviour
                 });
                     appraisalQuotes = tempList2.ToArray();
 
-                    float randomChance2 = Random.value;
+                    float randomChance2 = UnityEngine.Random.value;
                     Vector3 offset2 = new Vector3(0.0f, -1.0f, 0.0f);
                     GameObject text2 = Instantiate(AppraisalFloatingTextPrefab, gameObject.transform.position + offset2, Quaternion.identity);
                     TextMeshProUGUI textMesh2 = text2.GetComponentInChildren<TextMeshProUGUI>();
-                    string Text2 = (randomChance2 < 0.5f) ? appraisalQuotes[Random.Range(0, appraisalQuotes.Length)] : string.Empty;
+                    string Text2 = (randomChance2 < 0.5f) ? appraisalQuotes[UnityEngine.Random.Range(0, appraisalQuotes.Length)] : string.Empty;
                     // string Text2 = appraisalQuotes[Random.Range(0, appraisalQuotes.Length)];
                     textMesh2.text = Text2;
                     if (!string.IsNullOrEmpty(Text2))
@@ -330,6 +332,67 @@ public class Health : MonoBehaviour
             currentHealth = maxHealth;
             Debug.Log(gameObject.tag + " max health.");
         }
+    }
+
+    public IEnumerator WiggleText(TextMeshProUGUI textMesh, GameObject text)
+    {
+        float alpha = 0.0f;
+        float fadeInTime = 1.0f;
+        while (alpha < 1.0) // fade in
+        {
+            textMesh.ForceMeshUpdate();
+            Mesh mesh = textMesh.mesh;
+            Vector3[] vertices = mesh.vertices;
+            float time = Time.time;
+            for (int i = 0; i < textMesh.textInfo.characterCount; i++)
+            {
+
+                TMP_CharacterInfo c = textMesh.textInfo.characterInfo[i];
+                int index = c.vertexIndex;
+                Vector3 offset = Wiggle(time + i);
+                vertices[index] += offset;
+                vertices[index + 1] += offset;
+                vertices[index + 2] += offset;
+                vertices[index + 3] += offset;
+            }
+            mesh.vertices = vertices;
+            textMesh.fontMaterial.SetColor("_FaceColor", new Color(1, 1, 1, alpha));
+            textMesh.fontMaterial.SetColor("_OutlineColor", new Color(0, 0, 0, alpha));
+            alpha = alpha + (Time.deltaTime / fadeInTime);
+            textMesh.canvasRenderer.SetMesh(mesh);
+            yield return null;
+        }
+        float fadeTime = 4.0f;
+        while (alpha > 0.0) // fade out
+        {
+            textMesh.ForceMeshUpdate();
+            Mesh mesh = textMesh.mesh;
+            Vector3[] vertices = mesh.vertices;
+            float time = Time.time;
+            for (int i = 0; i < textMesh.textInfo.characterCount; i++)
+            {
+                
+                TMP_CharacterInfo c = textMesh.textInfo.characterInfo[i];
+                int index = c.vertexIndex;
+                Vector3 offset = Wiggle(time + i);
+                vertices[index] += offset;
+                vertices[index + 1] += offset;
+                vertices[index + 2] += offset;
+                vertices[index + 3] += offset;
+            }
+            mesh.vertices = vertices;
+            textMesh.fontMaterial.SetColor("_FaceColor", new Color(1, 1, 1, alpha));
+            textMesh.fontMaterial.SetColor("_OutlineColor", new Color(0, 0, 0, alpha));
+            alpha = alpha - (Time.deltaTime / fadeTime);
+            textMesh.canvasRenderer.SetMesh(mesh);
+            yield return null;
+        }
+        Destroy(text);
+    }
+
+    Vector2 Wiggle(float time)
+    {
+        return new Vector2(0, Mathf.Sin(time));
     }
 
 
