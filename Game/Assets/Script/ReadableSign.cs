@@ -30,6 +30,10 @@ public class ReadableSign : MonoBehaviour
                 tmp_text.SetText("Warning:\nSign has sharp edges.");
             }
         }
+        // Set sign alph color to 
+        tmp_text.fontMaterial.SetColor("_FaceColor", new Color(1, 1, 1, 0));
+        tmp_text.fontMaterial.SetColor("_OutlineColor", new Color(0, 0, 0, 0));
+        tmp_text.ForceMeshUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
