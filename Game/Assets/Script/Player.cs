@@ -98,9 +98,9 @@ public class Player : MonoBehaviour
             GetComponentInChildren<AudioSource>().clip = perkSound;
             StartCoroutine(softerPerk());
             // Need to get perk achievement
-            if (PlayerPrefs.GetInt("Collectedperk" + id, 0) == 0)
+            if (PlayerPrefs.GetInt("CollectedPerk" + id, 0) == 0)
             {
-                PlayerPrefs.SetInt("Collectedperk" + id, 1);
+                PlayerPrefs.SetInt("CollectedPerk" + id, 1);
                 PlayerPrefs.Save();
                 StartCoroutine(PerkFound(id));
             }
