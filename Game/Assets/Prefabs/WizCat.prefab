@@ -5572,6 +5572,8 @@ MonoBehaviour:
   stun: {fileID: 8049844929025240453}
   cooldown: 0.5
   canFire: 1
+  AccessFloatingTextPrefab: {fileID: 3267484700921019047, guid: 99d391f79cfe22b459aae8584dfde24c,
+    type: 3}
 --- !u!95 &8378376417109672244
 Animator:
   serializedVersion: 5
