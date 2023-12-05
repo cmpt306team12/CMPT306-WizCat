@@ -27,6 +27,9 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 _enemyOffset = new Vector3(0.5f, 1.0f, 0.0f);
     private int _enemyCount;
 
+    // Enemy list
+    ArrayList spawned_enemies = new ArrayList();
+
     // level music
     public LevelMusic backgroundMusic;
 
@@ -48,6 +51,26 @@ public class LevelGenerator : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         AstarPath.active.Scan();
+        yield return new WaitForSeconds(0.5f);
+        EnableEnemyAI();
+    }
+
+    /// <summary>
+    /// Enables all the enemies Emeny script, allowing them to move, shoot, path and to see the player
+    /// </summary>
+    public void EnableEnemyAI()
+    {
+        Debug.Log("Enabling " + spawned_enemies.Count + " enemies");
+        foreach (GameObject e in spawned_enemies)
+        {
+            // Enable their Enemy script
+            e.gameObject.GetComponent<Enemy>().enabled = true;
+        }
+        // Extra little check to make sure that the number of enemies in list matches the count
+        if (spawned_enemies.Count != _enemyCount)
+        {
+            Debug.LogError("Number of enemies spawned doesnt match the count");
+        }
     }
 
     /// <summary>
@@ -496,6 +519,7 @@ public class LevelGenerator : MonoBehaviour
         foreach (Vector3Int location in locations)
         {
             GameObject enemy = Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            spawned_enemies.Add(enemy);
             enemy.GetComponent<Health>().maxHealth += (StaticData.level - 1) * 10;
             enemy.GetComponent<Health>().currentHealth = enemy.GetComponent<Health>().maxHealth;
             enemyPerksList.Add(enemy.GetComponent<Perks>());
