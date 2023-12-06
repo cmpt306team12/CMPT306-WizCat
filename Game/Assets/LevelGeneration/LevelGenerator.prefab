@@ -999,6 +999,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 16b98551f46256a4294b17c3dad1f9a0, type: 2}
   - {fileID: 11400000, guid: 29ba1fb1f30b5b847b814ea0abd44b1d, type: 2}
   - {fileID: 11400000, guid: b5fd8362fb7654c4dba4759aa0ad38cb, type: 2}
+  - {fileID: 11400000, guid: 2582e7c49d888834186409f65af48d48, type: 2}
   walls: {fileID: 7382907338179376721}
   ground: {fileID: 1386107777402378509}
   props: {fileID: 8702862274674598847}
