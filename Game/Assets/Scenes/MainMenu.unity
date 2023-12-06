@@ -7386,7 +7386,7 @@ PrefabInstance:
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -545.12
+      value: -528.8
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
@@ -9034,11 +9034,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Use the W-A-S-D keys to move Wizcat across the screen.
-
-
-    Move the
-    mouse to aim and left-click to shoot magic projectiles.'
+  m_text: "Use the W-A-S-D keys to move Wizcat across the screen. \n\nPress tab/spacebar/c
+    to use Wizcat's perks.\n\nMove the mouse to aim and left-click to shoot magic
+    projectiles."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef3ce19cf2c10f40a4199d39d3f345b, type: 2}
   m_sharedMaterial: {fileID: 4812089106464548504, guid: aef3ce19cf2c10f40a4199d39d3f345b,
@@ -9066,8 +9064,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 33.1
+  m_fontSizeBase: 33.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9425,7 +9423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -37.249878, y: -406.40186}
+  m_AnchoredPosition: {x: -15, y: -409}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1443841213
