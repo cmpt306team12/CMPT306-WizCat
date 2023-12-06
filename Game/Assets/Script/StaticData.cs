@@ -19,6 +19,9 @@ public class StaticData : MonoBehaviour
     // set in PlayerMovement.cs
     public static bool canDash = false;
 
+    // crown
+    public static bool crown = false;
+
 
     static public void Reset()
     {
@@ -32,5 +35,7 @@ public class StaticData : MonoBehaviour
         canDash = false;
         Bite.canBite = false;
         OrbitProjectiles.canOrbit = false;
-    }
+        // if we want crown to reset
+        //public static bool crown = false;
+}
 }
