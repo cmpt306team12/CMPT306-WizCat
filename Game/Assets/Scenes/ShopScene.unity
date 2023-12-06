@@ -12838,6 +12838,42 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1028239554}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1028239556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4155779598537208044, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028239554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1028239557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6587852524335152129, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028239554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1028239558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2398148046013028080, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028239554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!225 &1028239559 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1700191015293896039, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
@@ -13781,6 +13817,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2142029159}
     m_Modifications:
+    - target: {fileID: 951844574460846156, guid: d7d325f0077ff9841944cb7e836ea174,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelCount 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317874475876295352, guid: d7d325f0077ff9841944cb7e836ea174,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelCount
+      objectReference: {fileID: 0}
     - target: {fileID: 6388756588057374090, guid: d7d325f0077ff9841944cb7e836ea174,
         type: 3}
       propertyPath: m_Pivot.x
@@ -14158,10 +14204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1145969907}
+  overScore: {fileID: 1028239558}
   scoreCount: 0
   coinText: {fileID: 475341090}
+  overCoin: {fileID: 1028239557}
   coinCount: 0
-  levelText: {fileID: 0}
+  levelText: {fileID: 1738265382}
+  overLevel: {fileID: 1028239556}
   levelCount: 1
   levelContext: 
   player: {fileID: 1971120000}
@@ -15995,6 +16044,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f681a54372d73d74785b9c9d4ac477e8, type: 3}
+--- !u!114 &1738265382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7378719574914602605, guid: d7d325f0077ff9841944cb7e836ea174,
+    type: 3}
+  m_PrefabInstance: {fileID: 1137031992}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1759940848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,

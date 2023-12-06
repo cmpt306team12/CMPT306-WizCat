@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     
     public TMP_Text scoreText;
+    public TMP_Text overScore;
     public int scoreCount = 0;
     public TMP_Text coinText;
+    public TMP_Text overCoin;
     public int coinCount = 0;
     public TMP_Text levelText;
+    public TMP_Text overLevel;
     public int levelCount = 1;
     public string levelContext = "";
 
@@ -41,10 +44,14 @@ public class GameManager : MonoBehaviour
         levelCount = StaticData.level;
         levelContext = StaticData.levelContext;
         coinText.text = "Coins: " + coinCount.ToString();
+        overCoin.text = "Total Coins: " + coinCount.ToString();
         scoreText.text = "Score: " + scoreCount.ToString();
+        overScore.text = "Final Score: " + scoreCount.ToString();
         if (SceneManager.GetActiveScene().buildIndex != 2)
-        {
+        { 
+            overLevel.text = "Level: " + levelCount.ToString();
             levelText.text = "Level: " + levelCount.ToString() + levelContext;
+            
         }
         _levelGenerator = (LevelGenerator) FindObjectOfType(typeof(LevelGenerator));
     }
@@ -63,18 +70,21 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int amount){
         scoreCount += amount;
         scoreText.text = "Score: " + scoreCount.ToString();
+        overScore.text = "Final Score: " + scoreCount.ToString();
     }
 
     public void IncreaseCoins(int amount)
     {
         coinCount += amount;
         coinText.text = "Coins: " + coinCount.ToString();
+        overCoin.text = "Total Coins: " + coinCount.ToString(); 
     }
 
     public void DecreaseCoins(int amount)
     {
         coinCount -= amount;
         coinText.text = "Coins: " + coinCount.ToString();
+        overCoin.text = "Total Coins: " + coinCount.ToString();
     }
 
     public void EnemyDefeated()
