@@ -1,0 +1,699 @@
+fileFormatVersion: 2
+guid: e93c97cff91564af2a022a60ab6ed918
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: demo02_PixelSky_layer01 1_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 1392
+      width: 2400
+      height: 1370
+    spriteID: 841afd4eb112941018408a01ce910752
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 1392}
+  - name: demo02_PixelSky_layer01 1_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 2770
+      width: 2400
+      height: 1370
+    spriteID: 91b2f07515be148628f12f15d4ae3648
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 2770}
+  - name: demo02_PixelSky_layer01 1_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 4148
+      width: 2400
+      height: 1370
+    spriteID: f0ed69c1f727f4974b811c255b955b53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 4148}
+  - name: demo02_PixelSky_layer01 1_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 5526
+      width: 2400
+      height: 1370
+    spriteID: eab2a7a44a47c44109de9cbb56e92312
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 5526}
+  - name: demo02_PixelSky_layer01 1_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 2400
+      height: 1380
+    spriteID: a3ac8dd78317c47ea8fef6b340851241
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: demo02_PixelSky_layer01 1_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1392
+      width: 2400
+      height: 1380
+    spriteID: 32c99dd06e4754fe1bb191db41610bbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1392}
+  - name: demo02_PixelSky_layer01 1_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2780
+      width: 2400
+      height: 1380
+    spriteID: 4e362002f33604ce5b495261c5863d34
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2780}
+  - name: demo02_PixelSky_layer01 1_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4168
+      width: 2400
+      height: 1380
+    spriteID: b8c38789093754634823c1af6b32ea21
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4168}
+  - name: demo02_PixelSky_layer01 1_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 5556
+      width: 2400
+      height: 1380
+    spriteID: 058c219a88e3a4ed5a6f8fce0d9c07bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 5556}
+  - name: demo02_PixelSky_layer01 1_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 6944
+      width: 2400
+      height: 1380
+    spriteID: bc977d6545496486585be933b2ee7ad6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 6944}
+  - name: demo02_PixelSky_layer01 1_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 6904
+      width: 2400
+      height: 1370
+    spriteID: 59cf81c42340d4261998bad98011fb66
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 6904}
+  - name: demo02_PixelSky_layer01 1_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 8282
+      width: 2400
+      height: 1370
+    spriteID: b8118e1c481c847c190083f7eed83dbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 8282}
+  - name: demo02_PixelSky_layer01 1_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 9660
+      width: 2400
+      height: 1370
+    spriteID: 7a4963c419af24743b14e739f1d1d496
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 9660}
+  - name: demo02_PixelSky_layer01 1_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 8332
+      width: 2400
+      height: 1380
+    spriteID: cf783d1001bc14dd4b575c7158d7005e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 8332}
+  - name: demo02_PixelSky_layer01 1_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 9720
+      width: 2400
+      height: 1380
+    spriteID: 3fe52727da0cd4c70906ce0bc3230850
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 9720}
+  - name: demo02_PixelSky_layer01 1_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 11108
+      width: 2400
+      height: 1380
+    spriteID: 0f8b1c5f032ab4897a708cf3db0aa4d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 11108}
+  - name: demo02_PixelSky_layer01 1_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 12496
+      width: 2400
+      height: 1380
+    spriteID: 0c87eabb7d3b544839693882956691cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 12496}
+  - name: demo02_PixelSky_layer01 1_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 13884
+      width: 2400
+      height: 1380
+    spriteID: bb88587373b96488da38b83d2318c9a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 13884}
+  - name: demo02_PixelSky_layer01 1_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.007246377}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 4
+      width: 2400
+      height: 1380
+    spriteID: fc29971ce7bf14a3c923a32f3a038ffc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 4}
+  - name: demo02_PixelSky_layer01 1_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2412
+      y: 11038
+      width: 2400
+      height: 1370
+    spriteID: 3d2a970769447432d9a198524e22fb30
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2412, y: 11038}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1969876275
+    name: demo02_PixelSky_layer01 1
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: demo02_PixelSky_layer01 1_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: 841afd4eb112941018408a01ce910752
+    - name: demo02_PixelSky_layer01 1_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: 91b2f07515be148628f12f15d4ae3648
+    - name: demo02_PixelSky_layer01 1_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: f0ed69c1f727f4974b811c255b955b53
+    - name: demo02_PixelSky_layer01 1_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: eab2a7a44a47c44109de9cbb56e92312
+    - name: demo02_PixelSky_layer01 1_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: a3ac8dd78317c47ea8fef6b340851241
+    - name: demo02_PixelSky_layer01 1_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 32c99dd06e4754fe1bb191db41610bbd
+    - name: demo02_PixelSky_layer01 1_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 4e362002f33604ce5b495261c5863d34
+    - name: demo02_PixelSky_layer01 1_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: b8c38789093754634823c1af6b32ea21
+    - name: demo02_PixelSky_layer01 1_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 058c219a88e3a4ed5a6f8fce0d9c07bf
+    - name: demo02_PixelSky_layer01 1_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: bc977d6545496486585be933b2ee7ad6
+    - name: demo02_PixelSky_layer01 1_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: 59cf81c42340d4261998bad98011fb66
+    - name: demo02_PixelSky_layer01 1_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: b8118e1c481c847c190083f7eed83dbb
+    - name: demo02_PixelSky_layer01 1_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: 7a4963c419af24743b14e739f1d1d496
+    - name: demo02_PixelSky_layer01 1_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: cf783d1001bc14dd4b575c7158d7005e
+    - name: demo02_PixelSky_layer01 1_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 3fe52727da0cd4c70906ce0bc3230850
+    - name: demo02_PixelSky_layer01 1_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 0f8b1c5f032ab4897a708cf3db0aa4d3
+    - name: demo02_PixelSky_layer01 1_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: 0c87eabb7d3b544839693882956691cf
+    - name: demo02_PixelSky_layer01 1_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: bb88587373b96488da38b83d2318c9a5
+    - name: demo02_PixelSky_layer01 1_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 0
+        y: -10
+        width: 2400
+        height: 1380
+      spriteId: fc29971ce7bf14a3c923a32f3a038ffc
+    - name: demo02_PixelSky_layer01 1_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 0
+        y: 0
+        width: 2400
+        height: 1370
+      spriteId: 3d2a970769447432d9a198524e22fb30
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 2400, y: 1350}
