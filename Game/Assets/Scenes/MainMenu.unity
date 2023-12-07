@@ -12944,8 +12944,7 @@ Animator:
   m_GameObject: {fileID: 1900928691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4986981264534856668, guid: 561c716316d7b49e2abc74d1b1180e03,
-    type: 3}
+  m_Controller: {fileID: 9100000, guid: 27b21889085a622439c738c76d239724, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12976,7 +12975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0675ce4596ea3e047879ee54f19b94a0, type: 3}
+  m_Sprite: {fileID: 202775405459170762, guid: 561c716316d7b49e2abc74d1b1180e03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
