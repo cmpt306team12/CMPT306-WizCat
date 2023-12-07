@@ -66849,6 +66849,7 @@ GameObject:
   - component: {fileID: 1810560536}
   - component: {fileID: 1810560535}
   - component: {fileID: 1810560539}
+  - component: {fileID: 1810560540}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -66936,6 +66937,26 @@ MonoBehaviour:
   pauseMenu: {fileID: 1369005800}
   warningMenu: {fileID: 12227658}
   controlsMenu: {fileID: 1421655060}
+--- !u!114 &1810560540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810560534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84526c9fb686e974b86a7efc37c7bcda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - Tip:<br>Use explosive barrels to your advantage!
+  - Tip:<br>Be careful Explosive barrels stun and push.
+  - Meow meow...
+  - Tip:<br>Meow.
+  - Tip:<br>Using Bite works best when used with Orbit!
+  - Tip:<br>Some walls are destructable!
+  - Tip:<br>Most perks stack, so collecting more of the same ones still has an effect.
 --- !u!4 &1811117621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 9e7797bb065982d4497d030f065d6e2f,

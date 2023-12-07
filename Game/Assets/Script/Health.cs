@@ -170,18 +170,30 @@ public class Health : MonoBehaviour
                     deathQuotes = new string[0];
                     List<string> tempList = new List<string>(deathQuotes);
                     tempList.AddRange(new string[]{
-                "My monitor was unplugged",
+                "My monitor was unplugged...",
                 "You're just a cat...",
-                "Friendly reminder: life is meant to be lived. Unless it's your life, in which case it was meant to given to me.",
-                "They say the definition of insanity is repeating the same option over and over again and expecting different results. But hear me out - there's no way you're going to kill me again.",
-                "Please, we don’t believe you should be swagging that hard ok, listen, we worry about your hands, feet, head, ankles, arms, and face.",
+                "Yum, yummm...",
+                "Next timee...",
+                "Uggghh...",
+                "Gaahhhh...",
+                "Not again.....",
+                "Why......",
+                "I hate cats....",
+                "Nice shot....",
+                "Owww.....",
+                "You're stuck here....",
+                "You can't leave....",
+                "nice tr....",
+                "damn lag....",
+                "see you soon....",
+                "Tell my fr.....",
+                "soon...",
+                "how did...",
+                "AAaahhh.....",
+                "My mouse was unplugged...",
+                "You're only a cat...",
                 "Are you hungry?",
-                "I'm cooking something up for you ...",
-                "Yum, yum, yum!",
-                "Fried okra, raw beans, washed mushrooms, raw peppers, dank cheese, astringent spinach, moldy celery ...",
-                "Acidic bananas, appealing grapes, appetizing yams, aromatic chard, balsamic watermelon, beautiful wheatgrass, blazed carrots ...",
-                "Blended eggs, blunt romaine, boiled bacon, briny basil, burnt bread, caustic  garlic, cold pasta, chunky salt, creamy water, crispy oranges ...",
-                "Crunchy nectarines, cured peaches, delectable apricots, delightful basil, doughy apples, drenched raisins, dry plums, elastic turkey ...",
+                "I'm cooking something up for you ..."
                 });
                     deathQuotes = tempList.ToArray();
 
