@@ -11,7 +11,7 @@ public class Bite : MonoBehaviour
     private float lastTeleportTime = 0.0f;
     private float lastCPressTime = 0.0f;
 
-    public float cooldown = 5.0f;
+    public float cooldown = 15.0f;
     public bool onCooldown = false;
 
     public static bool canBite = false;
