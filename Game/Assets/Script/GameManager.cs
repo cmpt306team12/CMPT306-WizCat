@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
         { 
             overLevel.text = "Level: " + levelCount.ToString();
             levelText.text = "Level: " + levelCount.ToString() + levelContext;
-            
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 2) { overLevel.text = "Level: " + levelCount.ToString() + levelContext; }
         _levelGenerator = (LevelGenerator) FindObjectOfType(typeof(LevelGenerator));
     }
 

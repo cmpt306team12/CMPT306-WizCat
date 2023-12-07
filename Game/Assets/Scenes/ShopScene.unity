@@ -1598,12 +1598,12 @@ PrefabInstance:
     - target: {fileID: 450803486591001686, guid: 6740fc04fe15e9b4e90c0d774d6216a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.2216988
+      value: 12.58
       objectReference: {fileID: 0}
     - target: {fileID: 450803486591001686, guid: 6740fc04fe15e9b4e90c0d774d6216a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6965487
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 450803486591001686, guid: 6740fc04fe15e9b4e90c0d774d6216a3,
         type: 3}
@@ -12811,6 +12811,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121904974026116037, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8188069584372255100, guid: 9b6311ed2665d2a4bbb4570825bb4f5a,
         type: 3}
