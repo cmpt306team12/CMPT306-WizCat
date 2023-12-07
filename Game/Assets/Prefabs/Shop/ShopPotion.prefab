@@ -450,7 +450,7 @@ MonoBehaviour:
   OneUse: 1
   selectedItem: {fileID: 8905925993588242281, guid: a00889e3db3254345ae12bfab61c730a,
     type: 3}
-  price: 1
+  price: 2
   priceText: {fileID: 6656190387914231988}
   itemImage: {fileID: 3300074932216650012}
   itemName: {fileID: 2970033264404854985}

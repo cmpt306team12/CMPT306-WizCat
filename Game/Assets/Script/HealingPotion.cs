@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealingPotion : MonoBehaviour
 {
-    [SerializeField] public float healAmount = 100;
+    [SerializeField] public float healAmount = 25;
     private GameManager gameManager;
     private GameObject player;
 
