@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402034670}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
@@ -2953,7 +2953,7 @@ VideoPlayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539464539}
-  m_Enabled: 0
+  m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 74c0dbe5eb8d947f7a0d7c70cc705b38, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
@@ -6150,6 +6150,7 @@ RectTransform:
   - {fileID: 1131846847}
   - {fileID: 986223128}
   - {fileID: 1443841211}
+  - {fileID: 1696586274}
   m_Father: {fileID: 1807910405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7356,7 +7357,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1807910405}
+    m_TransformParent: {fileID: 925086858}
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
@@ -7366,27 +7367,27 @@ PrefabInstance:
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.4792333
+      value: 17.647251
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.424293
+      value: 17.517618
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 7.424293
+      value: 17.517618
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -959.98
+      value: -960.507
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -545.03
+      value: -551.642
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
@@ -7401,17 +7402,17 @@ PrefabInstance:
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 561c716316d7b49e2abc74d1b1180e03,
         type: 3}
@@ -9034,7 +9035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Use the W-A-S-D keys to move Wizcat across the screen. \n\nPress tab/spacebar/c
+  m_text: "Use the W-A-S-D keys to move Wizcat across the screen. \n\nPress LCtrl/spacebar/C
     to use Wizcat's perks.\n\nMove the mouse to aim and left-click to shoot magic
     projectiles."
   m_isRightToLeft: 0
@@ -12135,7 +12136,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1696586274}
   - {fileID: 925086858}
   - {fileID: 1166401831}
   m_Father: {fileID: 0}

@@ -5,15 +5,22 @@ using UnityEngine;
 
 public class LevelMusic : MonoBehaviour
 {
+    public AudioClip[] levelMusic;
+
     public AudioClip victory;
+    //public AudioClip wind;
 
     public AudioClip gameOver;
+    public GameObject wind;
 
     private AudioSource audioSource;
 
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        int music = UnityEngine.Random.Range(0, levelMusic.Length);
+        audioSource.clip = levelMusic[music];
+        audioSource.Play();
     }
 
     private void Update()
@@ -65,6 +72,7 @@ public class LevelMusic : MonoBehaviour
 
     IEnumerator FadeOutAndChange()
     {
+        AudioSource windAudio = wind.GetComponent<AudioSource>();
         // Assuming a fade duration of 2 seconds, you can adjust this as needed
         float fadeDuration = 3f;
         float startVolume = audioSource.volume;
@@ -78,15 +86,22 @@ public class LevelMusic : MonoBehaviour
 
         // Ensure the volume is set to zero to avoid any potential rounding errors
         audioSource.volume = 0;
-
+        windAudio.volume = 0;
         // Swap out the AudioClip
         audioSource.clip = victory;
-
-        // Reset the volume to its original level
-        audioSource.volume = startVolume;
-
+        // Gradually decrease the volume to zero
         // Play the new AudioClip
         audioSource.Play();
+        windAudio.Play();
+        while (audioSource.volume < 0.75)
+        {
+            audioSource.volume +=  0.75f * (Time.deltaTime / fadeDuration);
+            windAudio.volume += Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+
+     
     }
 
     IEnumerator StopClipIn(float value)
