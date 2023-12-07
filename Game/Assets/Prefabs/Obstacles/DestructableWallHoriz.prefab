@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4153421120468186785}
   - component: {fileID: 2818144572502361950}
   - component: {fileID: 2297905643974105377}
-  m_Layer: 0
+  - component: {fileID: -5541297687998214873}
+  m_Layer: 20
   m_Name: DestructableWallHoriz
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -145,11 +146,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82cec36f065e4e179e1ebe7db3520ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
-  currentHealth: 250
+  maxHealth: 100
+  currentHealth: 100
   EnemyScore: 0
   dropsLoot: 0
+  isImmune: 0
+  immunityDuration: 0.5
   animator: {fileID: 0}
+  hurtSFX1: {fileID: 0}
+  hurtSFX2: {fileID: 0}
+  EnemyFloatingTextPrefab: {fileID: 0}
+  AppraisalFloatingTextPrefab: {fileID: 0}
+  deathQuotes: []
+  appraisalQuotes: []
+  gameOverScreen: {fileID: 0}
+  fadeIn: 0
+  healPS: {fileID: 0}
 --- !u!114 &2297905643974105377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +178,30 @@ MonoBehaviour:
     type: 3}
   veryDamaged: {fileID: 1361625832066190543, guid: c676e72e7af8fb64e959f9418b340d37,
     type: 3}
+--- !u!50 &-5541297687998214873
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645773546317534601}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

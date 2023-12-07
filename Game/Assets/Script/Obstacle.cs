@@ -24,14 +24,14 @@ public class Obstacle : MonoBehaviour
     {
         for(; ;)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
             maxhealth = gameObject.GetComponent<Health>().maxHealth;
             currHealth = gameObject.GetComponent<Health>().currentHealth;
-            if (!isDamaged && currHealth < (maxhealth / 2.0f))
+            if (!isDamaged && currHealth < maxhealth)
             {
                 Damaged();
             }
-            if (!isVeryDamaged && currHealth < (maxhealth / 4.0f))
+            if (!isVeryDamaged && currHealth < (maxhealth / 2.0f))
             {
                 VeryDamaged();
             }
