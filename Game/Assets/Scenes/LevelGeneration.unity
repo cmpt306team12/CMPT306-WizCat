@@ -79793,6 +79793,11 @@ PrefabInstance:
       objectReference: {fileID: 2047562006}
     - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
         type: 3}
+      propertyPath: structures.Array.size
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
       propertyPath: enemyPrefab.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -79820,6 +79825,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1992927280101620473, guid: 86c82a17bfc20104dad8d885a5939e3e,
         type: 3}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: structures.Array.data[53]
+      value: 
+      objectReference: {fileID: 11400000, guid: bdfb144e64a8f4046be7375d0485ce3f,
+        type: 2}
     - target: {fileID: 5274840184888955261, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
         type: 3}
       propertyPath: m_Layer
