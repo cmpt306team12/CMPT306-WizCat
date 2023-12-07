@@ -607,8 +607,10 @@ MonoBehaviour:
   animator: {fileID: 1400065234660262741}
   hurtSFX1: {fileID: 8300000, guid: 45565ded7e42ab84f9d0d2d7efea4e43, type: 3}
   hurtSFX2: {fileID: 8300000, guid: 3827f68db12aa944d89c0838deae7bd3, type: 3}
-  EnemyFloatingTextPrefab: {fileID: 0}
-  AppraisalFloatingTextPrefab: {fileID: 0}
+  EnemyFloatingTextPrefab: {fileID: 3267484700921019047, guid: 2faf0748e13c759479aea7f194857323,
+    type: 3}
+  AppraisalFloatingTextPrefab: {fileID: 3267484700921019047, guid: 99d391f79cfe22b459aae8584dfde24c,
+    type: 3}
   deathQuotes: []
   appraisalQuotes: []
   gameOverScreen: {fileID: 0}

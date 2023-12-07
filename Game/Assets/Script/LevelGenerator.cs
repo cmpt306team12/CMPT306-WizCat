@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform props;
     [SerializeField] private Transform enemies;
     [SerializeField] private BaseLevelTiles baseLevelTiles;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefab;
     [SerializeField] private GameObject doorPrefab;
 
     // exit arrow stuff
@@ -136,8 +136,9 @@ public class LevelGenerator : MonoBehaviour
         AddExit();
         int possibleEnemyCount = GenerateEnemyCount();
         List<Vector3Int> enemyTiles = GenerateEnemyTiles(possibleEnemyCount);
-        _enemyCount = enemyTiles.Count;
+        //_enemyCount = enemyTiles.Count;
         SpawnEnemies(enemyTiles);
+        _enemyCount = spawned_enemies.Count;
     }
 
     /// <summary>
@@ -518,7 +519,10 @@ public class LevelGenerator : MonoBehaviour
         List<Perks> enemyPerksList = new List<Perks>();
         foreach (Vector3Int location in locations)
         {
-            GameObject enemy = Instantiate(enemyPrefab, location + _enemyOffset, Quaternion.identity, enemies);
+            int i = Random.Range(0, enemyPrefab.Length);
+            Debug.Log("Enemy index: " + i);
+            GameObject enemyToSpawn = enemyPrefab[i];
+            GameObject enemy = Instantiate(enemyToSpawn, location + _enemyOffset, Quaternion.identity, enemies);
             spawned_enemies.Add(enemy);
             enemy.GetComponent<Health>().maxHealth += (StaticData.level - 1) * 10;
             enemy.GetComponent<Health>().currentHealth = enemy.GetComponent<Health>().maxHealth;

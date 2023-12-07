@@ -7,7 +7,7 @@ using TMPro;
 
 using Pathfinding;
 using UnityEngine.UIElements;
-using System;
+//using System;
 
 public class Health : MonoBehaviour
 {
@@ -189,8 +189,8 @@ public class Health : MonoBehaviour
                     Vector3 offset = new Vector3(0.0f, 2.0f, 0.0f);
                     GameObject text = Instantiate(EnemyFloatingTextPrefab, gameObject.transform.position + offset, Quaternion.identity);
                     TextMeshProUGUI atextMesh = text.GetComponentInChildren<TextMeshProUGUI>();
-                    //string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
-                    string aText = deathQuotes[UnityEngine.Random.Range(0, deathQuotes.Length)];
+                    string aText = (randomChance < 0.3f) ? deathQuotes[Random.Range(0, deathQuotes.Length)] : string.Empty;
+                    //string aText = deathQuotes[UnityEngine.Random.Range(0, deathQuotes.Length)];
                     atextMesh.text = aText;
                     if (!string.IsNullOrEmpty(aText))
                     {
