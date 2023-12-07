@@ -1005,8 +1005,11 @@ MonoBehaviour:
   props: {fileID: 8702862274674598847}
   enemies: {fileID: 9205219675163392918}
   baseLevelTiles: {fileID: 11400000, guid: 4d2974c67541cbd4d80dd5c3139da1ab, type: 2}
-  enemyPrefab: {fileID: 1992927280101620473, guid: 31a460c04b40dc74b9b7bc1a45b459f0,
-    type: 3}
+  enemyPrefab:
+  - {fileID: 1992927280101620473, guid: 31a460c04b40dc74b9b7bc1a45b459f0, type: 3}
+  - {fileID: 1992927280101620473, guid: b901e9e97389cb946800d41c6ff2f65a, type: 3}
+  - {fileID: 1992927280101620473, guid: 21df4d845496b6d409f98e9826a78915, type: 3}
+  - {fileID: 1992927280101620473, guid: 86c82a17bfc20104dad8d885a5939e3e, type: 3}
   doorPrefab: {fileID: 355978249493521748, guid: 41d75e7ec52af1341a0f564c7e5ffa8b,
     type: 3}
   backgroundMusic: {fileID: 0}
