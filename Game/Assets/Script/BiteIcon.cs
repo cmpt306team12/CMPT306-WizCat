@@ -14,6 +14,7 @@ public class BiteIcon : MonoBehaviour
     void Start()
     {
         bite = FindObjectOfType<Bite>();
+        if (!Bite.canBite) {gameObject.SetActive(false);}
     }
 
     void Update()

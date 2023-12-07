@@ -9,6 +9,11 @@ public class OrbitIcon : MonoBehaviour
     public TMP_Text countdownText;
     private Coroutine countdownCoroutine;
 
+    private void Start()
+    {
+        if (!OrbitProjectiles.canOrbit) { gameObject.SetActive(false); }
+    }
+
     void Update()
     {
         if (OrbitProjectiles.canOrbit)
