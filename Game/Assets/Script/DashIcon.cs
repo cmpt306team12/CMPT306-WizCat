@@ -13,6 +13,7 @@ public class DashIcon : MonoBehaviour
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
+        if (!StaticData.canDash) { gameObject.SetActive(false); }
     }
 
     public void UpdateDashIcon()
