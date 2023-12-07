@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
+        StaticData.Reset();
     }
 
     public void ShowWarningMenu()
