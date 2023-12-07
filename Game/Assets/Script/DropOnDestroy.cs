@@ -61,7 +61,9 @@ public class DropOnDestroy : MonoBehaviour
             // actually drop an item
             int itemToDrop = Random.Range(0, droppables[selectedTier].Length);
             Debug.Log("Dropping: Tier: " + selectedTier + "Item: " + itemToDrop);
-            GameObject loot = Instantiate(droppables[selectedTier][itemToDrop], transform);
+            Transform droppedTransform = gameObject.transform;
+            droppedTransform.localScale = Vector3.one;
+            GameObject loot = Instantiate(droppables[selectedTier][itemToDrop], droppedTransform);
             loot.transform.parent = null; // decouple from parent so that loot persists
             return;
         }
