@@ -7802,74 +7802,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 951384009}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1909202621
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 33.50925
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.9295692
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210461170089441930, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6698932869487624501, guid: 38236bc4f4709504d8e1f0e3c3c196bd,
-        type: 3}
-      propertyPath: m_Name
-      value: ReadableSign
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38236bc4f4709504d8e1f0e3c3c196bd, type: 3}
 --- !u!82 &1935805839 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 30830818675438319, guid: d60369d237aa64ae992efb805e4cc982,
@@ -8660,6 +8592,35 @@ PrefabInstance:
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 2047562006}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: enemyPrefab.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1992927280101620473, guid: 31a460c04b40dc74b9b7bc1a45b459f0,
+        type: 3}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 1992927280101620473, guid: b901e9e97389cb946800d41c6ff2f65a,
+        type: 3}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1992927280101620473, guid: 21df4d845496b6d409f98e9826a78915,
+        type: 3}
+    - target: {fileID: 3306410454812216653, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 1992927280101620473, guid: 86c82a17bfc20104dad8d885a5939e3e,
+        type: 3}
     - target: {fileID: 5274840184888955261, guid: d3b6b8b398ec67544a2197aa5ec57ff0,
         type: 3}
       propertyPath: m_Layer
@@ -8914,4 +8875,3 @@ SceneRoots:
   - {fileID: 1573727125}
   - {fileID: 951384009}
   - {fileID: 1490109460}
-  - {fileID: 1909202621}
