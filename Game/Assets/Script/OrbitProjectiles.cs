@@ -18,15 +18,15 @@ public class OrbitProjectiles : MonoBehaviour
     public AudioClip orbitSFX;
     public AudioClip noOrbitSFX;
 
-    public GameObject orbitCirclePrefab;
-    private GameObject orbitCircle;
+    public GameObject orbitCircle;
 
     public static bool onCooldown = false;
 
     private void Start()
     {
         characterRigidbody = GetComponent<Rigidbody2D>();
-        orbitCircle = Instantiate(orbitCirclePrefab, transform.position, Quaternion.identity);
+        //orbitCircle = Instantiate(orbitCirclePrefab, transform.position, Quaternion.identity);
+        //orbitCircle.SetActive(false);
         orbitCircle.SetActive(false);
     }
 
@@ -34,6 +34,7 @@ public class OrbitProjectiles : MonoBehaviour
     {
         if (canOrbit)
         {
+
             if (Time.time - lastCtrlPressTime > cooldownDuration){
                 onCooldown = false;
             }
@@ -46,8 +47,10 @@ public class OrbitProjectiles : MonoBehaviour
                 gameObject.GetComponent<RandomSound>().PLayClipAt(orbitSFX, transform.position);
                 //catSFX.PlayOneShot(orbitSFX);
 
+                //orbitCircle.SetActive(true);
                 orbitCircle.SetActive(true);
-                orbitCircle.transform.position = characterRigidbody.position;
+                orbitCircle.GetComponent<ParticleSystem>().Play();
+                //orbitCircle.transform.position = characterRigidbody.position;
                 onCooldown = true;
             }
 
@@ -85,13 +88,13 @@ public class OrbitProjectiles : MonoBehaviour
                             }
                         }
                     }
-                    orbitCircle.transform.position = characterRigidbody.position;
+                    //orbitCircle.transform.position = characterRigidbody.position;
                     currentOrbitTime += Time.deltaTime;
                 }
                 else
                 {
                     isOrbiting = false;
-                    orbitCircle.SetActive(false);   
+                    orbitCircle.GetComponent<ParticleSystem>().Stop();   
                 }
             }
         }
